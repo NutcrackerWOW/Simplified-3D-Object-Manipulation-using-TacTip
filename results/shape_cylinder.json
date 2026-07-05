@@ -1,0 +1,73 @@
+{
+  "shape": "cylinder",
+  "mass": 0.05,
+  "wave_deg": 0.0,
+  "pip_deg": 0.0,
+  "f_star": 0.4834,
+  "mu_eff": 0.5074,
+  "trials": [
+    {
+      "force": 0.7357500000000001,
+      "seed": 0,
+      "outcome": "held",
+      "drift_mm": 0.13,
+      "rot_deg": 1.5
+    },
+    {
+      "force": 0.7357500000000001,
+      "seed": 1,
+      "outcome": "held",
+      "drift_mm": 0.12,
+      "rot_deg": 1.4
+    },
+    {
+      "force": 0.19180067778816637,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 121.94,
+      "rot_deg": 5.7
+    },
+    {
+      "force": 0.37565589131896154,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 146.44,
+      "rot_deg": 162.4
+    },
+    {
+      "force": 0.5257269462733729,
+      "seed": 0,
+      "outcome": "held",
+      "drift_mm": 0.23,
+      "rot_deg": 5.4
+    },
+    {
+      "force": 0.5257269462733729,
+      "seed": 1,
+      "outcome": "held",
+      "drift_mm": 0.16,
+      "rot_deg": 3.9
+    },
+    {
+      "force": 0.4444011977849741,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 153.29,
+      "rot_deg": 143.4
+    },
+    {
+      "force": 0.4833566846871197,
+      "seed": 0,
+      "outcome": "held",
+      "drift_mm": 0.39,
+      "rot_deg": 6.2
+    },
+    {
+      "force": 0.4833566846871197,
+      "seed": 1,
+      "outcome": "held",
+      "drift_mm": 0.21,
+      "rot_deg": 4.0
+    }
+  ]
+}

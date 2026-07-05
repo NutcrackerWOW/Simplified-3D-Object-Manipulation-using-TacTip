@@ -1,0 +1,10 @@
+  prism f=0.736 seed=0: held
+  prism f=0.736 seed=1: held
+  prism f=0.192 seed=0: drop
+  prism f=0.376 seed=0: drop
+  prism f=0.526 seed=0: held
+  prism f=0.526 seed=1: held
+  prism f=0.444 seed=0: held
+  prism f=0.444 seed=1: held
+  prism f=0.409 seed=0: drop
+prism: f* = 0.4444011977849741 N  mu_eff = 0.552

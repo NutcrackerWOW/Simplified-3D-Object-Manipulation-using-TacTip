@@ -1,0 +1,9 @@
+  sphere f=0.736 seed=0: held
+  sphere f=0.736 seed=1: held
+  sphere f=0.192 seed=0: drop
+  sphere f=0.376 seed=0: drop
+  sphere f=0.526 seed=0: drop
+  sphere f=0.622 seed=0: held
+  sphere f=0.622 seed=1: held
+  sphere f=0.572 seed=0: drop
+sphere: f* = 0.6219353669961487 N  mu_eff = 0.394

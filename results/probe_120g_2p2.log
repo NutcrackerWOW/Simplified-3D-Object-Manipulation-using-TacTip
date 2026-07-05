@@ -1,0 +1,6 @@
+posture: wave ±0.0°, PIP 0.0°, MCP* 1.74° | gap 24.0 mm tilt 0.8° feasible=True
+
+outcome: drop (held=False)
+drift 156.54 mm | rot 80.0° | incipient slip at — s
+  L: f1 -0.129  f2 -0.344  f3 -0.094  ρ 279264.100
+  R: f1 +0.347  f2 -0.444  f3 -0.064  ρ 1.315

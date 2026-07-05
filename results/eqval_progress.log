@@ -1,0 +1,7 @@
+w= -11.0 p= +1.0 m= 50g  f*_pred=0.357 N  @1.25× → held     @0.60× → drop      ✓
+w=  +4.0 p= +5.0 m= 50g  f*_pred=0.312 N  @1.25× → held     @0.60× → drop      ✓
+w= +11.0 p= -3.0 m= 30g  f*_pred=0.291 N  @1.25× → held     @0.60× → held      ✗
+w=  -4.0 p= +7.0 m=120g  f*_pred=0.728 N  @1.25× → drop     @0.60× → drop      ✗
+w=  +9.0 p= +3.0 m= 90g  f*_pred=0.595 N  @1.25× → drop     @0.60× → drop      ✗
+
+prediction-interval hit rate: 2/5

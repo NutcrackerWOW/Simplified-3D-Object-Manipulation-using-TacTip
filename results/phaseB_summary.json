@@ -1,0 +1,23 @@
+{
+  "fixed": {
+    "outcome": "held",
+    "drift_mm": 0.748,
+    "rot_deg": 8.07,
+    "slip_time": null,
+    "mean_f1": 0.753
+  },
+  "scheduled": {
+    "outcome": "held",
+    "drift_mm": 0.748,
+    "rot_deg": 8.05,
+    "slip_time": null,
+    "mean_f1": 0.755
+  },
+  "reflex": {
+    "outcome": "held",
+    "drift_mm": 0.748,
+    "rot_deg": 8.05,
+    "slip_time": null,
+    "mean_f1": 0.755
+  }
+}

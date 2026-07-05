@@ -1,0 +1,12 @@
+start setpoint (scheduled, margin 1.3) = 0.490 N; hold 14.3 s, wave ±10.0° @ 0.15 Hz
+fixed      -> {'outcome': 'drop', 'drift_mm': 154.896, 'rot_deg': 170.07, 'slip_time': 10.77, 'mean_f1': 0.486}
+scheduled  -> {'outcome': 'drop', 'drift_mm': 149.189, 'rot_deg': 168.04, 'slip_time': 10.78, 'mean_f1': 0.488}
+reflex     -> {'outcome': 'drop', 'drift_mm': 149.212, 'rot_deg': 169.48, 'slip_time': 10.78, 'mean_f1': 0.488}
+
+summary → results/phaseB_summary.json, figures → results/phaseB_*.png
+start setpoint (scheduled, margin 2.0) = 0.754 N; hold 14.3 s, wave ±10.0° @ 0.15 Hz
+fixed      -> {'outcome': 'held', 'drift_mm': 0.748, 'rot_deg': 8.07, 'slip_time': None, 'mean_f1': 0.753}
+scheduled  -> {'outcome': 'held', 'drift_mm': 0.748, 'rot_deg': 8.05, 'slip_time': None, 'mean_f1': 0.755}
+reflex     -> {'outcome': 'held', 'drift_mm': 0.748, 'rot_deg': 8.05, 'slip_time': None, 'mean_f1': 0.755}
+
+summary → results/phaseB_summary.json, figures → results/phaseB_*.png

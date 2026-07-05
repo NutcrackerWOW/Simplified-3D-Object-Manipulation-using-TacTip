@@ -1,0 +1,10 @@
+  disc f=0.736 seed=0: held
+  disc f=0.736 seed=1: held
+  disc f=0.192 seed=0: drop
+  disc f=0.376 seed=0: held
+  disc f=0.376 seed=1: held
+  disc f=0.268 seed=0: drop
+  disc f=0.318 seed=0: held
+  disc f=0.318 seed=1: held
+  disc f=0.292 seed=0: drop
+disc: f* = 0.31754493324053507 N  mu_eff = 0.772

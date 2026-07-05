@@ -1,0 +1,26 @@
+{
+  "ideal": {
+    "rate": "ideal",
+    "threshold": 0.0007284177370023943,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "tn": 3,
+    "n": 6,
+    "latency_mean": 0.180666666666727,
+    "latency_max": 0.1940000000000648,
+    "threshold_from_train": 0.0007284177370023943
+  },
+  "tactip": {
+    "rate": "tactip",
+    "threshold": 8.236935708967299e-05,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "tn": 3,
+    "n": 6,
+    "latency_mean": 0.1843333333333783,
+    "latency_max": 0.1980000000000608,
+    "threshold_from_train": 8.236935708967299e-05
+  }
+}

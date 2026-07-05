@@ -1,0 +1,10 @@
+  disc_edge f=0.736 seed=0: held
+  disc_edge f=0.736 seed=1: held
+  disc_edge f=0.192 seed=0: drop
+  disc_edge f=0.376 seed=0: drop
+  disc_edge f=0.526 seed=0: drop
+  disc_edge f=0.622 seed=0: held
+  disc_edge f=0.622 seed=1: held
+  disc_edge f=0.572 seed=0: held
+  disc_edge f=0.572 seed=1: held
+disc_edge: f* = 0.5718113161439661 N  mu_eff = 0.429

@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+<robot name="Robot">
+  <material name="silver">
+    <color rgba="0.700 0.700 0.700 1.000"/>
+  </material>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="0.001" iyy="0.001" izz="0.001" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.01 0.01"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="End_1">
+    <inertial>
+      <origin xyz="0.025 0.002 0.0" rpy="0 0 0"/>
+      <mass value="0.02"/>
+      <inertia ixx="1e-06" iyy="9e-06" izz="9e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.005 0.005"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.005 0.005"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="Middle_1">
+    <inertial>
+      <origin xyz="0.016 0.002 0.0" rpy="0 0 0"/>
+      <mass value="0.015"/>
+      <inertia ixx="0.0" iyy="2e-06" izz="2e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.004 0.004"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.004 0.004"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="Tip_1">
+    <inertial>
+      <origin xyz="0.009 0.002 0.0" rpy="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="0.0" iyy="1e-06" izz="1e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.003 0.003"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.003 0.003"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="Horizontal_1">
+    <inertial>
+      <origin xyz="0.004 0.0 0.0" rpy="0 0 0"/>
+      <mass value="0.008"/>
+      <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.003" length="0.02"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.003" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint 1: Base to Horizontal -->
+  <joint name="joint_1" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Horizontal_1"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Joint 2: Horizontal to End -->
+  <joint name="joint_2" type="continuous">
+    <origin xyz="0.01 0 0" rpy="0 0 0"/>
+    <parent link="Horizontal_1"/>
+    <child link="End_1"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Joint 3: End to Middle -->
+  <joint name="joint_3" type="continuous">
+    <origin xyz="0.03 0 0" rpy="0 0 0"/>
+    <parent link="End_1"/>
+    <child link="Middle_1"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Joint 4: Middle to Tip -->
+  <joint name="joint_4" type="continuous">
+    <origin xyz="0.04 0 0" rpy="0 0 0"/>
+    <parent link="Middle_1"/>
+    <child link="Tip_1"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+</robot>

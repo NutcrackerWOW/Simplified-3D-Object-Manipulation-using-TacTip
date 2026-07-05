@@ -1,0 +1,18 @@
+w= +0.0 p=+0.0 seed=0 pos: outcome=drop truth=5.0780000000000305
+w= +0.0 p=+0.0 seed=0 neg: outcome=held truth=nan
+w= +0.0 p=+0.0 seed=1 pos: outcome=drop truth=4.802999999999939
+w= +0.0 p=+0.0 seed=1 neg: outcome=held truth=nan
+w= +0.0 p=+0.0 seed=2 pos: outcome=drop truth=4.795999999999936
+w= +0.0 p=+0.0 seed=2 neg: outcome=held truth=nan
+w= +7.5 p=+4.0 seed=0 pos: outcome=drop truth=4.878999999999964
+w= +7.5 p=+4.0 seed=0 neg: outcome=held truth=nan
+w= +7.5 p=+4.0 seed=1 pos: outcome=drop truth=4.86699999999996
+w= +7.5 p=+4.0 seed=1 neg: outcome=held truth=nan
+w= +7.5 p=+4.0 seed=2 pos: outcome=drop truth=4.86799999999996
+w= +7.5 p=+4.0 seed=2 neg: outcome=held truth=nan
+
+[ideal] thr=0.000728 N²  tp=3 fp=0 fn=0 tn=3  latency mean=0.181s max=0.194s
+
+[tactip] thr=8.24e-05 N²  tp=3 fp=0 fn=0 tn=3  latency mean=0.184s max=0.198s
+
+report → results/slip_eval.json, figures → results/slip_detection_*.png

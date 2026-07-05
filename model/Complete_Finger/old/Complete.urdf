@@ -1,0 +1,1123 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Complete">
+  
+
+
+  <material name="silver">
+    
+  
+    <color rgba="0.700 0.700 0.700 1.000"/>
+    
+
+  </material>
+  
+
+  <transmission name="L_Wave_tran">
+    
+  
+    <type>transmission_interface/SimpleTransmission</type>
+    
+  
+    <joint name="L_Wave">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+  
+    </joint>
+    
+  
+    <actuator name="L_Wave_actr">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+    
+      <mechanicalReduction>1</mechanicalReduction>
+      
+  
+    </actuator>
+    
+
+  </transmission>
+  <transmission name="R_Wave_tran">
+    
+  
+    <type>transmission_interface/SimpleTransmission</type>
+    
+  
+    <joint name="R_Wave">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+  
+    </joint>
+    
+  
+    <actuator name="R_Wave_actr">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+    
+      <mechanicalReduction>1</mechanicalReduction>
+      
+  
+    </actuator>
+    
+
+  </transmission>
+  <transmission name="L_MCP_tran">
+    
+  
+    <type>transmission_interface/SimpleTransmission</type>
+    
+  
+    <joint name="L_MCP">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+  
+    </joint>
+    
+  
+    <actuator name="L_MCP_actr">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+    
+      <mechanicalReduction>1</mechanicalReduction>
+      
+  
+    </actuator>
+    
+
+  </transmission>
+  <transmission name="L_PIP_tran">
+    
+  
+    <type>transmission_interface/SimpleTransmission</type>
+    
+  
+    <joint name="L_PIP">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+  
+    </joint>
+    
+  
+    <actuator name="L_PIP_actr">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+    
+      <mechanicalReduction>1</mechanicalReduction>
+      
+  
+    </actuator>
+    
+
+  </transmission>
+  <transmission name="L_DIP_tran">
+    
+  
+    <type>transmission_interface/SimpleTransmission</type>
+    
+  
+    <joint name="L_DIP">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+  
+    </joint>
+    
+  
+    <actuator name="L_DIP_actr">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+    
+      <mechanicalReduction>1</mechanicalReduction>
+      
+  
+    </actuator>
+    
+
+  </transmission>
+  <transmission name="R_MCP_tran">
+    
+  
+    <type>transmission_interface/SimpleTransmission</type>
+    
+  
+    <joint name="R_MCP">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+  
+    </joint>
+    
+  
+    <actuator name="R_MCP_actr">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+    
+      <mechanicalReduction>1</mechanicalReduction>
+      
+  
+    </actuator>
+    
+
+  </transmission>
+  <transmission name="R_PIP_tran">
+    
+  
+    <type>transmission_interface/SimpleTransmission</type>
+    
+  
+    <joint name="R_PIP">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+  
+    </joint>
+    
+  
+    <actuator name="R_PIP_actr">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+    
+      <mechanicalReduction>1</mechanicalReduction>
+      
+  
+    </actuator>
+    
+
+  </transmission>
+  <transmission name="R_DIP_tran">
+    
+  
+    <type>transmission_interface/SimpleTransmission</type>
+    
+  
+    <joint name="R_DIP">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+  
+    </joint>
+    
+  
+    <actuator name="R_DIP_actr">
+      
+    
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      
+    
+      <mechanicalReduction>1</mechanicalReduction>
+      
+  
+    </actuator>
+    
+
+  </transmission>
+  
+
+  <xacro:property name="body_color" value="Gazebo/Silver"/>
+  <gazebo>
+    
+  
+    <plugin name="control" filename="libgazebo_ros_control.so"/>
+    
+
+  </gazebo>
+  <gazebo reference="base_link">
+    
+  
+    <material>${body_color}</material>
+    
+  
+    <mu1>0.2</mu1>
+    
+  
+    <mu2>0.2</mu2>
+    
+  
+    <selfCollide>true</selfCollide>
+    
+  
+    <gravity>true</gravity>
+    
+
+  </gazebo>
+  <gazebo reference="L_Base_1">
+    
+  
+    <material>${body_color}</material>
+    
+  
+    <mu1>0.2</mu1>
+    
+  
+    <mu2>0.2</mu2>
+    
+  
+    <selfCollide>true</selfCollide>
+    
+
+  </gazebo>
+  <gazebo reference="R_Base_1">
+    
+  
+    <material>${body_color}</material>
+    
+  
+    <mu1>0.2</mu1>
+    
+  
+    <mu2>0.2</mu2>
+    
+  
+    <selfCollide>true</selfCollide>
+    
+
+  </gazebo>
+  <gazebo reference="L_Proximal_F_1">
+    
+  
+    <material>${body_color}</material>
+    
+  
+    <mu1>0.2</mu1>
+    
+  
+    <mu2>0.2</mu2>
+    
+  
+    <selfCollide>true</selfCollide>
+    
+
+  </gazebo>
+  <gazebo reference="L_Middle_F_1">
+    
+  
+    <material>${body_color}</material>
+    
+  
+    <mu1>0.2</mu1>
+    
+  
+    <mu2>0.2</mu2>
+    
+  
+    <selfCollide>true</selfCollide>
+    
+
+  </gazebo>
+  <gazebo reference="L_Distal_F_1">
+    
+  
+    <material>${body_color}</material>
+    
+  
+    <mu1>0.2</mu1>
+    
+  
+    <mu2>0.2</mu2>
+    
+  
+    <selfCollide>true</selfCollide>
+    
+
+  </gazebo>
+  <gazebo reference="R_Proximal_F_1">
+    
+  
+    <material>${body_color}</material>
+    
+  
+    <mu1>0.2</mu1>
+    
+  
+    <mu2>0.2</mu2>
+    
+  
+    <selfCollide>true</selfCollide>
+    
+
+  </gazebo>
+  <gazebo reference="R_Middle_F_1">
+    
+  
+    <material>${body_color}</material>
+    
+  
+    <mu1>0.2</mu1>
+    
+  
+    <mu2>0.2</mu2>
+    
+  
+    <selfCollide>true</selfCollide>
+    
+
+  </gazebo>
+  <gazebo reference="R_Distal_F_1">
+    
+  
+    <material>${body_color}</material>
+    
+  
+    <mu1>0.2</mu1>
+    
+  
+    <mu2>0.2</mu2>
+    
+  
+    <selfCollide>true</selfCollide>
+    
+
+  </gazebo>
+  
+
+  <link name="base_link">
+    
+  
+    <inertial>
+      
+    
+      <origin xyz="-0.01946451380631709 0.005000000000000001 0.025" rpy="0 0 0"/>
+      
+    
+      <mass value="0.09980615042022657"/>
+      
+    
+      <inertia ixx="3.4e-05" iyy="3.2e-05" izz="4e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+      
+  
+    </inertial>
+    
+  
+    <visual>
+      
+    
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+    
+      <material name="silver"/>
+      
+  
+    </visual>
+    
+  
+    <collision>
+      
+    
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+  
+    </collision>
+    
+
+  </link>
+  
+
+
+  <link name="L_Base_1">
+    
+  
+    <inertial>
+      
+    
+      <origin xyz="0.004999999917538911 -7.4505803436542e-11 0.0020000000347693836" rpy="0 0 0"/>
+      
+    
+      <mass value="0.008409225669598643"/>
+      
+    
+      <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="0.0" ixz="0.0"/>
+      
+  
+    </inertial>
+    
+  
+    <visual>
+      
+    
+      <origin xyz="0.01 -0.005 -0.043" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/L_Base_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+    
+      <material name="silver"/>
+      
+  
+    </visual>
+    
+  
+    <collision>
+      
+    
+      <origin xyz="0.01 -0.005 -0.043" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/L_Base_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+  
+    </collision>
+    
+
+  </link>
+  
+
+
+  <link name="R_Base_1">
+    
+  
+    <inertial>
+      
+    
+      <origin xyz="0.004999999917538907 7.450580603862722e-11 -0.0020000000347693767" rpy="0 0 0"/>
+      
+    
+      <mass value="0.008409225669598647"/>
+      
+    
+      <inertia ixx="0.0" iyy="0.0" izz="0.0" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+      
+  
+    </inertial>
+    
+  
+    <visual>
+      
+    
+      <origin xyz="0.01 -0.005 -0.007" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/R_Base_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+    
+      <material name="silver"/>
+      
+  
+    </visual>
+    
+  
+    <collision>
+      
+    
+      <origin xyz="0.01 -0.005 -0.007" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/R_Base_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+  
+    </collision>
+    
+
+  </link>
+  
+
+
+  <link name="L_Proximal_F_1">
+    
+  
+    <inertial>
+      
+    
+      <origin xyz="0.025895244641808417 0.0019999999238602224 -6.938893903907228e-18" rpy="0 0 0"/>
+      
+    
+      <mass value="0.03840768857506156"/>
+      
+    
+      <inertia ixx="1e-06" iyy="9e-06" izz="9e-06" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+      
+  
+    </inertial>
+    
+  
+    <visual>
+      
+    
+      <origin xyz="-0.0 -0.003 -0.045" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/L_Proximal_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+    
+      <material name="silver"/>
+      
+  
+    </visual>
+    
+  
+    <collision>
+      
+    
+      <origin xyz="-0.0 -0.003 -0.045" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/L_Proximal_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+  
+    </collision>
+    
+
+  </link>
+  
+
+
+  <link name="L_Middle_F_1">
+    
+  
+    <inertial>
+      
+    
+      <origin xyz="0.015897004584729937 0.0019999999999999983 0.0" rpy="0 0 0"/>
+      
+    
+      <mass value="0.022707688189046987"/>
+      
+    
+      <inertia ixx="0.0" iyy="2e-06" izz="2e-06" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+      
+  
+    </inertial>
+    
+  
+    <visual>
+      
+    
+      <origin xyz="-0.05 -0.003 -0.045" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/L_Middle_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+    
+      <material name="silver"/>
+      
+  
+    </visual>
+    
+  
+    <collision>
+      
+    
+      <origin xyz="-0.05 -0.003 -0.045" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/L_Middle_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+  
+    </collision>
+    
+
+  </link>
+  
+
+
+  <link name="L_Distal_F_1">
+    
+  
+    <inertial>
+      
+    
+      <origin xyz="0.009676546346922596 0.0019999999835962996 0.00022217403080418419" rpy="0 0 0"/>
+      
+    
+      <mass value="0.012353872530101081"/>
+      
+    
+      <inertia ixx="0.0" iyy="1e-06" izz="1e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+      
+  
+    </inertial>
+    
+  
+    <visual>
+      
+    
+      <origin xyz="-0.08 -0.003 -0.045" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/L_Distal_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+    
+      <material name="silver"/>
+      
+  
+    </visual>
+    
+  
+    <collision>
+      
+    
+      <origin xyz="-0.08 -0.003 -0.045" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/L_Distal_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+  
+    </collision>
+    
+
+  </link>
+  
+
+
+  <link name="R_Proximal_F_1">
+    
+  
+    <inertial>
+      
+    
+      <origin xyz="0.025895244641808403 0.0020000000761397786 0.0" rpy="0 0 0"/>
+      
+    
+      <mass value="0.03840768857506156"/>
+      
+    
+      <inertia ixx="1e-06" iyy="9e-06" izz="9e-06" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+      
+  
+    </inertial>
+    
+  
+    <visual>
+      
+    
+      <origin xyz="-0.0 -0.003 -0.005" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/R_Proximal_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+    
+      <material name="silver"/>
+      
+  
+    </visual>
+    
+  
+    <collision>
+      
+    
+      <origin xyz="-0.0 -0.003 -0.005" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/R_Proximal_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+  
+    </collision>
+    
+
+  </link>
+  
+
+
+  <link name="R_Middle_F_1">
+    
+  
+    <inertial>
+      
+    
+      <origin xyz="0.015897004584729937 0.0020000000000000018 0.0" rpy="0 0 0"/>
+      
+    
+      <mass value="0.02270768818904698"/>
+      
+    
+      <inertia ixx="0.0" iyy="2e-06" izz="2e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+      
+  
+    </inertial>
+    
+  
+    <visual>
+      
+    
+      <origin xyz="-0.05 -0.003 -0.005" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/R_Middle_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+    
+      <material name="silver"/>
+      
+  
+    </visual>
+    
+  
+    <collision>
+      
+    
+      <origin xyz="-0.05 -0.003 -0.005" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/R_Middle_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+  
+    </collision>
+    
+
+  </link>
+  
+
+
+  <link name="R_Distal_F_1">
+    
+  
+    <inertial>
+      
+    
+      <origin xyz="0.009676546329780766 0.0020000000164037014 -0.00022217406332118717" rpy="0 0 0"/>
+      
+    
+      <mass value="0.01235387253010107"/>
+      
+    
+      <inertia ixx="0.0" iyy="1e-06" izz="1e-06" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+      
+  
+    </inertial>
+    
+  
+    <visual>
+      
+    
+      <origin xyz="-0.08 -0.003 -0.005" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/R_Distal_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+    
+      <material name="silver"/>
+      
+  
+    </visual>
+    
+  
+    <collision>
+      
+    
+      <origin xyz="-0.08 -0.003 -0.005" rpy="0 0 0"/>
+      
+    
+      <geometry>
+        
+      
+        <mesh filename="package://Complete_description/meshes/R_Distal_F_1.stl" scale="0.001 0.001 0.001"/>
+        
+    
+      </geometry>
+      
+  
+    </collision>
+    
+
+  </link>
+  
+
+
+  <joint name="L_Wave" type="revolute">
+
+
+    <origin xyz="-0.01 0.005 0.043" rpy="0 0 0"/>
+
+
+    <parent link="base_link"/>
+
+
+    <child link="L_Base_1"/>
+
+
+    <axis xyz="0.0 0.0 -1.0"/>
+
+
+    <limit lower="-1.5708" upper="1.5708" effort="1" velocity="1"/>
+
+
+  </joint>
+  
+
+
+  <joint name="R_Wave" type="revolute">
+
+
+    <origin xyz="-0.01 0.005 0.007" rpy="0 0 0"/>
+
+
+    <parent link="base_link"/>
+
+
+    <child link="R_Base_1"/>
+
+
+    <axis xyz="0.0 0.0 1.0"/>
+
+
+    <limit lower="-1.5708" upper="1.5708" effort="1" velocity="1"/>
+
+
+  </joint>
+  
+
+
+  <joint name="L_MCP" type="revolute">
+
+
+    <origin xyz="0.01 -0.002 0.002" rpy="0 0 0"/>
+
+
+    <parent link="L_Base_1"/>
+
+
+    <child link="L_Proximal_F_1"/>
+
+
+    <axis xyz="0.0 1.0 0.0"/>
+
+
+    <limit lower="-1.5708" upper="1.5708" effort="1" velocity="1"/>
+
+
+  </joint>
+  
+
+
+  <joint name="L_PIP" type="revolute">
+
+
+    <origin xyz="0.05 0.0 0.0" rpy="0 0 0"/>
+
+
+    <parent link="L_Proximal_F_1"/>
+
+
+    <child link="L_Middle_F_1"/>
+
+
+    <axis xyz="0.0 1.0 0.0"/>
+
+
+    <limit lower="-1.5708" upper="1.5708" effort="1" velocity="1"/>
+
+
+  </joint>
+  
+
+
+  <joint name="L_DIP" type="revolute">
+
+
+    <origin xyz="0.03 0.0 0.0" rpy="0 0 0"/>
+
+
+    <parent link="L_Middle_F_1"/>
+
+
+    <child link="L_Distal_F_1"/>
+
+
+    <axis xyz="0.0 1.0 0.0"/>
+
+
+    <limit lower="-1.5708" upper="1.5708" effort="1" velocity="1"/>
+
+
+  </joint>
+  
+
+
+  <joint name="R_MCP" type="revolute">
+
+
+    <origin xyz="0.01 -0.002 -0.002" rpy="0 0 0"/>
+
+
+    <parent link="R_Base_1"/>
+
+
+    <child link="R_Proximal_F_1"/>
+
+
+    <axis xyz="0.0 1.0 0.0"/>
+
+
+    <limit lower="-1.5708" upper="1.5708" effort="1" velocity="1"/>
+
+
+  </joint>
+  
+
+
+  <joint name="R_PIP" type="revolute">
+
+
+    <origin xyz="0.05 0.0 0.0" rpy="0 0 0"/>
+
+
+    <parent link="R_Proximal_F_1"/>
+
+
+    <child link="R_Middle_F_1"/>
+
+
+    <axis xyz="0.0 1.0 0.0"/>
+
+
+    <limit lower="-1.5708" upper="1.5708" effort="1" velocity="1"/>
+
+
+  </joint>
+  
+
+
+  <joint name="R_DIP" type="revolute">
+
+
+    <origin xyz="0.03 0.0 0.0" rpy="0 0 0"/>
+
+
+    <parent link="R_Middle_F_1"/>
+
+
+    <child link="R_Distal_F_1"/>
+
+
+    <axis xyz="0.0 1.0 0.0"/>
+
+
+    <limit lower="-1.5708" upper="1.5708" effort="1" velocity="1"/>
+
+
+  </joint>
+  
+
+
+</robot>

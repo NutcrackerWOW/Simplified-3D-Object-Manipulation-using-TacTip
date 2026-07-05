@@ -1,0 +1,23 @@
+{
+  "fixed": {
+    "outcome": "drop",
+    "drift_mm": 154.896,
+    "rot_deg": 170.07,
+    "slip_time": 10.77,
+    "mean_f1": 0.486
+  },
+  "scheduled": {
+    "outcome": "drop",
+    "drift_mm": 149.189,
+    "rot_deg": 168.04,
+    "slip_time": 10.78,
+    "mean_f1": 0.488
+  },
+  "reflex": {
+    "outcome": "drop",
+    "drift_mm": 149.212,
+    "rot_deg": 169.48,
+    "slip_time": 10.78,
+    "mean_f1": 0.488
+  }
+}

@@ -1,0 +1,4 @@
+amp5.0_margin1.3 -> {'outcome': 'drop', 'drift_mm': 152.448, 'rot_deg': 169.93, 'slip_time': 10.695}
+amp7.5_margin1.3 -> {'outcome': 'drop', 'drift_mm': 152.094, 'rot_deg': 169.55, 'slip_time': 10.73}
+amp10.0_margin2.0 -> {'outcome': 'held', 'drift_mm': 0.748, 'rot_deg': 8.05, 'slip_time': None}
+-> results/phaseB_envelope.json
