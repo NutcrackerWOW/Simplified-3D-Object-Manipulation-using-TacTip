@@ -95,7 +95,7 @@ posture — only geometry differs (`scripts/eval_shapes.py`, `results/shape_*.js
 | shape                            | contact                | f* (N) | μ_eff |
 |----------------------------------|------------------------|--------|-------|
 | disc (axis ∥ pinch axis)         | flat round faces       | 0.318  | 0.772 |
-| box 25×25×12                     | flat square faces      | ≈0.38  | 0.651 |
+| box 25×25×12                     | flat square faces      | 0.444  | 0.552 |
 | prism 25×50×12 (2× lever arm)    | flat square faces      | 0.444  | 0.552 |
 | cylinder (vertical axis)         | curved rim (line)      | 0.483  | 0.507 |
 | disc_edge (key pinch, upright)   | thin rim, gravity-roll | 0.572  | 0.429 |
@@ -105,7 +105,32 @@ Coulomb friction is identical across rows, yet f* spans ~2× and orders exactly 
 object's freedom to roll in the grasp — direct evidence that the stability boundary is
 **rolling-governed**, the paper's central claim. The `disc_edge` row is the lateral-
 prehension (key-pinch) configuration: the disc stands like a wheel and gravity torque
-acts directly along the free rolling axis.
+acts directly along the free rolling axis. (Probe bisection resolves ~±1 notch ≈ 15 %;
+box and prism tie within that resolution. The box value here is the 50 g probe —
+the sweep-fitted μ_eff at this posture is 0.65 because μ_eff declines with mass.)
+
+### Material study (M8b): friction scaling, window collapse, and a stiffness surprise
+
+Box, 50 g, reference posture, one attribute varied at a time
+(`scripts/eval_materials.py`, `results/material_*.json`; pair μ = harmonic mean of
+box and tip values):
+
+| level      | box μs/μd | pair μd | tip E (kPa) | f* (N) | μ_eff |
+|------------|-----------|---------|-------------|--------|-------|
+| fric_low   | 0.4/0.3   | 0.45    | 50          | — none | —     |
+| fric_base  | 1.0/0.8   | 0.85    | 50          | 0.444  | 0.552 |
+| fric_high  | 1.5/1.2   | 1.03    | 50          | 0.318  | 0.772 |
+| tip_soft   | 1.0/0.8   | 0.85    | 25          | 0.526  | 0.466 |
+| tip_stiff  | 1.0/0.8   | 0.85    | 100         | 0.376  | 0.653 |
+
+Three findings: (1) in the mid-to-high friction range f* scales roughly like Coulomb
+(∝ 1/μ) but with a **constant rolling discount** — μ_eff/μ_pair ≈ 0.65–0.75, i.e.
+rolling binds ~25–35 % below the sliding limit; (2) at low friction the stability
+window **collapses entirely** — the hold boundary rises (roll-off at 0.74 N) while
+the ejection boundary falls (squirt-out at ≥ 1.5 N), leaving no stable force at 50 g;
+(3) **softer fingertips are worse, not better** (μ_eff 0.47 → 0.55 → 0.65 across
+25/50/100 kPa): the naive bigger-patch argument fails — a compliant dome yields as the
+object rotates, offering less restoring moment against rolling.
 
 ## Running the pipeline
 
@@ -117,6 +142,7 @@ acts directly along the free rolling axis.
 .venv/bin/python scripts/validate_equation.py --tag sweepB    # held-out prediction test
 .venv/bin/python scripts/validate_moving.py --tag sweepB --margin 2.0  # Phase B carry
 .venv/bin/python scripts/eval_shapes.py --shape all           # M8 shape boundaries
+.venv/bin/python scripts/eval_materials.py --level all        # M8b friction/stiffness
 ```
 
 Tip: on a machine that is also running the IDE, launch sweeps with `nice -n 10`

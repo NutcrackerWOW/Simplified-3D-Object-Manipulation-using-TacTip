@@ -1,0 +1,9 @@
+  tip_soft f=0.736 seed=0: held
+  tip_soft f=0.736 seed=1: held
+  tip_soft f=0.192 seed=0: drop
+  tip_soft f=0.376 seed=0: drop
+  tip_soft f=0.526 seed=0: held
+  tip_soft f=0.526 seed=1: held
+  tip_soft f=0.444 seed=0: drop
+  tip_soft f=0.483 seed=0: drop
+tip_soft: f* = 0.526 N  mu_eff = 0.466

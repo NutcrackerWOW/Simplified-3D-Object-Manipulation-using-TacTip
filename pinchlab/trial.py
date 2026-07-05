@@ -67,7 +67,8 @@ class TrialResult:
 def run_trial(spec: TrialSpec, meshcat=None, keep_series: bool = False,
               cp: ControlParams | None = None, posture_ref_fn=None,
               setpoint_fn=None, reflex: dict | None = None,
-              hold_time: float | None = None) -> TrialResult:
+              hold_time: float | None = None,
+              mp: ModelParams | None = None) -> TrialResult:
     cp = cp or ControlParams()
     kin = get_kinematics()
     if hold_time is None:
@@ -86,7 +87,7 @@ def run_trial(spec: TrialSpec, meshcat=None, keep_series: bool = False,
         spawn_center = spawn_center + rng.uniform(
             -spec.spawn_jitter, spec.spawn_jitter, 3)
 
-    mp = ModelParams(time_step=spec.time_step)
+    mp = mp or ModelParams(time_step=spec.time_step)
     scene = build_scene(mp, spec.box)
     plant, builder = scene.plant, scene.builder
 

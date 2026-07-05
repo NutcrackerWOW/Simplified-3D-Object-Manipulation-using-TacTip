@@ -1,0 +1,10 @@
+  fric_high f=0.736 seed=0: held
+  fric_high f=0.736 seed=1: held
+  fric_high f=0.192 seed=0: drop
+  fric_high f=0.376 seed=0: held
+  fric_high f=0.376 seed=1: held
+  fric_high f=0.268 seed=0: drop
+  fric_high f=0.318 seed=0: held
+  fric_high f=0.318 seed=1: held
+  fric_high f=0.292 seed=0: drop
+fric_high: f* = 0.318 N  mu_eff = 0.772

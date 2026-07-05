@@ -29,30 +29,32 @@ RESULTS = os.path.join(os.path.dirname(os.path.dirname(
 SHAPES = ("prism", "cylinder", "disc", "disc_edge", "sphere")
 
 
-def stable(posture, shape, mass, force, seeds=(0, 1)) -> tuple[bool, list]:
+def stable(posture, box, force, seeds=(0, 1), tag="probe",
+           mp=None) -> tuple[bool, list]:
     outs = []
     for s in seeds:
-        spec = TrialSpec(posture=posture, box=BoxSpec(mass=mass, shape=shape),
-                         force_setpoint=force, seed=s, tag=f"shape_{shape}")
-        res = run_trial(spec)
+        spec = TrialSpec(posture=posture, box=box,
+                         force_setpoint=force, seed=s, tag=tag)
+        res = run_trial(spec, mp=mp)
         outs.append({"force": force, "seed": s, "outcome": res.outcome,
                      "drift_mm": round(1e3 * res.drift_final, 2),
                      "rot_deg": round(float(np.rad2deg(res.rot_drift_final)), 1)})
-        print(f"  {shape} f={force:.3f} seed={s}: {res.outcome}", flush=True)
+        print(f"  {tag} f={force:.3f} seed={s}: {res.outcome}", flush=True)
         if not res.held:
             return False, outs
     return True, outs
 
 
-def boundary(posture, shape, mass, f_lo=0.05, f_hi=2.5, n_bisect=5):
+def boundary(posture, box, f_lo=0.05, f_hi=2.5, n_bisect=5, tag="probe",
+             mp=None):
     """Mass-scaled ascending anchor ladder, then log bisection below the
     first stable rung (same scheme as the sweep)."""
     trials = []
-    w = mass * G / 2.0
+    w = box.mass * G / 2.0
     ladder = sorted({float(np.clip(3.0 * w * k, 0.3, f_hi)) for k in (1., 2., 4.)})
     anchor = None
     for rung in ladder:
-        ok, outs = stable(posture, shape, mass, rung)
+        ok, outs = stable(posture, box, rung, tag=tag, mp=mp)
         trials += outs
         if ok:
             anchor = rung
@@ -62,7 +64,7 @@ def boundary(posture, shape, mass, f_lo=0.05, f_hi=2.5, n_bisect=5):
     lo, hi = np.log(f_lo), np.log(anchor)
     for _ in range(n_bisect):
         mid = float(np.exp(0.5 * (lo + hi)))
-        ok, outs = stable(posture, shape, mass, mid)
+        ok, outs = stable(posture, box, mid, tag=tag, mp=mp)
         trials += outs
         if ok:
             hi = np.log(mid)
@@ -85,7 +87,9 @@ def main():
 
     shapes = SHAPES if args.shape == "all" else (args.shape,)
     for shape in shapes:
-        f_star, trials = boundary(posture, shape, args.mass)
+        f_star, trials = boundary(
+            posture, BoxSpec(mass=args.mass, shape=shape),
+            tag=f"shape_{shape}")
         mu = (args.mass * G / 2.0) / f_star if np.isfinite(f_star) else np.nan
         out = {"shape": shape, "mass": args.mass,
                "wave_deg": args.wave, "pip_deg": args.pip,

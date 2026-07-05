@@ -1,0 +1,4 @@
+  fric_low f=0.736 seed=0: drop
+  fric_low f=1.472 seed=0: drop
+  fric_low f=2.500 seed=0: drop
+fric_low: no stable force found

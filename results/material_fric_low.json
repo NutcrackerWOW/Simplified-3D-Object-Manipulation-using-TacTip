@@ -1,0 +1,37 @@
+{
+  "level": "fric_low",
+  "mass": 0.05,
+  "box_mu": [
+    0.4,
+    0.3
+  ],
+  "pair_mu_static": 0.6,
+  "tip_modulus_Pa": 50000.0,
+  "wave_deg": 0.0,
+  "pip_deg": 0.0,
+  "f_star": null,
+  "mu_eff": null,
+  "trials": [
+    {
+      "force": 0.7357500000000001,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 145.96,
+      "rot_deg": 156.7
+    },
+    {
+      "force": 1.4715000000000003,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 0.0,
+      "rot_deg": 0.0
+    },
+    {
+      "force": 2.5,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 0.0,
+      "rot_deg": 0.0
+    }
+  ]
+}

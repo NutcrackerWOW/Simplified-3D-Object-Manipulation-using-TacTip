@@ -1,0 +1,9 @@
+  tip_stiff f=0.736 seed=0: held
+  tip_stiff f=0.736 seed=1: held
+  tip_stiff f=0.192 seed=0: drop
+  tip_stiff f=0.376 seed=0: held
+  tip_stiff f=0.376 seed=1: held
+  tip_stiff f=0.268 seed=0: drop
+  tip_stiff f=0.318 seed=0: drop
+  tip_stiff f=0.345 seed=0: drop
+tip_stiff: f* = 0.376 N  mu_eff = 0.653

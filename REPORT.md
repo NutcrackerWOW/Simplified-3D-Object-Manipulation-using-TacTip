@@ -38,9 +38,9 @@ validation; a shape study isolating the failure mechanism.
 
 At sub-boundary force the object does not slide down the pads — it **rolls off the
 fingertip domes** (rotation ≈ 47–170° at failure). Consequently the effective
-stability ratio μ_eff = (m·g/2)/f* is ≈ 0.65 at the reference posture, far below the
-Coulomb pair value 1.09, and utilization ρ stays near 0.5 at failure: a force-cone
-(Coulomb) analysis over-predicts grasp capacity by ~2×.
+stability ratio μ_eff = (m·g/2)/f* sits 25–35 % below the Coulomb pair value at every
+tested material (§ M8b), and utilization ρ stays near 0.5 at failure: a force-cone
+(Coulomb) analysis systematically over-predicts grasp capacity.
 
 **Shape study (M8) — the direct proof.** Identical mass (50 g), identical friction
 pair, identical 25 mm grasp width; only geometry varies:
@@ -48,15 +48,43 @@ pair, identical 25 mm grasp width; only geometry varies:
 | shape | contact type | f* (N) | μ_eff |
 |---|---|---|---|
 | disc, axis ∥ pinch axis | flat round faces | 0.318 | 0.772 |
-| box 25×25×12 mm | flat square faces | ≈0.38 | 0.651 |
+| box 25×25×12 mm | flat square faces | 0.444 | 0.552 |
 | prism 25×50×12 mm | flat faces, 2× lever arm | 0.444 | 0.552 |
 | cylinder d=25, vertical axis | curved rim (line contact) | 0.483 | 0.507 |
 | disc on edge (key pinch) | thin rim, gravity on the roll axis | 0.572 | 0.429 |
 | sphere d=25 | point contact | 0.622 | 0.394 |
 
 f* spans ~2× at constant Coulomb friction, ordered exactly by the object's freedom to
-roll in the grasp. Lateral prehension (disc_edge) is nearly the worst case because
+roll in the grasp (probe bisection resolves ±1 notch ≈ 15 %; box and prism tie within
+that resolution). Lateral prehension (disc_edge) is nearly the worst case because
 gravity torque acts directly along the free rolling axis.
+
+**Material study (M8b) — friction and fingertip stiffness.** Box, 50 g, reference
+posture, one attribute at a time (pair μ = harmonic mean of box and tip values):
+
+| level | box μs/μd | pair μd | tip E (kPa) | f* (N) | μ_eff |
+|---|---|---|---|---|---|
+| fric_low | 0.4/0.3 | 0.45 | 50 | none — window closed | — |
+| fric_base | 1.0/0.8 | 0.85 | 50 | 0.444 | 0.552 |
+| fric_high | 1.5/1.2 | 1.03 | 50 | 0.318 | 0.772 |
+| tip_soft | 1.0/0.8 | 0.85 | 25 | 0.526 | 0.466 |
+| tip_stiff | 1.0/0.8 | 0.85 | 100 | 0.376 | 0.653 |
+
+Three results refine the rolling story:
+
+1. **Constant rolling discount.** In the mid-to-high friction range f* follows
+   Coulomb-like ∝ 1/μ scaling, but μ_eff/μ_pair stays at ≈ 0.65–0.75: rolling always
+   binds ~25–35 % below the sliding limit. Friction is not irrelevant — it sets the
+   scale — but the sliding limit is never reached.
+2. **Low-friction window collapse.** At pair μd = 0.45 no stable force exists at 50 g:
+   the hold boundary rises (roll-off at 0.74 N) while the ejection boundary falls
+   (immediate squirt-out at ≥ 1.5 N). The two boundaries cross, and the grasp becomes
+   impossible at any squeeze — the friction analogue of the 120 g mass ceiling.
+3. **Softer fingertips are worse, not better** (μ_eff 0.47 → 0.55 → 0.65 for
+   25/50/100 kPa). The naive argument — softer pad, larger patch, more rolling
+   resistance — fails: a compliant dome yields as the object rotates and provides
+   less restoring moment against rolling. This matters for TacTip-style sensor
+   design: sensitivity (soft skin) trades directly against grasp stability.
 
 ## 3. The equation and its envelope
 
@@ -133,7 +161,9 @@ holds and slow manipulation; the 1.3 margin is only sufficient for holds ≲ 5 s
   1 ms. URDF inertias are placeholders (rotor-inertia regularization mandatory).
 - Boundary labels use a 2 mm / 3 s criterion; §5 shows the boundary location depends
   on the hold duration (creep), so f* values are tied to that window.
-- Single object size (25 mm grasp width); mass validated 30–60 g.
+- Single object size (25 mm grasp width); mass validated 30–60 g. The equation's
+  coefficients are fitted for the base material pair (μd_pair = 0.85, tip 50 kPa);
+  M8b gives the scaling to other materials but only at the reference posture.
 
 ## 7. Artifacts
 
@@ -150,3 +180,4 @@ holds and slow manipulation; the 1.3 margin is only sufficient for holds ≲ 5 s
 | Phase B failure case (margin 1.3) | `results/phaseB_summary_margin1p3.json`, `phaseB_*_margin1p3.png` |
 | dynamic envelope probes | `results/phaseB_envelope.json` |
 | shape study | `results/shape_{prism,cylinder,disc,disc_edge,sphere}.json` |
+| material study | `results/material_{fric_low,fric_base,fric_high,tip_soft,tip_stiff}.json` |
