@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# LaTeX build artifacts (paper/ has its own .gitignore too)
+*.aux
+*.synctex.gz
+
+# OS noise
+.DS_Store

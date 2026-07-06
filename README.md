@@ -5,6 +5,25 @@ hydroelastic fingertips. Pipeline: force-controlled pinch trials → minimal-sta
 sweep across grasp postures → fitted stability boundary → closed-form grip-force equation →
 slip detection from force vibration → moving-grasp validation.
 
+## Paper
+
+*Rolling-Governed Pinch Stability: A Validated Minimal Grip-Force Rule for Soft
+Tactile Fingertips* (in preparation for IEEE RA-L). LaTeX source: `paper/`
+(`paper/main.tex` is the source of truth); markdown drafts `PAPER.md` (v1) and
+`PAPER_v2.md` (v2); verified bibliography `refs.bib` + scan notes `references.md`.
+Every number in the paper traces to an artifact in `results/`; the figures are
+built by `scripts/make_paper_figs.py` into `results/paper_figs/`.
+
+## Setup
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt   # Drake 1.54, numpy, scipy, pandas, matplotlib
+```
+
+Tested on Python 3.12 (Linux/WSL2). The full sweep suite is CPU-parallel; see
+"Running the pipeline" below for per-script worker flags.
+
 ## Model
 
 `model/Touch_Finger/Complete.urdf` — now ships complete for Drake:
@@ -234,3 +253,13 @@ pinchlab/
 via `BoxSpec.shape`: box / prism / cylinder / disc / disc_edge / sphere.)
 
 `pinch_sim.py` is the original single-file demo, kept as reference.
+
+## License
+
+- **Code** (`pinchlab/`, `scripts/`, `bin/`, and other source files):
+  [BSD 3-Clause](LICENSE).
+- **Hand model** (`model/` — the Touch_Finger URDF and meshes, the author's own
+  design), **datasets** (`results/` CSV/JSON/NPZ), and **paper figures**
+  (`results/paper_figs/`):
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — reuse with
+  attribution (cite the paper above).

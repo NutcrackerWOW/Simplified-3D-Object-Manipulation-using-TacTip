@@ -1,0 +1,6 @@
+# Tested environment (Python 3.12, WSL2/Linux). Exact versions used for the paper runs.
+drake==1.54.0
+numpy==2.4.6
+scipy==1.18.0
+pandas==3.0.3
+matplotlib==3.11.0

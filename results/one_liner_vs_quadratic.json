@@ -1,0 +1,170 @@
+{
+ "description": "reduced-rule f* vs full-quadratic f* over the 16 held-out validation conditions",
+ "one_liner": "mu_eff = 0.71 -4.2*(m-0.045)",
+ "n": 16,
+ "ratio_min": 0.9973,
+ "ratio_max": 1.0879,
+ "all_within_probe_brackets": true,
+ "rows": [
+  {
+   "wave": -12.0,
+   "pip": 1.5,
+   "mass": 0.04,
+   "f_quad": 0.2606,
+   "f_one_liner": 0.2684,
+   "f_core_exact": 0.2695,
+   "ratio_one_liner": 1.0299,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": -9.0,
+   "pip": 3.5,
+   "mass": 0.055,
+   "f_quad": 0.3852,
+   "f_one_liner": 0.4039,
+   "f_core_exact": 0.4057,
+   "ratio_one_liner": 1.0484,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": -5.0,
+   "pip": 6.5,
+   "mass": 0.03,
+   "f_quad": 0.1798,
+   "f_one_liner": 0.1904,
+   "f_core_exact": 0.1911,
+   "ratio_one_liner": 1.0587,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": -2.0,
+   "pip": 8.5,
+   "mass": 0.06,
+   "f_quad": 0.4205,
+   "f_one_liner": 0.4549,
+   "f_core_exact": 0.457,
+   "ratio_one_liner": 1.0817,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": 2.0,
+   "pip": 0.5,
+   "mass": 0.045,
+   "f_quad": 0.3105,
+   "f_one_liner": 0.3109,
+   "f_core_exact": 0.3122,
+   "ratio_one_liner": 1.0012,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": 5.0,
+   "pip": 2.5,
+   "mass": 0.06,
+   "f_quad": 0.4416,
+   "f_one_liner": 0.4549,
+   "f_core_exact": 0.457,
+   "ratio_one_liner": 1.03,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": 9.0,
+   "pip": 5.5,
+   "mass": 0.035,
+   "f_quad": 0.2155,
+   "f_one_liner": 0.2283,
+   "f_core_exact": 0.2292,
+   "ratio_one_liner": 1.0594,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": 12.0,
+   "pip": 7.5,
+   "mass": 0.05,
+   "f_quad": 0.3272,
+   "f_one_liner": 0.356,
+   "f_core_exact": 0.3575,
+   "ratio_one_liner": 1.0879,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": -13.0,
+   "pip": 4.5,
+   "mass": 0.06,
+   "f_quad": 0.4281,
+   "f_one_liner": 0.4549,
+   "f_core_exact": 0.457,
+   "ratio_one_liner": 1.0625,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": 13.0,
+   "pip": 2.5,
+   "mass": 0.03,
+   "f_quad": 0.1854,
+   "f_one_liner": 0.1904,
+   "f_core_exact": 0.1911,
+   "ratio_one_liner": 1.0268,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": -3.0,
+   "pip": 5.5,
+   "mass": 0.05,
+   "f_quad": 0.3359,
+   "f_one_liner": 0.356,
+   "f_core_exact": 0.3575,
+   "ratio_one_liner": 1.0597,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": 6.0,
+   "pip": 8.5,
+   "mass": 0.04,
+   "f_quad": 0.2484,
+   "f_one_liner": 0.2684,
+   "f_core_exact": 0.2695,
+   "ratio_one_liner": 1.0805,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": 10.0,
+   "pip": 0.5,
+   "mass": 0.06,
+   "f_quad": 0.4561,
+   "f_one_liner": 0.4549,
+   "f_core_exact": 0.457,
+   "ratio_one_liner": 0.9973,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": -6.0,
+   "pip": 2.5,
+   "mass": 0.035,
+   "f_quad": 0.2214,
+   "f_one_liner": 0.2283,
+   "f_core_exact": 0.2292,
+   "ratio_one_liner": 1.0311,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": 0.5,
+   "pip": 3.5,
+   "mass": 0.055,
+   "f_quad": 0.3875,
+   "f_one_liner": 0.4039,
+   "f_core_exact": 0.4057,
+   "ratio_one_liner": 1.0422,
+   "in_probe_bracket": true
+  },
+  {
+   "wave": 3.5,
+   "pip": 6.5,
+   "mass": 0.045,
+   "f_quad": 0.2913,
+   "f_one_liner": 0.3109,
+   "f_core_exact": 0.3122,
+   "ratio_one_liner": 1.0672,
+   "in_probe_bracket": true
+  }
+ ]
+}
