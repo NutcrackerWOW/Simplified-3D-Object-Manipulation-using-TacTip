@@ -41,6 +41,37 @@ LEVELS = {
 }
 
 
+def run_level(job):
+    """One material row (picklable job dict — usable from a spawn Pool)."""
+    name = job["level"]
+    lv = LEVELS[name]
+    kin = get_kinematics()
+    posture, _ = kin.solve_mcp_for_gap(
+        deg(job["wave"]), deg(job["pip"]), 0.024)
+    box = BoxSpec(mass=job["mass"], **lv["box"])
+    mp = ModelParams(**lv["mp"]) if lv["mp"] else None
+    f_star, trials = boundary(posture, box, n_bisect=job["n_bisect"],
+                              tag=name, mp=mp,
+                              seeds=tuple(range(job["seeds"])))
+    mu = (job["mass"] * G / 2.0) / f_star if np.isfinite(f_star) else np.nan
+    pair_mu = ((box.mu_static * 1.2 * 2) / (box.mu_static + 1.2))
+    out = {"level": name, "mass": job["mass"],
+           "box_mu": [box.mu_static, box.mu_dynamic],
+           "pair_mu_static": round(pair_mu, 3),
+           "tip_modulus_Pa": (lv["mp"].get("hydro_modulus", 5e4)),
+           "wave_deg": job["wave"], "pip_deg": job["pip"],
+           "n_seeds": job["seeds"], "n_bisect": job["n_bisect"],
+           "f_star": None if np.isnan(f_star) else round(f_star, 4),
+           "mu_eff": None if np.isnan(mu) else round(mu, 4),
+           "trials": trials}
+    with open(os.path.join(RESULTS, f"material_{name}.json"), "w") as fh:
+        json.dump(out, fh, indent=2)
+    print(f"{name}: f* = {f_star:.3f} N  mu_eff = {mu:.3f}" if
+          np.isfinite(f_star) else f"{name}: no stable force found",
+          flush=True)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--level", type=str, default="all",
@@ -48,31 +79,24 @@ def main():
     ap.add_argument("--mass", type=float, default=0.05)
     ap.add_argument("--wave", type=float, default=0.0)
     ap.add_argument("--pip", type=float, default=0.0)
+    ap.add_argument("--seeds", type=int, default=2)
+    ap.add_argument("--n-bisect", type=int, default=5)
+    ap.add_argument("--workers", type=int, default=1,
+                    help="parallelize across levels (spawn pool)")
     args = ap.parse_args()
 
-    kin = get_kinematics()
-    posture, _ = kin.solve_mcp_for_gap(deg(args.wave), deg(args.pip), 0.024)
-
-    for name in (LEVELS if args.level == "all" else (args.level,)):
-        lv = LEVELS[name]
-        box = BoxSpec(mass=args.mass, **lv["box"])
-        mp = ModelParams(**lv["mp"]) if lv["mp"] else None
-        f_star, trials = boundary(posture, box, tag=name, mp=mp)
-        mu = (args.mass * G / 2.0) / f_star if np.isfinite(f_star) else np.nan
-        pair_mu = ((box.mu_static * 1.2 * 2) / (box.mu_static + 1.2))
-        out = {"level": name, "mass": args.mass,
-               "box_mu": [box.mu_static, box.mu_dynamic],
-               "pair_mu_static": round(pair_mu, 3),
-               "tip_modulus_Pa": (lv["mp"].get("hydro_modulus", 5e4)),
-               "wave_deg": args.wave, "pip_deg": args.pip,
-               "f_star": None if np.isnan(f_star) else round(f_star, 4),
-               "mu_eff": None if np.isnan(mu) else round(mu, 4),
-               "trials": trials}
-        with open(os.path.join(RESULTS, f"material_{name}.json"), "w") as fh:
-            json.dump(out, fh, indent=2)
-        print(f"{name}: f* = {f_star:.3f} N  mu_eff = {mu:.3f}" if
-              np.isfinite(f_star) else f"{name}: no stable force found",
-              flush=True)
+    levels = tuple(LEVELS) if args.level == "all" else (args.level,)
+    jobs = [dict(level=n, mass=args.mass, wave=args.wave, pip=args.pip,
+                 seeds=args.seeds, n_bisect=args.n_bisect) for n in levels]
+    if args.workers > 1 and len(jobs) > 1:
+        import multiprocessing as mp_
+        ctx = mp_.get_context("spawn")
+        with ctx.Pool(processes=min(args.workers, len(jobs))) as pool:
+            for _ in pool.imap_unordered(run_level, jobs):
+                pass
+    else:
+        for job in jobs:
+            run_level(job)
 
 
 if __name__ == "__main__":

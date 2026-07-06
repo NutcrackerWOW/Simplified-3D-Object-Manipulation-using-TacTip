@@ -3,8 +3,10 @@
   "mass": 0.05,
   "wave_deg": 0.0,
   "pip_deg": 0.0,
-  "f_star": 0.3175,
-  "mu_eff": 0.7723,
+  "n_seeds": 5,
+  "n_bisect": 7,
+  "f_star": 0.2982,
+  "mu_eff": 0.8226,
   "trials": [
     {
       "force": 0.7357500000000001,
@@ -19,6 +21,27 @@
       "outcome": "held",
       "drift_mm": 0.05,
       "rot_deg": 0.2
+    },
+    {
+      "force": 0.7357500000000001,
+      "seed": 2,
+      "outcome": "held",
+      "drift_mm": 0.1,
+      "rot_deg": 0.2
+    },
+    {
+      "force": 0.7357500000000001,
+      "seed": 3,
+      "outcome": "held",
+      "drift_mm": 0.1,
+      "rot_deg": 0.2
+    },
+    {
+      "force": 0.7357500000000001,
+      "seed": 4,
+      "outcome": "held",
+      "drift_mm": 0.11,
+      "rot_deg": 0.0
     },
     {
       "force": 0.19180067778816637,
@@ -42,6 +65,27 @@
       "rot_deg": 0.6
     },
     {
+      "force": 0.37565589131896154,
+      "seed": 2,
+      "outcome": "held",
+      "drift_mm": 0.1,
+      "rot_deg": 1.8
+    },
+    {
+      "force": 0.37565589131896154,
+      "seed": 3,
+      "outcome": "held",
+      "drift_mm": 0.1,
+      "rot_deg": 0.9
+    },
+    {
+      "force": 0.37565589131896154,
+      "seed": 4,
+      "outcome": "held",
+      "drift_mm": 0.11,
+      "rot_deg": 0.0
+    },
+    {
       "force": 0.26842327501558916,
       "seed": 0,
       "outcome": "drop",
@@ -63,11 +107,102 @@
       "rot_deg": 0.2
     },
     {
+      "force": 0.31754493324053507,
+      "seed": 2,
+      "outcome": "held",
+      "drift_mm": 0.1,
+      "rot_deg": 1.8
+    },
+    {
+      "force": 0.31754493324053507,
+      "seed": 3,
+      "outcome": "held",
+      "drift_mm": 0.1,
+      "rot_deg": 1.5
+    },
+    {
+      "force": 0.31754493324053507,
+      "seed": 4,
+      "outcome": "held",
+      "drift_mm": 0.11,
+      "rot_deg": 0.0
+    },
+    {
       "force": 0.2919528231496161,
       "seed": 0,
       "outcome": "drop",
       "drift_mm": 151.21,
       "rot_deg": 6.5
+    },
+    {
+      "force": 0.304480113860381,
+      "seed": 0,
+      "outcome": "held",
+      "drift_mm": 0.22,
+      "rot_deg": 0.0
+    },
+    {
+      "force": 0.304480113860381,
+      "seed": 1,
+      "outcome": "held",
+      "drift_mm": 0.23,
+      "rot_deg": 0.2
+    },
+    {
+      "force": 0.304480113860381,
+      "seed": 2,
+      "outcome": "held",
+      "drift_mm": 0.1,
+      "rot_deg": 0.1
+    },
+    {
+      "force": 0.304480113860381,
+      "seed": 3,
+      "outcome": "held",
+      "drift_mm": 0.09,
+      "rot_deg": 1.6
+    },
+    {
+      "force": 0.304480113860381,
+      "seed": 4,
+      "outcome": "held",
+      "drift_mm": 0.11,
+      "rot_deg": 0.0
+    },
+    {
+      "force": 0.29815068142544093,
+      "seed": 0,
+      "outcome": "held",
+      "drift_mm": 0.18,
+      "rot_deg": 0.3
+    },
+    {
+      "force": 0.29815068142544093,
+      "seed": 1,
+      "outcome": "held",
+      "drift_mm": 0.44,
+      "rot_deg": 1.1
+    },
+    {
+      "force": 0.29815068142544093,
+      "seed": 2,
+      "outcome": "held",
+      "drift_mm": 0.09,
+      "rot_deg": 0.1
+    },
+    {
+      "force": 0.29815068142544093,
+      "seed": 3,
+      "outcome": "held",
+      "drift_mm": 0.09,
+      "rot_deg": 1.6
+    },
+    {
+      "force": 0.29815068142544093,
+      "seed": 4,
+      "outcome": "held",
+      "drift_mm": 0.11,
+      "rot_deg": 0.0
     }
   ]
 }

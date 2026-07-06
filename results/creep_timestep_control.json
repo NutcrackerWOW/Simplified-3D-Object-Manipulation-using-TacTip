@@ -1,0 +1,126 @@
+{
+  "force_N": 0.49,
+  "hold_s": 14.3,
+  "summary": {
+    "2ms_baseline": [
+      5.42,
+      6.145,
+      6.685,
+      6.87,
+      6.925,
+      7.41,
+      8.5,
+      8.695,
+      10.14,
+      11.06
+    ],
+    "1ms": {
+      "n": 5,
+      "n_failed": 5,
+      "fail_times_s": [
+        5.52,
+        6.225,
+        8.82,
+        10.14,
+        10.89
+      ],
+      "mean": 8.32,
+      "std": 2.12
+    },
+    "0.5ms": {
+      "n": 5,
+      "n_failed": 5,
+      "fail_times_s": [
+        5.53,
+        6.205,
+        8.81,
+        10.135,
+        10.85
+      ],
+      "mean": 8.31,
+      "std": 2.11
+    }
+  },
+  "runs": [
+    {
+      "time_step": 0.001,
+      "seed": 0,
+      "outcome": "drop",
+      "held": false,
+      "fail_time_s": 5.52,
+      "drift_mm": 149.821
+    },
+    {
+      "time_step": 0.001,
+      "seed": 1,
+      "outcome": "drop",
+      "held": false,
+      "fail_time_s": 6.225,
+      "drift_mm": 149.642
+    },
+    {
+      "time_step": 0.001,
+      "seed": 4,
+      "outcome": "drop",
+      "held": false,
+      "fail_time_s": 8.82,
+      "drift_mm": 156.729
+    },
+    {
+      "time_step": 0.001,
+      "seed": 2,
+      "outcome": "drop",
+      "held": false,
+      "fail_time_s": 10.14,
+      "drift_mm": 149.086
+    },
+    {
+      "time_step": 0.001,
+      "seed": 3,
+      "outcome": "drop",
+      "held": false,
+      "fail_time_s": 10.89,
+      "drift_mm": 155.467
+    },
+    {
+      "time_step": 0.0005,
+      "seed": 0,
+      "outcome": "drop",
+      "held": false,
+      "fail_time_s": 5.53,
+      "drift_mm": 152.736
+    },
+    {
+      "time_step": 0.0005,
+      "seed": 1,
+      "outcome": "drop",
+      "held": false,
+      "fail_time_s": 6.205,
+      "drift_mm": 147.757
+    },
+    {
+      "time_step": 0.0005,
+      "seed": 4,
+      "outcome": "drop",
+      "held": false,
+      "fail_time_s": 8.81,
+      "drift_mm": 154.805
+    },
+    {
+      "time_step": 0.0005,
+      "seed": 2,
+      "outcome": "drop",
+      "held": false,
+      "fail_time_s": 10.135,
+      "drift_mm": 155.695
+    },
+    {
+      "time_step": 0.0005,
+      "seed": 3,
+      "outcome": "drop",
+      "held": false,
+      "fail_time_s": 10.85,
+      "drift_mm": 151.976
+    }
+  ]
+}

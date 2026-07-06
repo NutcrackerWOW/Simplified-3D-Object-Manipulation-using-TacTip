@@ -1,0 +1,138 @@
+{
+  "ideal": {
+    "burst_over_own_floor": {
+      "min": 3.62,
+      "median": 11.64,
+      "max": 45.56,
+      "n_below_3x": 0
+    },
+    "train_floor_spread": {
+      "min": 0.000107,
+      "max": 0.000971,
+      "ratio": 9.1
+    },
+    "per_condition": {
+      "tp": 28,
+      "fp": 0,
+      "fn": 2,
+      "tn": 30,
+      "latency_mean": 0.1656,
+      "latency_max": 0.254,
+      "n_test": 60
+    },
+    "global_3x_max": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 30,
+      "tn": 30,
+      "latency_mean": null,
+      "latency_max": null,
+      "threshold": 0.002912
+    },
+    "oracle_global": {
+      "tp": 30,
+      "fp": 1,
+      "fn": 0,
+      "tn": 29,
+      "latency_mean": 0.1636,
+      "latency_max": 0.25,
+      "threshold": 0.000205
+    },
+    "scheduled": {
+      "tp": 30,
+      "fp": 1,
+      "fn": 0,
+      "tn": 29,
+      "latency_mean": 0.1681,
+      "latency_max": 0.254,
+      "floor_fit_r2": 0.477,
+      "floor_coef_log10": [
+        -3.9788,
+        0.0137,
+        2.1635,
+        -1.1466,
+        4.3667,
+        0.0656,
+        -3.6453
+      ]
+    },
+    "adaptive": {
+      "tp": 30,
+      "fp": 0,
+      "fn": 0,
+      "tn": 30,
+      "latency_mean": 0.1663,
+      "latency_max": 0.253,
+      "k": 100.0,
+      "floor_abs": 0.00031985855937978285
+    }
+  },
+  "tactip": {
+    "burst_over_own_floor": {
+      "min": 39.79,
+      "median": 45.25,
+      "max": 53.01,
+      "n_below_3x": 0
+    },
+    "train_floor_spread": {
+      "min": 1e-05,
+      "max": 0.0007,
+      "ratio": 72.2
+    },
+    "per_condition": {
+      "tp": 28,
+      "fp": 0,
+      "fn": 2,
+      "tn": 30,
+      "latency_mean": 0.1665,
+      "latency_max": 0.252,
+      "n_test": 60
+    },
+    "global_3x_max": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 30,
+      "tn": 30,
+      "latency_mean": null,
+      "latency_max": null,
+      "threshold": 0.002101
+    },
+    "oracle_global": {
+      "tp": 30,
+      "fp": 1,
+      "fn": 0,
+      "tn": 29,
+      "latency_mean": 0.1659,
+      "latency_max": 0.252,
+      "threshold": 4.1e-05
+    },
+    "scheduled": {
+      "tp": 30,
+      "fp": 1,
+      "fn": 0,
+      "tn": 29,
+      "latency_mean": 0.1699,
+      "latency_max": 0.252,
+      "floor_fit_r2": 0.684,
+      "floor_coef_log10": [
+        -4.8049,
+        -0.0013,
+        4.3034,
+        -1.694,
+        -7.7257,
+        0.1098,
+        9.5388
+      ]
+    },
+    "adaptive": {
+      "tp": 30,
+      "fp": 0,
+      "fn": 0,
+      "tn": 30,
+      "latency_mean": 0.1619,
+      "latency_max": 0.242,
+      "k": 100.0,
+      "floor_abs": 2.9108185102536305e-05
+    }
+  }
+}

@@ -1,52 +1,335 @@
 {
-  "held_out": [
+  "in_envelope": [
     {
-      "wave": -11.0,
-      "pip": 1.0,
-      "mass": 0.05,
-      "f_pred": 0.35665845314548855,
-      "above": "held",
-      "below": "drop",
+      "wave": -12.0,
+      "pip": 1.5,
+      "mass": 0.04,
+      "f_pred": 0.2606,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
       "ok": true
     },
     {
-      "wave": 4.0,
-      "pip": 5.0,
-      "mass": 0.05,
-      "f_pred": 0.31207772681427953,
-      "above": "held",
-      "below": "drop",
+      "wave": -9.0,
+      "pip": 3.5,
+      "mass": 0.055,
+      "f_pred": 0.3852,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
       "ok": true
     },
+    {
+      "wave": -5.0,
+      "pip": 6.5,
+      "mass": 0.03,
+      "f_pred": 0.1798,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": -2.0,
+      "pip": 8.5,
+      "mass": 0.06,
+      "f_pred": 0.4205,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": 2.0,
+      "pip": 0.5,
+      "mass": 0.045,
+      "f_pred": 0.3105,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": 5.0,
+      "pip": 2.5,
+      "mass": 0.06,
+      "f_pred": 0.4416,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": 9.0,
+      "pip": 5.5,
+      "mass": 0.035,
+      "f_pred": 0.2155,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": 12.0,
+      "pip": 7.5,
+      "mass": 0.05,
+      "f_pred": 0.3272,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": -13.0,
+      "pip": 4.5,
+      "mass": 0.06,
+      "f_pred": 0.4281,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": 13.0,
+      "pip": 2.5,
+      "mass": 0.03,
+      "f_pred": 0.1854,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": -3.0,
+      "pip": 5.5,
+      "mass": 0.05,
+      "f_pred": 0.3359,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": 6.0,
+      "pip": 8.5,
+      "mass": 0.04,
+      "f_pred": 0.2484,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": 10.0,
+      "pip": 0.5,
+      "mass": 0.06,
+      "f_pred": 0.4561,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": -6.0,
+      "pip": 2.5,
+      "mass": 0.035,
+      "f_pred": 0.2214,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": 0.5,
+      "pip": 3.5,
+      "mass": 0.055,
+      "f_pred": 0.3875,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    },
+    {
+      "wave": 3.5,
+      "pip": 6.5,
+      "mass": 0.045,
+      "f_pred": 0.2913,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
+    }
+  ],
+  "out_of_envelope": [
     {
       "wave": 11.0,
       "pip": -3.0,
       "mass": 0.03,
-      "f_pred": 0.29070438941214444,
-      "above": "held",
-      "below": "held",
+      "f_pred": 0.2032,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "held",
+        "held"
+      ],
+      "above_ok": true,
+      "below_ok": false,
       "ok": false
     },
     {
       "wave": -4.0,
       "pip": 7.0,
       "mass": 0.12,
-      "f_pred": 0.7284442866205509,
-      "above": "drop",
-      "below": "drop",
+      "f_pred": 1.3293,
+      "above": [
+        "drop",
+        "drop"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": false,
+      "below_ok": true,
       "ok": false
     },
     {
       "wave": 9.0,
       "pip": 3.0,
       "mass": 0.09,
-      "f_pred": 0.5951734886882191,
-      "above": "drop",
-      "below": "drop",
-      "ok": false
+      "f_pred": 0.8091,
+      "above": [
+        "held",
+        "held"
+      ],
+      "below": [
+        "drop",
+        "drop"
+      ],
+      "above_ok": true,
+      "below_ok": true,
+      "ok": true
     }
   ],
-  "hit_rate": "2/5",
+  "hit_rate": "16/16",
+  "hold_rate": "16/16",
+  "drop_rate": "16/16",
   "hi_factor": 1.25,
-  "lo_factor": 0.6
+  "lo_factor": 0.6,
+  "seeds": 2
 }

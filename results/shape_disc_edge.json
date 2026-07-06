@@ -3,6 +3,8 @@
   "mass": 0.05,
   "wave_deg": 0.0,
   "pip_deg": 0.0,
+  "n_seeds": 5,
+  "n_bisect": 7,
   "f_star": 0.5718,
   "mu_eff": 0.4289,
   "trials": [
@@ -19,6 +21,27 @@
       "outcome": "held",
       "drift_mm": 0.1,
       "rot_deg": 3.1
+    },
+    {
+      "force": 0.7357500000000001,
+      "seed": 2,
+      "outcome": "held",
+      "drift_mm": 0.07,
+      "rot_deg": 2.3
+    },
+    {
+      "force": 0.7357500000000001,
+      "seed": 3,
+      "outcome": "held",
+      "drift_mm": 0.07,
+      "rot_deg": 2.4
+    },
+    {
+      "force": 0.7357500000000001,
+      "seed": 4,
+      "outcome": "held",
+      "drift_mm": 0.05,
+      "rot_deg": 2.1
     },
     {
       "force": 0.19180067778816637,
@@ -56,6 +79,27 @@
       "rot_deg": 2.8
     },
     {
+      "force": 0.6219353669961487,
+      "seed": 2,
+      "outcome": "held",
+      "drift_mm": 0.04,
+      "rot_deg": 2.1
+    },
+    {
+      "force": 0.6219353669961487,
+      "seed": 3,
+      "outcome": "held",
+      "drift_mm": 0.04,
+      "rot_deg": 2.2
+    },
+    {
+      "force": 0.6219353669961487,
+      "seed": 4,
+      "outcome": "held",
+      "drift_mm": 0.04,
+      "rot_deg": 1.8
+    },
+    {
       "force": 0.5718113161439661,
       "seed": 0,
       "outcome": "held",
@@ -68,6 +112,41 @@
       "outcome": "held",
       "drift_mm": 0.08,
       "rot_deg": 2.6
+    },
+    {
+      "force": 0.5718113161439661,
+      "seed": 2,
+      "outcome": "held",
+      "drift_mm": 0.05,
+      "rot_deg": 2.0
+    },
+    {
+      "force": 0.5718113161439661,
+      "seed": 3,
+      "outcome": "held",
+      "drift_mm": 0.04,
+      "rot_deg": 2.0
+    },
+    {
+      "force": 0.5718113161439661,
+      "seed": 4,
+      "outcome": "held",
+      "drift_mm": 0.05,
+      "rot_deg": 1.8
+    },
+    {
+      "force": 0.5482851603690597,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 152.24,
+      "rot_deg": 61.5
+    },
+    {
+      "force": 0.5599246906261927,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 146.99,
+      "rot_deg": 74.1
     }
   ]
 }

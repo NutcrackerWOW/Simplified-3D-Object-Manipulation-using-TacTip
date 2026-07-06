@@ -1,0 +1,901 @@
+=== rigor run started Sun Jul  5 18:15:23 BST 2026 ===
+--- [18:15:23] 1/4 slip detector, expanded (90 episodes) ---
+90 episodes (15 conditions x 3 seeds x pos/neg), 10 workers
+w=-15.0 p=+0.0 m=30g s=0 pos: drop truth=5.619
+w=-15.0 p=+0.0 m=30g s=0 neg: held truth=nan
+w=-15.0 p=+0.0 m=30g s=2 neg: held truth=nan
+w=-15.0 p=+0.0 m=30g s=1 neg: held truth=nan
+w=-15.0 p=+0.0 m=30g s=2 pos: drop truth=5.626
+w=-15.0 p=+4.0 m=50g s=2 neg: held truth=nan
+w=-15.0 p=+4.0 m=50g s=1 neg: held truth=nan
+w=-15.0 p=+4.0 m=50g s=2 pos: drop truth=4.794
+w=-15.0 p=+0.0 m=30g s=1 pos: drop truth=5.606
+w=-15.0 p=+4.0 m=50g s=0 neg: held truth=nan
+w=-15.0 p=+4.0 m=50g s=0 pos: drop truth=4.886
+w=-15.0 p=+4.0 m=50g s=1 pos: drop truth=4.855
+w= -7.5 p=+0.0 m=30g s=0 neg: held truth=nan
+w=-15.0 p=+8.0 m=60g s=0 neg: held truth=nan
+w= -7.5 p=+0.0 m=30g s=1 neg: held truth=nan
+w= -7.5 p=+0.0 m=30g s=0 pos: drop truth=5.618
+w=-15.0 p=+8.0 m=60g s=1 neg: held truth=nan
+w=-15.0 p=+8.0 m=60g s=0 pos: drop truth=4.532
+w= -7.5 p=+0.0 m=30g s=1 pos: drop truth=5.609
+w=-15.0 p=+8.0 m=60g s=2 neg: held truth=nan
+w=-15.0 p=+8.0 m=60g s=2 pos: drop truth=4.522
+w=-15.0 p=+8.0 m=60g s=1 pos: drop truth=4.509
+w= -7.5 p=+0.0 m=30g s=2 neg: held truth=nan
+w= -7.5 p=+0.0 m=30g s=2 pos: drop truth=5.616
+w= -7.5 p=+4.0 m=50g s=0 neg: held truth=nan
+w= -7.5 p=+4.0 m=50g s=2 neg: held truth=nan
+w= -7.5 p=+4.0 m=50g s=1 pos: drop truth=4.856
+w= -7.5 p=+4.0 m=50g s=0 pos: drop truth=4.883
+w= -7.5 p=+4.0 m=50g s=1 neg: held truth=nan
+w= -7.5 p=+4.0 m=50g s=2 pos: drop truth=4.865
+w= -7.5 p=+8.0 m=60g s=0 neg: held truth=nan
+w= -7.5 p=+8.0 m=60g s=0 pos: drop truth=4.536
+w= -7.5 p=+8.0 m=60g s=1 neg: held truth=nan
+w= +0.0 p=+0.0 m=30g s=0 neg: held truth=nan
+w= +0.0 p=+0.0 m=30g s=1 neg: held truth=nan
+w= -7.5 p=+8.0 m=60g s=1 pos: drop truth=4.522
+w= +0.0 p=+0.0 m=30g s=0 pos: drop truth=5.614
+w= +0.0 p=+0.0 m=30g s=1 pos: drop truth=5.611
+w= +0.0 p=+0.0 m=30g s=2 neg: held truth=nan
+w= -7.5 p=+8.0 m=60g s=2 neg: held truth=nan
+w= -7.5 p=+8.0 m=60g s=2 pos: drop truth=4.525
+w= +0.0 p=+0.0 m=30g s=2 pos: drop truth=5.618
+w= +0.0 p=+4.0 m=50g s=0 neg: held truth=nan
+w= +0.0 p=+4.0 m=50g s=2 neg: held truth=nan
+w= +0.0 p=+4.0 m=50g s=1 neg: held truth=nan
+w= +0.0 p=+4.0 m=50g s=1 pos: drop truth=4.855
+w= +0.0 p=+4.0 m=50g s=2 pos: drop truth=4.868
+w= +0.0 p=+4.0 m=50g s=0 pos: drop truth=4.875
+w= +0.0 p=+8.0 m=60g s=1 neg: held truth=nan
+w= +0.0 p=+8.0 m=60g s=0 pos: drop truth=4.509
+w= +0.0 p=+8.0 m=60g s=1 pos: drop truth=4.518
+w= +0.0 p=+8.0 m=60g s=0 neg: held truth=nan
+w= +7.5 p=+0.0 m=30g s=0 neg: held truth=nan
+w= +7.5 p=+0.0 m=30g s=1 neg: held truth=nan
+w= +7.5 p=+0.0 m=30g s=0 pos: drop truth=5.615
+w= +7.5 p=+0.0 m=30g s=1 pos: drop truth=5.613
+w= +0.0 p=+8.0 m=60g s=2 pos: drop truth=4.520
+w= +0.0 p=+8.0 m=60g s=2 neg: held truth=nan
+w= +7.5 p=+0.0 m=30g s=2 neg: held truth=nan
+w= +7.5 p=+0.0 m=30g s=2 pos: drop truth=5.608
+w= +7.5 p=+4.0 m=50g s=0 neg: held truth=nan
+w= +7.5 p=+4.0 m=50g s=0 pos: drop truth=4.879
+w= +7.5 p=+4.0 m=50g s=1 neg: held truth=nan
+w= +7.5 p=+4.0 m=50g s=2 neg: held truth=nan
+w= +7.5 p=+4.0 m=50g s=1 pos: drop truth=4.867
+w= +7.5 p=+4.0 m=50g s=2 pos: drop truth=4.868
+w= +7.5 p=+8.0 m=60g s=0 neg: held truth=nan
+w= +7.5 p=+8.0 m=60g s=0 pos: drop truth=4.536
+w= +7.5 p=+8.0 m=60g s=1 neg: held truth=nan
+w= +7.5 p=+8.0 m=60g s=1 pos: drop truth=4.527
+w=+15.0 p=+0.0 m=30g s=0 neg: held truth=nan
+w=+15.0 p=+0.0 m=30g s=1 neg: held truth=nan
+w= +7.5 p=+8.0 m=60g s=2 pos: drop truth=4.526
+w=+15.0 p=+0.0 m=30g s=1 pos: drop truth=5.615
+w=+15.0 p=+0.0 m=30g s=0 pos: drop truth=5.614
+w= +7.5 p=+8.0 m=60g s=2 neg: held truth=nan
+w=+15.0 p=+0.0 m=30g s=2 neg: held truth=nan
+w=+15.0 p=+0.0 m=30g s=2 pos: drop truth=5.610
+w=+15.0 p=+4.0 m=50g s=0 neg: held truth=nan
+w=+15.0 p=+4.0 m=50g s=1 neg: held truth=nan
+w=+15.0 p=+4.0 m=50g s=2 neg: held truth=nan
+w=+15.0 p=+4.0 m=50g s=1 pos: drop truth=4.873
+w=+15.0 p=+4.0 m=50g s=0 pos: drop truth=4.884
+w=+15.0 p=+4.0 m=50g s=2 pos: drop truth=4.789
+w=+15.0 p=+8.0 m=60g s=0 neg: held truth=nan
+w=+15.0 p=+8.0 m=60g s=0 pos: drop truth=4.527
+w=+15.0 p=+8.0 m=60g s=1 neg: held truth=nan
+w=+15.0 p=+8.0 m=60g s=1 pos: drop truth=4.530
+w=+15.0 p=+8.0 m=60g s=2 pos: drop truth=4.513
+w=+15.0 p=+8.0 m=60g s=2 neg: held truth=nan
+
+[ideal] thr=0.00291  tp=0 fp=0 fn=30 tn=30  latency mean=nans max=nans
+
+[tactip] thr=0.0021  tp=0 fp=0 fn=30 tn=30  latency mean=nans max=nans
+
+report → /home/nutcracker/Drake/results/slip_eval_big.json
+--- [18:56:17] 2/4 Phase B seed repeats (50 runs) ---
+50 runs, hold 14.3 s, 10 workers
+B_static fixed     m=1.3 amp= 0.0 seed=0: drop t_fail=5.42
+C_moving scheduled m=1.3 amp=10.0 seed=0: drop t_fail=5.34
+B_static fixed     m=1.3 amp= 0.0 seed=1: drop t_fail=6.145
+C_moving scheduled m=1.3 amp=10.0 seed=1: drop t_fail=6.035
+B_static fixed     m=1.3 amp= 0.0 seed=2: drop t_fail=10.14
+C_moving scheduled m=1.3 amp=10.0 seed=2: drop t_fail=9.865
+  A_m2.0 fixed     m=2.0 amp=10.0 seed=0: held t_fail=None
+  A_m2.0 reflex    m=2.0 amp=10.0 seed=0: held t_fail=None
+  A_m2.0 scheduled m=2.0 amp=10.0 seed=1: held t_fail=None
+  A_m2.0 scheduled m=2.0 amp=10.0 seed=0: held t_fail=None
+  A_m2.0 reflex    m=2.0 amp=10.0 seed=1: held t_fail=None
+  A_m2.0 fixed     m=2.0 amp=10.0 seed=1: held t_fail=None
+  A_m2.0 fixed     m=2.0 amp=10.0 seed=2: held t_fail=None
+  A_m2.0 scheduled m=2.0 amp=10.0 seed=2: held t_fail=None
+  A_m2.0 reflex    m=2.0 amp=10.0 seed=2: held t_fail=None
+B_static fixed     m=1.3 amp= 0.0 seed=3: drop t_fail=11.06
+C_moving scheduled m=1.3 amp=10.0 seed=3: drop t_fail=10.78
+B_static fixed     m=1.3 amp= 0.0 seed=4: drop t_fail=8.695
+C_moving scheduled m=1.3 amp=10.0 seed=4: drop t_fail=8.445
+B_static fixed     m=1.3 amp= 0.0 seed=5: drop t_fail=6.685
+  A_m2.0 fixed     m=2.0 amp=10.0 seed=3: held t_fail=None
+  A_m2.0 scheduled m=2.0 amp=10.0 seed=3: held t_fail=None
+  A_m2.0 reflex    m=2.0 amp=10.0 seed=3: held t_fail=None
+  A_m2.0 scheduled m=2.0 amp=10.0 seed=4: held t_fail=None
+  A_m2.0 fixed     m=2.0 amp=10.0 seed=4: held t_fail=None
+C_moving scheduled m=1.3 amp=10.0 seed=5: drop t_fail=6.555
+  A_m2.0 reflex    m=2.0 amp=10.0 seed=4: held t_fail=None
+B_static fixed     m=1.3 amp= 0.0 seed=6: drop t_fail=6.925
+C_moving scheduled m=1.3 amp=10.0 seed=6: drop t_fail=6.765
+  A_m2.0 fixed     m=2.0 amp=10.0 seed=5: held t_fail=None
+  A_m2.0 scheduled m=2.0 amp=10.0 seed=5: held t_fail=None
+  A_m2.0 reflex    m=2.0 amp=10.0 seed=5: held t_fail=None
+B_static fixed     m=1.3 amp= 0.0 seed=7: drop t_fail=8.5
+C_moving scheduled m=1.3 amp=10.0 seed=7: drop t_fail=8.315
+  A_m2.0 fixed     m=2.0 amp=10.0 seed=6: held t_fail=None
+B_static fixed     m=1.3 amp= 0.0 seed=8: drop t_fail=7.41
+  A_m2.0 reflex    m=2.0 amp=10.0 seed=6: held t_fail=None
+  A_m2.0 scheduled m=2.0 amp=10.0 seed=6: held t_fail=None
+  A_m2.0 fixed     m=2.0 amp=10.0 seed=7: held t_fail=None
+  A_m2.0 scheduled m=2.0 amp=10.0 seed=7: held t_fail=None
+  A_m2.0 reflex    m=2.0 amp=10.0 seed=7: held t_fail=None
+C_moving scheduled m=1.3 amp=10.0 seed=8: drop t_fail=7.23
+B_static fixed     m=1.3 amp= 0.0 seed=9: drop t_fail=6.87
+C_moving scheduled m=1.3 amp=10.0 seed=9: drop t_fail=6.725
+  A_m2.0 scheduled m=2.0 amp=10.0 seed=8: held t_fail=None
+  A_m2.0 fixed     m=2.0 amp=10.0 seed=8: held t_fail=None
+  A_m2.0 reflex    m=2.0 amp=10.0 seed=8: held t_fail=None
+  A_m2.0 fixed     m=2.0 amp=10.0 seed=9: held t_fail=None
+  A_m2.0 scheduled m=2.0 amp=10.0 seed=9: held t_fail=None
+  A_m2.0 reflex    m=2.0 amp=10.0 seed=9: held t_fail=None
+A_m2.0/fixed: held 10/10, fail times []
+A_m2.0/reflex: held 10/10, fail times []
+A_m2.0/scheduled: held 10/10, fail times []
+B_static/fixed: held 0/10, fail times [5.42, 6.145, 6.685, 6.87, 6.925, 7.41, 8.5, 8.695, 10.14, 11.06]
+C_moving/scheduled: held 0/10, fail times [5.34, 6.035, 6.555, 6.725, 6.765, 7.23, 8.315, 8.445, 9.865, 10.78]
+→ results/phaseB_seeds.json
+--- [19:28:03] 3/4 shapes + materials, 5 seeds / 7 bisect (concurrent 5+5) ---
+  fric_low f=0.736 seed=0: drop
+  tip_stiff f=0.736 seed=0: held
+  shape_cylinder f=0.736 seed=0: held
+  shape_sphere f=0.736 seed=0: held
+  shape_disc f=0.736 seed=0: held
+  shape_prism f=0.736 seed=0: held
+  fric_low f=1.472 seed=0: drop
+  fric_high f=0.736 seed=0: held
+  fric_base f=0.736 seed=0: held
+  shape_disc_edge f=0.736 seed=0: held
+  tip_stiff f=0.736 seed=1: held
+  shape_cylinder f=0.736 seed=1: held
+  shape_sphere f=0.736 seed=1: held
+  shape_disc f=0.736 seed=1: held
+  fric_low f=2.500 seed=0: drop
+fric_low: no stable force found
+  tip_stiff f=0.736 seed=2: held
+  shape_cylinder f=0.736 seed=2: held
+  shape_prism f=0.736 seed=1: held
+  shape_sphere f=0.736 seed=2: held
+  fric_high f=0.736 seed=1: held
+  fric_base f=0.736 seed=1: held
+  tip_stiff f=0.736 seed=3: held
+  shape_disc_edge f=0.736 seed=1: held
+  shape_disc f=0.736 seed=2: held
+  tip_soft f=0.736 seed=0: held
+  shape_cylinder f=0.736 seed=3: held
+  tip_stiff f=0.736 seed=4: held
+  shape_sphere f=0.736 seed=3: held
+  shape_prism f=0.736 seed=2: held
+  tip_stiff f=0.192 seed=0: drop
+  fric_high f=0.736 seed=2: held
+  fric_base f=0.736 seed=2: held
+  shape_cylinder f=0.736 seed=4: held
+  shape_disc f=0.736 seed=3: held
+  shape_cylinder f=0.192 seed=0: drop
+  shape_disc_edge f=0.736 seed=2: held
+  tip_stiff f=0.376 seed=0: held
+  shape_cylinder f=0.376 seed=0: drop
+  shape_sphere f=0.736 seed=4: held
+  shape_sphere f=0.192 seed=0: drop
+  shape_prism f=0.736 seed=3: held
+  shape_sphere f=0.376 seed=0: drop
+  tip_stiff f=0.376 seed=1: held
+  fric_high f=0.736 seed=3: held
+  fric_base f=0.736 seed=3: held
+  shape_sphere f=0.526 seed=0: drop
+  shape_cylinder f=0.526 seed=0: held
+  shape_disc f=0.736 seed=4: held
+  shape_disc f=0.192 seed=0: drop
+  tip_stiff f=0.376 seed=2: held
+  shape_disc_edge f=0.736 seed=3: held
+  shape_cylinder f=0.526 seed=1: held
+  shape_prism f=0.736 seed=4: held
+  shape_sphere f=0.622 seed=0: held
+  shape_disc f=0.376 seed=0: held
+  shape_prism f=0.192 seed=0: drop
+  tip_stiff f=0.376 seed=3: held
+  fric_high f=0.736 seed=4: held
+  fric_base f=0.736 seed=4: held
+  shape_cylinder f=0.526 seed=2: held
+  tip_soft f=0.736 seed=1: held
+  fric_high f=0.192 seed=0: drop
+  fric_base f=0.192 seed=0: drop
+  shape_prism f=0.376 seed=0: drop
+  tip_stiff f=0.376 seed=4: held
+  shape_sphere f=0.622 seed=1: held
+  shape_disc_edge f=0.736 seed=4: held
+  shape_disc f=0.376 seed=1: held
+  tip_stiff f=0.268 seed=0: drop
+  shape_cylinder f=0.526 seed=3: held
+  shape_disc_edge f=0.192 seed=0: drop
+  fric_base f=0.376 seed=0: drop
+  tip_stiff f=0.318 seed=0: drop
+  fric_high f=0.376 seed=0: held
+  shape_disc_edge f=0.376 seed=0: drop
+  shape_cylinder f=0.526 seed=4: held
+  shape_sphere f=0.622 seed=2: held
+  shape_disc f=0.376 seed=2: held
+  shape_disc_edge f=0.526 seed=0: drop
+  shape_prism f=0.526 seed=0: held
+  tip_stiff f=0.345 seed=0: drop
+  shape_cylinder f=0.444 seed=0: drop
+  fric_high f=0.376 seed=1: held
+  fric_base f=0.526 seed=0: held
+  shape_disc f=0.376 seed=3: held
+  shape_sphere f=0.622 seed=3: held
+  tip_stiff f=0.360 seed=0: held
+  shape_cylinder f=0.483 seed=0: held
+  shape_prism f=0.526 seed=1: held
+  fric_high f=0.376 seed=2: held
+  tip_stiff f=0.360 seed=1: held
+  shape_disc f=0.376 seed=4: held
+  shape_disc_edge f=0.622 seed=0: held
+  shape_sphere f=0.622 seed=4: held
+  fric_base f=0.526 seed=1: held
+  shape_disc f=0.268 seed=0: drop
+  shape_cylinder f=0.483 seed=1: held
+  shape_prism f=0.526 seed=2: held
+  tip_stiff f=0.360 seed=2: held
+  tip_soft f=0.736 seed=2: held
+  shape_sphere f=0.572 seed=0: drop
+  fric_high f=0.376 seed=3: held
+  shape_disc f=0.318 seed=0: held
+  shape_cylinder f=0.483 seed=2: held
+  fric_base f=0.526 seed=2: held
+  tip_stiff f=0.360 seed=3: held
+  shape_prism f=0.526 seed=3: held
+  shape_disc_edge f=0.622 seed=1: held
+  shape_cylinder f=0.483 seed=3: held
+  shape_sphere f=0.596 seed=0: held
+  fric_high f=0.376 seed=4: held
+  shape_disc f=0.318 seed=1: held
+  tip_stiff f=0.360 seed=4: held
+  shape_cylinder f=0.483 seed=4: held
+  fric_high f=0.268 seed=0: drop
+  fric_base f=0.526 seed=3: held
+  shape_sphere f=0.596 seed=1: held
+  tip_stiff f=0.353 seed=0: drift
+tip_stiff: f* = 0.360 N  mu_eff = 0.681
+  shape_prism f=0.526 seed=4: held
+  shape_disc f=0.318 seed=2: held
+  shape_disc_edge f=0.622 seed=2: held
+  shape_cylinder f=0.463 seed=0: held
+  fric_high f=0.318 seed=0: held
+  fric_base f=0.526 seed=4: held
+  shape_sphere f=0.596 seed=2: held
+  shape_disc f=0.318 seed=3: held
+  shape_cylinder f=0.463 seed=1: held
+  shape_prism f=0.444 seed=0: held
+  fric_high f=0.318 seed=1: held
+  shape_disc_edge f=0.622 seed=3: held
+  shape_cylinder f=0.463 seed=2: held
+  shape_sphere f=0.596 seed=3: held
+  shape_disc f=0.318 seed=4: held
+  tip_soft f=0.736 seed=3: held
+  fric_base f=0.444 seed=0: held
+  shape_disc f=0.292 seed=0: drop
+  shape_prism f=0.444 seed=1: held
+  shape_cylinder f=0.463 seed=3: held
+  fric_high f=0.318 seed=2: held
+  shape_sphere f=0.596 seed=4: held
+  shape_disc f=0.304 seed=0: held
+  shape_cylinder f=0.463 seed=4: held
+  shape_disc_edge f=0.622 seed=4: held
+  fric_base f=0.444 seed=1: held
+  shape_prism f=0.444 seed=2: held
+  fric_high f=0.318 seed=3: held
+  shape_disc f=0.304 seed=1: held
+  shape_sphere f=0.584 seed=0: drop
+sphere: f* = 0.5963469466330388 N  mu_eff = 0.411
+  shape_cylinder f=0.454 seed=0: drift
+cylinder: f* = 0.4634698368096138 N  mu_eff = 0.529
+  shape_prism f=0.444 seed=3: held
+  fric_base f=0.444 seed=2: held
+  fric_high f=0.318 seed=4: held
+  shape_disc f=0.304 seed=2: held
+  shape_disc_edge f=0.572 seed=0: held
+  fric_high f=0.292 seed=0: drop
+  shape_prism f=0.444 seed=4: held
+  fric_base f=0.444 seed=3: held
+  shape_disc f=0.304 seed=3: held
+  shape_disc_edge f=0.572 seed=1: held
+  fric_high f=0.304 seed=0: drop
+  shape_prism f=0.409 seed=0: drop
+  shape_disc f=0.304 seed=4: held
+  tip_soft f=0.736 seed=4: held
+  fric_base f=0.444 seed=4: held
+  tip_soft f=0.192 seed=0: drop
+  shape_disc f=0.298 seed=0: held
+  fric_high f=0.311 seed=0: held
+  fric_base f=0.409 seed=0: drop
+  shape_prism f=0.426 seed=0: drift
+  shape_disc_edge f=0.572 seed=2: held
+  tip_soft f=0.376 seed=0: drop
+  shape_disc f=0.298 seed=1: held
+  fric_high f=0.311 seed=1: held
+  shape_disc f=0.298 seed=2: held
+  shape_prism f=0.435 seed=0: held
+  fric_base f=0.426 seed=0: drift
+  shape_disc_edge f=0.572 seed=3: held
+  fric_high f=0.311 seed=2: held
+  shape_disc f=0.298 seed=3: held
+  tip_soft f=0.526 seed=0: held
+  shape_prism f=0.435 seed=1: held
+  fric_base f=0.435 seed=0: held
+  fric_high f=0.311 seed=3: held
+  shape_disc_edge f=0.572 seed=4: held
+  shape_disc f=0.298 seed=4: held
+disc: f* = 0.29815068142544093 N  mu_eff = 0.823
+  shape_prism f=0.435 seed=2: held
+  fric_high f=0.311 seed=4: held
+fric_high: f* = 0.311 N  mu_eff = 0.789
+  shape_disc_edge f=0.548 seed=0: drop
+  fric_base f=0.435 seed=1: held
+  shape_prism f=0.435 seed=3: held
+  tip_soft f=0.526 seed=1: held
+  shape_disc_edge f=0.560 seed=0: drop
+disc_edge: f* = 0.5718113161439661 N  mu_eff = 0.429
+  fric_base f=0.435 seed=2: held
+  shape_prism f=0.435 seed=4: held
+prism: f* = 0.4351631318905419 N  mu_eff = 0.564
+  fric_base f=0.435 seed=3: held
+  tip_soft f=0.526 seed=2: held
+  fric_base f=0.435 seed=4: held
+fric_base: f* = 0.435 N  mu_eff = 0.564
+  tip_soft f=0.526 seed=3: held
+  tip_soft f=0.526 seed=4: held
+  tip_soft f=0.444 seed=0: drop
+  tip_soft f=0.483 seed=0: drop
+  tip_soft f=0.504 seed=0: held
+  tip_soft f=0.504 seed=1: held
+  tip_soft f=0.504 seed=2: held
+  tip_soft f=0.504 seed=3: held
+  tip_soft f=0.504 seed=4: held
+  tip_soft f=0.494 seed=0: drop
+tip_soft: f* = 0.504 N  mu_eff = 0.487
+--- [20:03:54] 4/4 sweep variance audit (60 bisections) ---
+60 independent bisections (12 conditions x 5 seeds), 10 workers
+  audit_w+0.0_p+0.0_m30_s3 f=0.441 seed=3: held
+  audit_w+0.0_p+0.0_m30_s2 f=0.441 seed=2: held
+  audit_w+0.0_p+0.0_m30_s4 f=0.441 seed=4: held
+  audit_w+0.0_p+0.0_m30_s0 f=0.441 seed=0: held
+  audit_w+0.0_p+0.0_m30_s1 f=0.441 seed=1: held
+  audit_w+0.0_p+0.0_m30_s3 f=0.149 seed=3: drop
+  audit_w+0.0_p+0.0_m30_s2 f=0.149 seed=2: drop
+  audit_w+0.0_p+0.0_m30_s4 f=0.149 seed=4: drop
+  audit_w+0.0_p+0.0_m30_s0 f=0.149 seed=0: drop
+  audit_w+0.0_p+0.0_m30_s1 f=0.149 seed=1: drop
+  audit_w+0.0_p+0.0_m60_s2 f=0.883 seed=2: held
+  audit_w+0.0_p+0.0_m60_s4 f=0.883 seed=4: held
+  audit_w+0.0_p+0.0_m60_s3 f=0.883 seed=3: held
+  audit_w+0.0_p+0.0_m60_s0 f=0.883 seed=0: held
+  audit_w+0.0_p+0.0_m60_s1 f=0.883 seed=1: held
+  audit_w+0.0_p+0.0_m60_s2 f=0.210 seed=2: drop
+  audit_w+0.0_p+0.0_m60_s4 f=0.210 seed=4: drop
+  audit_w+0.0_p+0.0_m60_s3 f=0.210 seed=3: drop
+  audit_w+0.0_p+0.0_m60_s0 f=0.210 seed=0: drop
+  audit_w+0.0_p+0.0_m60_s1 f=0.210 seed=1: drop
+  audit_w+0.0_p+0.0_m30_s3 f=0.256 seed=3: held
+  audit_w+0.0_p+0.0_m30_s2 f=0.256 seed=2: held
+  audit_w+0.0_p+0.0_m30_s4 f=0.256 seed=4: held
+  audit_w+0.0_p+0.0_m30_s0 f=0.256 seed=0: held
+  audit_w+0.0_p+0.0_m30_s1 f=0.256 seed=1: held
+  audit_w+0.0_p+0.0_m60_s0 f=0.431 seed=0: drop
+  audit_w+0.0_p+0.0_m60_s1 f=0.431 seed=1: drop
+  audit_w+0.0_p+0.0_m60_s3 f=0.431 seed=3: drop
+  audit_w+0.0_p+0.0_m60_s2 f=0.431 seed=2: drop
+  audit_w+0.0_p+0.0_m60_s4 f=0.431 seed=4: drop
+  audit_w+0.0_p+0.0_m30_s0 f=0.195 seed=0: drop
+  audit_w+0.0_p+0.0_m30_s1 f=0.195 seed=1: drop
+  audit_w+0.0_p+0.0_m30_s3 f=0.195 seed=3: held
+  audit_w+0.0_p+0.0_m30_s2 f=0.195 seed=2: held
+  audit_w+0.0_p+0.0_m30_s4 f=0.195 seed=4: drift
+  audit_w+0.0_p+0.0_m30_s3 f=0.170 seed=3: drop
+  audit_w+0.0_p+0.0_m30_s2 f=0.170 seed=2: drop
+  audit_w+0.0_p+0.0_m30_s3 f=0.182 seed=3: drop
+  audit_w+0.0_p+0.0_m30_s0 f=0.224 seed=0: held
+  audit_w+0.0_p+0.0_m30_s2 f=0.182 seed=2: drop
+  audit_w+0.0_p+0.0_m30_s4 f=0.224 seed=4: held
+  audit_w+0.0_p+0.0_m30_s1 f=0.224 seed=1: held
+  audit_w+0.0_p+0.0_m60_s3 f=0.617 seed=3: held
+  audit_w+0.0_p+0.0_m60_s2 f=0.617 seed=2: held
+  audit_w+0.0_p+0.0_m60_s0 f=0.617 seed=0: held
+  audit_w+0.0_p+0.0_m60_s4 f=0.617 seed=4: held
+  audit_w+0.0_p+0.0_m60_s1 f=0.617 seed=1: held
+  audit_w+0.0_p+0.0_m30_s3 f=0.189 seed=3: drop
+  audit_w+0.0_p+0.0_m30_s2 f=0.189 seed=2: drop
+  audit_w+0.0_p+0.0_m30_s0 f=0.209 seed=0: held
+  audit_w+0.0_p+0.0_m30_s1 f=0.209 seed=1: held
+  audit_w+0.0_p+0.0_m30_s4 f=0.209 seed=4: held
+  audit_w+0.0_p+0.0_m60_s1 f=0.515 seed=1: drop
+  audit_w+0.0_p+0.0_m60_s0 f=0.515 seed=0: drop
+  audit_w+0.0_p+0.0_m60_s3 f=0.515 seed=3: held
+  audit_w+0.0_p+0.0_m30_s3 f=0.192 seed=3: drift
+w= +0.0 p=+0.0 m=30g seed=3: f*=0.1951
+  audit_w+0.0_p+0.0_m60_s2 f=0.515 seed=2: held
+  audit_w+0.0_p+0.0_m30_s2 f=0.192 seed=2: drift
+w= +0.0 p=+0.0 m=30g seed=2: f*=0.1951
+  audit_w+0.0_p+0.0_m30_s0 f=0.202 seed=0: drop
+  audit_w+0.0_p+0.0_m60_s4 f=0.515 seed=4: held
+  audit_w+0.0_p+0.0_m30_s1 f=0.202 seed=1: drift
+  audit_w+0.0_p+0.0_m30_s4 f=0.202 seed=4: held
+  audit_w+0.0_p+0.0_m60_s3 f=0.471 seed=3: drop
+  audit_w+0.0_p+0.0_m30_s0 f=0.205 seed=0: drift
+w= +0.0 p=+0.0 m=30g seed=0: f*=0.2088
+  audit_w+0.0_p+0.0_m30_s1 f=0.205 seed=1: drift
+w= +0.0 p=+0.0 m=30g seed=1: f*=0.2088
+  audit_w+0.0_p+0.0_m60_s2 f=0.471 seed=2: drop
+  audit_w+0.0_p+0.0_m30_s4 f=0.198 seed=4: held
+w= +0.0 p=+0.0 m=30g seed=4: f*=0.1984
+  audit_w+0.0_p+0.0_m60_s1 f=0.564 seed=1: held
+  audit_w+0.0_p+0.0_m60_s0 f=0.564 seed=0: drift
+  audit_w+0.0_p+0.0_m60_s4 f=0.471 seed=4: drop
+  audit_w+7.5_p+4.0_m30_s1 f=0.441 seed=1: held
+  audit_w+7.5_p+4.0_m30_s0 f=0.441 seed=0: held
+  audit_w+7.5_p+4.0_m30_s1 f=0.149 seed=1: drop
+  audit_w+7.5_p+4.0_m30_s0 f=0.149 seed=0: drop
+  audit_w+0.0_p+0.0_m60_s3 f=0.493 seed=3: held
+  audit_w+0.0_p+0.0_m60_s2 f=0.493 seed=2: held
+  audit_w+7.5_p+4.0_m30_s2 f=0.441 seed=2: held
+  audit_w+7.5_p+4.0_m30_s3 f=0.441 seed=3: held
+  audit_w+7.5_p+4.0_m30_s4 f=0.441 seed=4: held
+  audit_w+0.0_p+0.0_m60_s4 f=0.493 seed=4: held
+  audit_w+0.0_p+0.0_m60_s1 f=0.539 seed=1: drop
+  audit_w+7.5_p+4.0_m30_s2 f=0.149 seed=2: drop
+  audit_w+7.5_p+4.0_m30_s3 f=0.149 seed=3: drop
+  audit_w+7.5_p+4.0_m30_s4 f=0.149 seed=4: drop
+  audit_w+0.0_p+0.0_m60_s0 f=0.590 seed=0: held
+  audit_w+7.5_p+4.0_m30_s1 f=0.256 seed=1: held
+  audit_w+7.5_p+4.0_m30_s0 f=0.256 seed=0: held
+  audit_w+0.0_p+0.0_m60_s3 f=0.482 seed=3: drop
+w= +0.0 p=+0.0 m=60g seed=3: f*=0.4927
+  audit_w+0.0_p+0.0_m60_s2 f=0.482 seed=2: held
+w= +0.0 p=+0.0 m=60g seed=2: f*=0.4818
+  audit_w+7.5_p+4.0_m30_s2 f=0.256 seed=2: held
+  audit_w+0.0_p+0.0_m60_s4 f=0.482 seed=4: held
+w= +0.0 p=+0.0 m=60g seed=4: f*=0.4818
+  audit_w+7.5_p+4.0_m30_s1 f=0.195 seed=1: held
+  audit_w+7.5_p+4.0_m30_s3 f=0.256 seed=3: held
+  audit_w+7.5_p+4.0_m30_s0 f=0.195 seed=0: held
+  audit_w+7.5_p+4.0_m30_s4 f=0.256 seed=4: held
+  audit_w+0.0_p+0.0_m60_s1 f=0.551 seed=1: held
+w= +0.0 p=+0.0 m=60g seed=1: f*=0.5512
+  audit_w+7.5_p+4.0_m30_s1 f=0.170 seed=1: drop
+  audit_w+7.5_p+4.0_m30_s0 f=0.170 seed=0: drop
+  audit_w+0.0_p+0.0_m60_s0 f=0.577 seed=0: held
+w= +0.0 p=+0.0 m=60g seed=0: f*=0.5765
+  audit_w+7.5_p+4.0_m30_s2 f=0.195 seed=2: held
+  audit_w+7.5_p+4.0_m30_s3 f=0.195 seed=3: held
+  audit_w+7.5_p+4.0_m30_s4 f=0.195 seed=4: held
+  audit_w+7.5_p+4.0_m30_s1 f=0.182 seed=1: held
+  audit_w+7.5_p+4.0_m30_s2 f=0.170 seed=2: drop
+  audit_w+7.5_p+4.0_m30_s0 f=0.182 seed=0: held
+  audit_w+7.5_p+4.0_m60_s0 f=0.883 seed=0: held
+  audit_w+7.5_p+4.0_m30_s3 f=0.170 seed=3: drop
+  audit_w+7.5_p+4.0_m30_s4 f=0.170 seed=4: drop
+  audit_w+7.5_p+4.0_m60_s0 f=0.210 seed=0: drop
+  audit_w+7.5_p+4.0_m30_s1 f=0.176 seed=1: drop
+  audit_w+7.5_p+4.0_m30_s0 f=0.176 seed=0: drop
+  audit_w+7.5_p+4.0_m60_s1 f=0.883 seed=1: held
+  audit_w+7.5_p+4.0_m60_s2 f=0.883 seed=2: held
+  audit_w+7.5_p+4.0_m60_s1 f=0.210 seed=1: drop
+  audit_w+7.5_p+4.0_m60_s2 f=0.210 seed=2: drop
+  audit_w+7.5_p+4.0_m60_s3 f=0.883 seed=3: held
+  audit_w+7.5_p+4.0_m30_s2 f=0.182 seed=2: held
+  audit_w+7.5_p+4.0_m30_s3 f=0.182 seed=3: held
+  audit_w+7.5_p+4.0_m30_s4 f=0.182 seed=4: held
+  audit_w+7.5_p+4.0_m60_s3 f=0.210 seed=3: drop
+  audit_w+7.5_p+4.0_m60_s4 f=0.883 seed=4: held
+  audit_w+7.5_p+4.0_m30_s1 f=0.179 seed=1: held
+w= +7.5 p=+4.0 m=30g seed=1: f*=0.1791
+  audit_w+7.5_p+4.0_m30_s0 f=0.179 seed=0: held
+w= +7.5 p=+4.0 m=30g seed=0: f*=0.1791
+  audit_w+7.5_p+4.0_m30_s2 f=0.176 seed=2: drop
+  audit_w+7.5_p+4.0_m30_s3 f=0.176 seed=3: drop
+  audit_w+7.5_p+4.0_m60_s4 f=0.210 seed=4: drop
+  audit_w+7.5_p+4.0_m60_s0 f=0.431 seed=0: drop
+  audit_w+7.5_p+4.0_m30_s4 f=0.176 seed=4: held
+  audit_w+7.5_p+4.0_m60_s1 f=0.431 seed=1: drop
+  audit_w+7.5_p+4.0_m60_s2 f=0.431 seed=2: held
+  audit_w+7.5_p+4.0_m30_s2 f=0.179 seed=2: held
+w= +7.5 p=+4.0 m=30g seed=2: f*=0.1791
+  audit_w+7.5_p+4.0_m30_s3 f=0.179 seed=3: held
+w= +7.5 p=+4.0 m=30g seed=3: f*=0.1791
+  audit_w+7.5_p+4.0_m30_s4 f=0.173 seed=4: drop
+w= +7.5 p=+4.0 m=30g seed=4: f*=0.1761
+  audit_w+7.5_p+4.0_m60_s3 f=0.431 seed=3: held
+  audit_w+7.5_p+4.0_m60_s2 f=0.301 seed=2: drop
+  audit_w+7.5_p+4.0_m60_s3 f=0.301 seed=3: drop
+  audit_w+7.5_p+4.0_m60_s4 f=0.431 seed=4: held
+  audit_w-7.5_p+4.0_m60_s1 f=0.883 seed=1: held
+  audit_w+7.5_p+4.0_m60_s2 f=0.360 seed=2: drop
+  audit_w+7.5_p+4.0_m60_s4 f=0.301 seed=4: drop
+  audit_w-7.5_p+4.0_m60_s0 f=0.883 seed=0: held
+  audit_w+7.5_p+4.0_m60_s3 f=0.360 seed=3: drop
+  audit_w-7.5_p+4.0_m60_s1 f=0.210 seed=1: drop
+  audit_w-7.5_p+4.0_m60_s0 f=0.210 seed=0: drop
+  audit_w+7.5_p+4.0_m60_s0 f=0.617 seed=0: held
+  audit_w+7.5_p+4.0_m60_s4 f=0.360 seed=4: drop
+  audit_w-7.5_p+4.0_m60_s2 f=0.883 seed=2: held
+  audit_w-7.5_p+4.0_m60_s3 f=0.883 seed=3: held
+  audit_w+7.5_p+4.0_m60_s1 f=0.617 seed=1: held
+  audit_w-7.5_p+4.0_m60_s4 f=0.883 seed=4: held
+  audit_w-7.5_p+4.0_m60_s2 f=0.210 seed=2: drop
+  audit_w-7.5_p+4.0_m60_s3 f=0.210 seed=3: drop
+  audit_w+7.5_p+4.0_m60_s2 f=0.394 seed=2: held
+  audit_w-7.5_p+4.0_m60_s4 f=0.210 seed=4: drop
+  audit_w+7.5_p+4.0_m60_s3 f=0.394 seed=3: held
+  audit_w-7.5_p+4.0_m60_s1 f=0.431 seed=1: drop
+  audit_w-7.5_p+4.0_m60_s0 f=0.431 seed=0: drop
+  audit_w+7.5_p+4.0_m60_s4 f=0.394 seed=4: drop
+  audit_w+7.5_p+4.0_m60_s0 f=0.515 seed=0: held
+  audit_w+7.5_p+4.0_m60_s2 f=0.376 seed=2: drop
+  audit_w-7.5_p+4.0_m60_s2 f=0.431 seed=2: held
+  audit_w-7.5_p+4.0_m60_s3 f=0.431 seed=3: held
+  audit_w+7.5_p+4.0_m60_s3 f=0.376 seed=3: drift
+  audit_w-7.5_p+4.0_m60_s4 f=0.431 seed=4: held
+  audit_w+7.5_p+4.0_m60_s1 f=0.515 seed=1: held
+  audit_w-7.5_p+4.0_m60_s2 f=0.301 seed=2: drop
+  audit_w-7.5_p+4.0_m60_s3 f=0.301 seed=3: drop
+  audit_w-7.5_p+4.0_m60_s4 f=0.301 seed=4: drop
+  audit_w+7.5_p+4.0_m60_s4 f=0.412 seed=4: drift
+  audit_w-7.5_p+4.0_m60_s2 f=0.360 seed=2: drop
+  audit_w+7.5_p+4.0_m60_s2 f=0.385 seed=2: drift
+w= +7.5 p=+4.0 m=60g seed=2: f*=0.3937
+  audit_w-7.5_p+4.0_m60_s0 f=0.617 seed=0: held
+  audit_w-7.5_p+4.0_m60_s1 f=0.617 seed=1: held
+  audit_w-7.5_p+4.0_m60_s3 f=0.360 seed=3: drop
+  audit_w-7.5_p+4.0_m60_s4 f=0.360 seed=4: drop
+  audit_w+7.5_p+4.0_m60_s0 f=0.471 seed=0: drop
+  audit_w+7.5_p+4.0_m60_s3 f=0.385 seed=3: held
+w= +7.5 p=+4.0 m=60g seed=3: f*=0.3850
+  audit_w+7.5_p+4.0_m60_s1 f=0.471 seed=1: held
+  audit_w+7.5_p+4.0_m60_s4 f=0.421 seed=4: held
+w= +7.5 p=+4.0 m=60g seed=4: f*=0.4211
+  audit_w-15.0_p+0.0_m30_s0 f=0.441 seed=0: held
+  audit_w-7.5_p+4.0_m60_s2 f=0.394 seed=2: held
+  audit_w-7.5_p+4.0_m60_s4 f=0.394 seed=4: drop
+  audit_w-7.5_p+4.0_m60_s3 f=0.394 seed=3: held
+  audit_w-15.0_p+0.0_m30_s1 f=0.441 seed=1: held
+  audit_w-15.0_p+0.0_m30_s0 f=0.149 seed=0: drop
+  audit_w-15.0_p+0.0_m30_s1 f=0.149 seed=1: drop
+  audit_w-7.5_p+4.0_m60_s0 f=0.515 seed=0: held
+  audit_w-7.5_p+4.0_m60_s1 f=0.515 seed=1: held
+  audit_w+7.5_p+4.0_m60_s0 f=0.493 seed=0: drift
+  audit_w-15.0_p+0.0_m30_s2 f=0.441 seed=2: held
+  audit_w+7.5_p+4.0_m60_s1 f=0.450 seed=1: drift
+  audit_w-15.0_p+0.0_m30_s2 f=0.149 seed=2: drop
+  audit_w-15.0_p+0.0_m30_s0 f=0.256 seed=0: held
+  audit_w-7.5_p+4.0_m60_s2 f=0.376 seed=2: drop
+  audit_w-7.5_p+4.0_m60_s3 f=0.376 seed=3: drift
+  audit_w-7.5_p+4.0_m60_s4 f=0.412 seed=4: held
+  audit_w-15.0_p+0.0_m30_s1 f=0.256 seed=1: held
+  audit_w-15.0_p+0.0_m30_s2 f=0.256 seed=2: held
+  audit_w-15.0_p+0.0_m30_s0 f=0.195 seed=0: drift
+  audit_w-7.5_p+4.0_m60_s1 f=0.471 seed=1: held
+  audit_w-7.5_p+4.0_m60_s0 f=0.471 seed=0: drop
+  audit_w-15.0_p+0.0_m30_s1 f=0.195 seed=1: drift
+  audit_w-7.5_p+4.0_m60_s2 f=0.385 seed=2: drift
+w= -7.5 p=+4.0 m=60g seed=2: f*=0.3937
+  audit_w+7.5_p+4.0_m60_s0 f=0.504 seed=0: drift
+w= +7.5 p=+4.0 m=60g seed=0: f*=0.5154
+  audit_w+7.5_p+4.0_m60_s1 f=0.461 seed=1: drift
+w= +7.5 p=+4.0 m=60g seed=1: f*=0.4711
+  audit_w-7.5_p+4.0_m60_s3 f=0.385 seed=3: held
+w= -7.5 p=+4.0 m=60g seed=3: f*=0.3850
+  audit_w-7.5_p+4.0_m60_s4 f=0.403 seed=4: drift
+w= -7.5 p=+4.0 m=60g seed=4: f*=0.4118
+  audit_w-15.0_p+0.0_m30_s2 f=0.195 seed=2: held
+  audit_w-15.0_p+0.0_m30_s0 f=0.224 seed=0: held
+  audit_w-15.0_p+0.0_m30_s2 f=0.170 seed=2: drop
+  audit_w-15.0_p+0.0_m30_s1 f=0.224 seed=1: held
+  audit_w-15.0_p+0.0_m30_s3 f=0.441 seed=3: held
+  audit_w-7.5_p+4.0_m60_s1 f=0.450 seed=1: drift
+  audit_w-15.0_p+0.0_m30_s4 f=0.441 seed=4: held
+  audit_w-15.0_p+0.0_m30_s2 f=0.182 seed=2: drop
+  audit_w-15.0_p+0.0_m30_s3 f=0.149 seed=3: drop
+  audit_w-15.0_p+0.0_m30_s0 f=0.209 seed=0: held
+  audit_w-15.0_p+0.0_m30_s4 f=0.149 seed=4: drop
+  audit_w-7.5_p+4.0_m60_s0 f=0.493 seed=0: drift
+  audit_w-15.0_p+0.0_m30_s1 f=0.209 seed=1: held
+  audit_w+15.0_p+8.0_m30_s2 f=0.441 seed=2: held
+  audit_w-15.0_p+0.0_m30_s2 f=0.189 seed=2: held
+  audit_w+15.0_p+8.0_m30_s1 f=0.441 seed=1: held
+  audit_w+15.0_p+8.0_m30_s0 f=0.441 seed=0: held
+  audit_w+15.0_p+8.0_m30_s2 f=0.149 seed=2: drop
+  audit_w-15.0_p+0.0_m30_s3 f=0.256 seed=3: held
+  audit_w-15.0_p+0.0_m30_s0 f=0.202 seed=0: held
+  audit_w-15.0_p+0.0_m30_s1 f=0.202 seed=1: held
+  audit_w+15.0_p+8.0_m30_s1 f=0.149 seed=1: drop
+  audit_w-15.0_p+0.0_m30_s4 f=0.256 seed=4: held
+  audit_w+15.0_p+8.0_m30_s0 f=0.149 seed=0: drop
+  audit_w-7.5_p+4.0_m60_s1 f=0.461 seed=1: held
+w= -7.5 p=+4.0 m=60g seed=1: f*=0.4607
+  audit_w-15.0_p+0.0_m30_s2 f=0.185 seed=2: drift
+w=-15.0 p=+0.0 m=30g seed=2: f*=0.1885
+  audit_w-15.0_p+0.0_m30_s3 f=0.195 seed=3: held
+  audit_w-15.0_p+0.0_m30_s1 f=0.198 seed=1: held
+w=-15.0 p=+0.0 m=30g seed=1: f*=0.1984
+  audit_w-15.0_p+0.0_m30_s0 f=0.198 seed=0: held
+w=-15.0 p=+0.0 m=30g seed=0: f*=0.1984
+  audit_w-15.0_p+0.0_m30_s4 f=0.195 seed=4: held
+  audit_w-7.5_p+4.0_m60_s0 f=0.504 seed=0: drift
+w= -7.5 p=+4.0 m=60g seed=0: f*=0.5154
+  audit_w-15.0_p+0.0_m30_s3 f=0.170 seed=3: drop
+  audit_w-15.0_p+0.0_m30_s4 f=0.170 seed=4: drop
+  audit_w+15.0_p+8.0_m30_s2 f=0.256 seed=2: held
+  audit_w+15.0_p+8.0_m30_s1 f=0.256 seed=1: held
+  audit_w+15.0_p+8.0_m30_s0 f=0.256 seed=0: held
+  audit_w-15.0_p+0.0_m30_s3 f=0.182 seed=3: drop
+  audit_w-15.0_p+0.0_m30_s4 f=0.182 seed=4: drop
+  audit_w+15.0_p+8.0_m30_s3 f=0.441 seed=3: held
+  audit_w+15.0_p+8.0_m30_s4 f=0.441 seed=4: held
+  audit_w+15.0_p+8.0_m30_s3 f=0.149 seed=3: drop
+  audit_w+15.0_p+8.0_m30_s2 f=0.195 seed=2: held
+  audit_w+15.0_p+8.0_m30_s1 f=0.195 seed=1: held
+  audit_w-15.0_p+0.0_m30_s3 f=0.189 seed=3: held
+  audit_w-15.0_p+0.0_m30_s4 f=0.189 seed=4: drift
+  audit_w+15.0_p+8.0_m30_s4 f=0.149 seed=4: drop
+  audit_w+15.0_p+8.0_m30_s0 f=0.195 seed=0: held
+  audit_w+15.0_p+8.0_m30_s2 f=0.170 seed=2: drop
+  audit_w+15.0_p+8.0_m30_s1 f=0.170 seed=1: drop
+  audit_w+15.0_p+8.0_m30_s0 f=0.170 seed=0: drop
+  audit_w+15.0_p+8.0_m60_s2 f=0.883 seed=2: held
+  audit_w-15.0_p+0.0_m30_s3 f=0.185 seed=3: drift
+w=-15.0 p=+0.0 m=30g seed=3: f*=0.1885
+  audit_w+15.0_p+8.0_m60_s1 f=0.883 seed=1: held
+  audit_w+15.0_p+8.0_m60_s0 f=0.883 seed=0: held
+  audit_w-15.0_p+0.0_m30_s4 f=0.192 seed=4: held
+w=-15.0 p=+0.0 m=30g seed=4: f*=0.1918
+  audit_w+15.0_p+8.0_m60_s2 f=0.210 seed=2: drop
+  audit_w+15.0_p+8.0_m60_s1 f=0.210 seed=1: drop
+  audit_w+15.0_p+8.0_m60_s0 f=0.210 seed=0: drop
+  audit_w+15.0_p+8.0_m30_s3 f=0.256 seed=3: held
+  audit_w+15.0_p+8.0_m30_s1 f=0.182 seed=1: held
+  audit_w+15.0_p+8.0_m30_s2 f=0.182 seed=2: held
+  audit_w+15.0_p+8.0_m30_s4 f=0.256 seed=4: held
+  audit_w+15.0_p+8.0_m30_s0 f=0.182 seed=0: held
+  audit_w+15.0_p+8.0_m30_s1 f=0.176 seed=1: drop
+  audit_w+15.0_p+8.0_m30_s2 f=0.176 seed=2: drop
+  audit_w+15.0_p+8.0_m30_s0 f=0.176 seed=0: drop
+  audit_w+15.0_p+8.0_m30_s3 f=0.195 seed=3: held
+  audit_w+15.0_p+8.0_m30_s3 f=0.170 seed=3: drop
+  audit_w+15.0_p+8.0_m30_s4 f=0.195 seed=4: held
+  audit_w+15.0_p+8.0_m60_s2 f=0.431 seed=2: held
+  audit_w+15.0_p+8.0_m30_s1 f=0.179 seed=1: held
+w=+15.0 p=+8.0 m=30g seed=1: f*=0.1791
+  audit_w+15.0_p+8.0_m30_s2 f=0.179 seed=2: held
+w=+15.0 p=+8.0 m=30g seed=2: f*=0.1791
+  audit_w+15.0_p+8.0_m60_s1 f=0.431 seed=1: held
+  audit_w+15.0_p+8.0_m60_s0 f=0.431 seed=0: held
+  audit_w+15.0_p+8.0_m30_s4 f=0.170 seed=4: drop
+  audit_w+15.0_p+8.0_m60_s3 f=0.883 seed=3: held
+  audit_w+15.0_p+8.0_m30_s0 f=0.179 seed=0: held
+w=+15.0 p=+8.0 m=30g seed=0: f*=0.1791
+  audit_w+15.0_p+8.0_m60_s2 f=0.301 seed=2: drop
+  audit_w+15.0_p+8.0_m60_s3 f=0.210 seed=3: drop
+  audit_w+15.0_p+8.0_m60_s1 f=0.301 seed=1: drop
+  audit_w+15.0_p+8.0_m60_s0 f=0.301 seed=0: drop
+  audit_w+15.0_p+8.0_m30_s3 f=0.182 seed=3: held
+  audit_w+15.0_p+8.0_m60_s4 f=0.883 seed=4: held
+  audit_w+15.0_p+8.0_m30_s3 f=0.176 seed=3: drop
+  audit_w+15.0_p+8.0_m30_s4 f=0.182 seed=4: held
+  audit_w+15.0_p+8.0_m60_s4 f=0.210 seed=4: drop
+  audit_w+15.0_p+8.0_m60_s0 f=0.360 seed=0: drop
+  audit_w+15.0_p+8.0_m60_s2 f=0.360 seed=2: drift
+  audit_w+15.0_p+8.0_m60_s1 f=0.360 seed=1: drop
+  audit_w+15.0_p+8.0_m60_s3 f=0.431 seed=3: held
+  audit_w+15.0_p+8.0_m30_s3 f=0.179 seed=3: held
+w=+15.0 p=+8.0 m=30g seed=3: f*=0.1791
+  audit_w+15.0_p+8.0_m30_s4 f=0.176 seed=4: held
+  audit_w+15.0_p+8.0_m60_s3 f=0.301 seed=3: drop
+  audit_w+15.0_p+8.0_m30_s4 f=0.173 seed=4: drop
+w=+15.0 p=+8.0 m=30g seed=4: f*=0.1761
+  audit_w+0.0_p+8.0_m60_s2 f=0.883 seed=2: held
+  audit_w+15.0_p+8.0_m60_s4 f=0.431 seed=4: held
+  audit_w+15.0_p+8.0_m60_s0 f=0.394 seed=0: held
+  audit_w+0.0_p+8.0_m60_s2 f=0.210 seed=2: drop
+  audit_w+15.0_p+8.0_m60_s2 f=0.394 seed=2: held
+  audit_w+0.0_p+8.0_m60_s0 f=0.883 seed=0: held
+  audit_w+15.0_p+8.0_m60_s4 f=0.301 seed=4: drop
+  audit_w+0.0_p+8.0_m60_s1 f=0.883 seed=1: held
+  audit_w+15.0_p+8.0_m60_s1 f=0.394 seed=1: held
+  audit_w+0.0_p+8.0_m60_s0 f=0.210 seed=0: drop
+  audit_w+0.0_p+8.0_m60_s1 f=0.210 seed=1: drop
+  audit_w+15.0_p+8.0_m60_s3 f=0.360 seed=3: drift
+  audit_w+15.0_p+8.0_m60_s0 f=0.376 seed=0: drift
+  audit_w+15.0_p+8.0_m60_s2 f=0.376 seed=2: held
+  audit_w+0.0_p+8.0_m60_s3 f=0.883 seed=3: held
+  audit_w+15.0_p+8.0_m60_s4 f=0.360 seed=4: held
+  audit_w+0.0_p+8.0_m60_s2 f=0.431 seed=2: held
+  audit_w+0.0_p+8.0_m60_s3 f=0.210 seed=3: drop
+  audit_w+15.0_p+8.0_m60_s1 f=0.376 seed=1: held
+  audit_w+15.0_p+8.0_m60_s4 f=0.329 seed=4: drop
+  audit_w+0.0_p+8.0_m60_s2 f=0.301 seed=2: drop
+  audit_w+0.0_p+8.0_m60_s4 f=0.883 seed=4: held
+  audit_w+15.0_p+8.0_m60_s3 f=0.394 seed=3: held
+  audit_w+0.0_p+8.0_m60_s0 f=0.431 seed=0: drift
+  audit_w+0.0_p+8.0_m60_s4 f=0.210 seed=4: drop
+  audit_w+0.0_p+8.0_m60_s1 f=0.431 seed=1: held
+  audit_w+15.0_p+8.0_m60_s4 f=0.344 seed=4: drop
+  audit_w+15.0_p+8.0_m60_s0 f=0.385 seed=0: held
+w=+15.0 p=+8.0 m=60g seed=0: f*=0.3850
+  audit_w+15.0_p+8.0_m60_s2 f=0.368 seed=2: held
+w=+15.0 p=+8.0 m=60g seed=2: f*=0.3681
+  audit_w+0.0_p+8.0_m60_s1 f=0.301 seed=1: drop
+  audit_w+15.0_p+8.0_m60_s4 f=0.352 seed=4: drop
+w=+15.0 p=+8.0 m=60g seed=4: f*=0.3600
+  audit_w+0.0_p-5.0_m30_s2 f=0.441 seed=2: no_grasp
+  audit_w+15.0_p+8.0_m60_s1 f=0.368 seed=1: held
+w=+15.0 p=+8.0 m=60g seed=1: f*=0.3681
+  audit_w+0.0_p-5.0_m30_s2 f=0.883 seed=2: no_grasp
+  audit_w+0.0_p+8.0_m60_s2 f=0.360 seed=2: held
+  audit_w+0.0_p-5.0_m30_s3 f=0.441 seed=3: no_grasp
+  audit_w+15.0_p+8.0_m60_s3 f=0.376 seed=3: held
+  audit_w+0.0_p+8.0_m60_s3 f=0.431 seed=3: held
+  audit_w+0.0_p-5.0_m30_s2 f=1.766 seed=2: no_grasp
+w= +0.0 p=-5.0 m=30g seed=2: no boundary
+  audit_w+0.0_p-5.0_m30_s3 f=0.883 seed=3: no_grasp
+  audit_w+0.0_p-5.0_m30_s4 f=0.441 seed=4: no_grasp
+  audit_w+0.0_p-5.0_m30_s3 f=1.766 seed=3: no_grasp
+w= +0.0 p=-5.0 m=30g seed=3: no boundary
+  audit_w+0.0_p-5.0_m30_s4 f=0.883 seed=4: no_grasp
+  audit_w+0.0_p+8.0_m60_s2 f=0.329 seed=2: drop
+  audit_w+0.0_p+8.0_m60_s3 f=0.301 seed=3: drop
+  audit_w+0.0_p-5.0_m30_s0 f=0.441 seed=0: held
+  audit_w+0.0_p+8.0_m60_s4 f=0.431 seed=4: held
+  audit_w+0.0_p-5.0_m30_s4 f=1.766 seed=4: no_grasp
+w= +0.0 p=-5.0 m=30g seed=4: no boundary
+  audit_w+0.0_p-5.0_m30_s1 f=0.441 seed=1: held
+  audit_w+0.0_p+8.0_m60_s1 f=0.360 seed=1: held
+  audit_w+0.0_p+8.0_m60_s2 f=0.344 seed=2: drop
+  audit_w+0.0_p+8.0_m60_s4 f=0.301 seed=4: drop
+  audit_w+0.0_p+8.0_m60_s1 f=0.329 seed=1: drop
+  audit_w+0.0_p+8.0_m60_s0 f=0.617 seed=0: held
+  audit_w+15.0_p+8.0_m60_s3 f=0.368 seed=3: held
+w=+15.0 p=+8.0 m=60g seed=3: f*=0.3681
+  audit_w+0.0_p+8.0_m60_s2 f=0.352 seed=2: drop
+w= +0.0 p=+8.0 m=60g seed=2: f*=0.3600
+  audit_w+0.0_p-5.0_m60_s2 f=0.883 seed=2: no_grasp
+  audit_w+0.0_p-5.0_m60_s3 f=0.883 seed=3: no_grasp
+  audit_w+0.0_p-5.0_m30_s0 f=0.149 seed=0: held
+  audit_w+0.0_p-5.0_m60_s2 f=1.766 seed=2: no_grasp
+  audit_w+0.0_p+8.0_m60_s1 f=0.344 seed=1: drop
+  audit_w+0.0_p-5.0_m30_s1 f=0.149 seed=1: held
+  audit_w+0.0_p-5.0_m60_s3 f=1.766 seed=3: no_grasp
+  audit_w+0.0_p-5.0_m60_s2 f=2.500 seed=2: no_grasp
+w= +0.0 p=-5.0 m=60g seed=2: no boundary
+  audit_w+0.0_p+8.0_m60_s3 f=0.360 seed=3: held
+  audit_w+0.0_p-5.0_m60_s4 f=0.883 seed=4: no_grasp
+  audit_w+0.0_p-5.0_m60_s3 f=2.500 seed=3: no_grasp
+w= +0.0 p=-5.0 m=60g seed=3: no boundary
+  audit_w+0.0_p-5.0_m60_s4 f=1.766 seed=4: no_grasp
+  audit_w+0.0_p+8.0_m60_s1 f=0.352 seed=1: drop
+w= +0.0 p=+8.0 m=60g seed=1: f*=0.3600
+  audit_w+0.0_p-5.0_m30_s0 f=0.086 seed=0: drop
+  audit_w+0.0_p-5.0_m60_s4 f=2.500 seed=4: no_grasp
+w= +0.0 p=-5.0 m=60g seed=4: no boundary
+  audit_w+0.0_p-5.0_m60_s0 f=0.883 seed=0: held
+  audit_w+0.0_p+8.0_m60_s4 f=0.360 seed=4: held
+  audit_w+0.0_p+8.0_m60_s3 f=0.329 seed=3: drop
+  audit_w+0.0_p-5.0_m60_s1 f=0.883 seed=1: held
+  audit_w+0.0_p-5.0_m30_s1 f=0.086 seed=1: drop
+  audit_w+0.0_p+8.0_m60_s4 f=0.329 seed=4: drop
+  audit_w+0.0_p+8.0_m60_s3 f=0.344 seed=3: drop
+  audit_w+0.0_p-5.0_m30_s0 f=0.113 seed=0: held
+  audit_w+0.0_p+8.0_m60_s4 f=0.344 seed=4: drop
+  audit_w+0.0_p+8.0_m60_s0 f=0.515 seed=0: held
+  audit_w+0.0_p+8.0_m60_s3 f=0.352 seed=3: drop
+w= +0.0 p=+8.0 m=60g seed=3: f*=0.3600
+  audit_w+0.0_p-5.0_m60_s0 f=0.210 seed=0: held
+  audit_w+0.0_p-5.0_m30_s1 f=0.113 seed=1: held
+  audit_w+0.0_p-5.0_m60_s1 f=0.210 seed=1: held
+  audit_w+0.0_p+8.0_m60_s4 f=0.352 seed=4: drop
+w= +0.0 p=+8.0 m=60g seed=4: f*=0.3600
+  audit_w+0.0_p-2.0_m60_s0 f=0.883 seed=0: held
+  audit_w+0.0_p-5.0_m60_s0 f=0.102 seed=0: drop
+  audit_w+0.0_p-2.0_m60_s1 f=0.883 seed=1: held
+  audit_w+0.0_p-2.0_m60_s2 f=0.883 seed=2: held
+  audit_w+0.0_p-5.0_m60_s1 f=0.102 seed=1: drop
+  audit_w+0.0_p-5.0_m30_s0 f=0.099 seed=0: held
+  audit_w+0.0_p-5.0_m30_s1 f=0.099 seed=1: held
+  audit_w+0.0_p-5.0_m30_s0 f=0.092 seed=0: drop
+  audit_w+0.0_p-2.0_m60_s0 f=0.210 seed=0: held
+  audit_w+0.0_p-5.0_m60_s0 f=0.147 seed=0: held
+  audit_w+0.0_p+8.0_m60_s0 f=0.471 seed=0: held
+  audit_w+0.0_p-2.0_m60_s0 f=0.102 seed=0: drop
+  audit_w+0.0_p-2.0_m60_s3 f=0.883 seed=3: held
+  audit_w+0.0_p-2.0_m60_s1 f=0.210 seed=1: held
+  audit_w+0.0_p-5.0_m60_s1 f=0.147 seed=1: held
+  audit_w+0.0_p-2.0_m60_s2 f=0.210 seed=2: held
+  audit_w+0.0_p-2.0_m60_s0 f=0.147 seed=0: drop
+  audit_w+0.0_p-2.0_m60_s1 f=0.102 seed=1: drop
+  audit_w+0.0_p-5.0_m30_s0 f=0.095 seed=0: drop
+  audit_w+0.0_p-2.0_m60_s4 f=0.883 seed=4: held
+  audit_w+0.0_p-5.0_m30_s1 f=0.092 seed=1: held
+  audit_w+0.0_p-2.0_m60_s1 f=0.147 seed=1: drop
+  audit_w+0.0_p-5.0_m60_s0 f=0.123 seed=0: drop
+  audit_w+0.0_p-2.0_m60_s0 f=0.176 seed=0: drop
+  audit_w+0.0_p-2.0_m60_s2 f=0.102 seed=2: drop
+  audit_w+0.0_p-5.0_m60_s1 f=0.123 seed=1: drop
+  audit_w+0.0_p-2.0_m60_s1 f=0.176 seed=1: drop
+  audit_w+0.0_p-2.0_m60_s0 f=0.192 seed=0: drop
+  audit_w+0.0_p-2.0_m60_s3 f=0.210 seed=3: held
+  audit_w+0.0_p-5.0_m60_s0 f=0.134 seed=0: drop
+  audit_w+0.0_p-5.0_m30_s0 f=0.097 seed=0: drop
+w= +0.0 p=-5.0 m=30g seed=0: f*=0.0988
+  audit_w+0.0_p-5.0_m30_s1 f=0.089 seed=1: held
+  audit_w+0.0_p-2.0_m60_s4 f=0.210 seed=4: held
+  audit_w+0.0_p-2.0_m60_s1 f=0.192 seed=1: drop
+  audit_w+0.0_p-2.0_m60_s2 f=0.147 seed=2: held
+  audit_w+0.0_p-2.0_m60_s0 f=0.201 seed=0: drop
+  audit_w+0.0_p-2.0_m60_s3 f=0.102 seed=3: drop
+  audit_w+0.0_p-5.0_m60_s1 f=0.134 seed=1: held
+  audit_w+0.0_p+8.0_m60_s0 f=0.450 seed=0: held
+  audit_w+0.0_p-5.0_m60_s0 f=0.140 seed=0: held
+  audit_w+0.0_p-5.0_m30_s1 f=0.088 seed=1: held
+w= +0.0 p=-5.0 m=30g seed=1: f*=0.0877
+  audit_w+0.0_p-2.0_m60_s4 f=0.102 seed=4: held
+  audit_w+0.0_p-2.0_m60_s4 f=0.072 seed=4: drop
+  audit_w+0.0_p-2.0_m60_s0 f=0.205 seed=0: drop
+w= +0.0 p=-2.0 m=60g seed=0: f*=0.2101
+  audit_w+0.0_p-2.0_m60_s2 f=0.123 seed=2: held
+  audit_w+0.0_p-5.0_m60_s1 f=0.128 seed=1: held
+  audit_w+0.0_p-2.0_m60_s3 f=0.147 seed=3: held
+  audit_w+0.0_p-2.0_m60_s1 f=0.201 seed=1: held
+  audit_w+0.0_p-5.0_m60_s0 f=0.137 seed=0: drop
+w= +0.0 p=-5.0 m=60g seed=0: f*=0.1403
+  audit_w+0.0_p-2.0_m60_s4 f=0.086 seed=4: drop
+  audit_w+0.0_p-2.0_m60_s2 f=0.112 seed=2: drop
+  audit_w+0.0_p-5.0_m60_s1 f=0.125 seed=1: drop
+w= +0.0 p=-5.0 m=60g seed=1: f*=0.1283
+  audit_w+0.0_p-2.0_m60_s4 f=0.094 seed=4: drop
+  audit_w+0.0_p+8.0_m60_s0 f=0.440 seed=0: held
+w= +0.0 p=+8.0 m=60g seed=0: f*=0.4405
+  audit_w+0.0_p-2.0_m60_s3 f=0.123 seed=3: held
+  audit_w+0.0_p-2.0_m60_s1 f=0.196 seed=1: held
+w= +0.0 p=-2.0 m=60g seed=1: f*=0.1964
+  audit_w+0.0_p-2.0_m60_s4 f=0.098 seed=4: drop
+  audit_w+0.0_p-2.0_m60_s2 f=0.117 seed=2: held
+  audit_w+0.0_p-2.0_m60_s3 f=0.112 seed=3: drop
+  audit_w+0.0_p-2.0_m60_s4 f=0.100 seed=4: drop
+w= +0.0 p=-2.0 m=60g seed=4: f*=0.1025
+  audit_w+0.0_p-2.0_m60_s2 f=0.115 seed=2: drop
+w= +0.0 p=-2.0 m=60g seed=2: f*=0.1173
+  audit_w+0.0_p-2.0_m60_s3 f=0.117 seed=3: drop
+  audit_w+0.0_p-2.0_m60_s3 f=0.120 seed=3: held
+w= +0.0 p=-2.0 m=60g seed=3: f*=0.1199
+w+0.0_p+0.0_m30: f* [0.1951, 0.1951, 0.1984, 0.2088, 0.2088]  spread 6.9% of median
+w+0.0_p+0.0_m60: f* [0.4818, 0.4818, 0.4927, 0.5512, 0.5765]  spread 19.2% of median
+w+7.5_p+4.0_m30: f* [0.1761, 0.1791, 0.1791, 0.1791, 0.1791]  spread 1.7% of median
+w+7.5_p+4.0_m60: f* [0.385, 0.3937, 0.4211, 0.4711, 0.5154]  spread 31.0% of median
+w-7.5_p+4.0_m60: f* [0.385, 0.3937, 0.4118, 0.4607, 0.5154]  spread 31.7% of median
+w-15.0_p+0.0_m30: f* [0.1885, 0.1885, 0.1918, 0.1984, 0.1984]  spread 5.2% of median
+w+15.0_p+8.0_m30: f* [0.1761, 0.1791, 0.1791, 0.1791, 0.1791]  spread 1.7% of median
+w+15.0_p+8.0_m60: f* [0.36, 0.3681, 0.3681, 0.3681, 0.385]  spread 6.8% of median
+w+0.0_p+8.0_m60: f* [0.36, 0.36, 0.36, 0.36, 0.4405]  spread 22.4% of median
+w+0.0_p-5.0_m30: f* [0.0877, 0.0988]  spread 11.9% of median
+w+0.0_p-5.0_m60: f* [0.1283, 0.1403]  spread 8.9% of median
+w+0.0_p-2.0_m60: f* [0.1025, 0.1173, 0.1199, 0.1964, 0.2101]  spread 89.7% of median
+→ results/sweep_audit.json
+=== rigor run finished Sun Jul  5 20:41:48 BST 2026 ===

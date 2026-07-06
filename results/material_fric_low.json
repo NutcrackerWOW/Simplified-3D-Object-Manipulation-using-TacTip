@@ -9,6 +9,8 @@
   "tip_modulus_Pa": 50000.0,
   "wave_deg": 0.0,
   "pip_deg": 0.0,
+  "n_seeds": 5,
+  "n_bisect": 7,
   "f_star": null,
   "mu_eff": null,
   "trials": [

@@ -1,0 +1,79 @@
+{
+  "level": "fric_base",
+  "mass": 0.05,
+  "box_mu": [
+    1.0,
+    0.8
+  ],
+  "pair_mu_static": 1.091,
+  "tip_modulus_Pa": 50000.0,
+  "wave_deg": 0.0,
+  "pip_deg": 0.0,
+  "f_star": 0.4444,
+  "mu_eff": 0.5519,
+  "trials": [
+    {
+      "force": 0.7357500000000001,
+      "seed": 0,
+      "outcome": "held",
+      "drift_mm": 0.17,
+      "rot_deg": 4.7
+    },
+    {
+      "force": 0.7357500000000001,
+      "seed": 1,
+      "outcome": "held",
+      "drift_mm": 0.18,
+      "rot_deg": 4.6
+    },
+    {
+      "force": 0.19180067778816637,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 114.21,
+      "rot_deg": 5.7
+    },
+    {
+      "force": 0.37565589131896154,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 155.62,
+      "rot_deg": 147.9
+    },
+    {
+      "force": 0.5257269462733729,
+      "seed": 0,
+      "outcome": "held",
+      "drift_mm": 0.1,
+      "rot_deg": 4.5
+    },
+    {
+      "force": 0.5257269462733729,
+      "seed": 1,
+      "outcome": "held",
+      "drift_mm": 0.1,
+      "rot_deg": 3.4
+    },
+    {
+      "force": 0.4444011977849741,
+      "seed": 0,
+      "outcome": "held",
+      "drift_mm": 0.3,
+      "rot_deg": 5.5
+    },
+    {
+      "force": 0.4444011977849741,
+      "seed": 1,
+      "outcome": "held",
+      "drift_mm": 0.12,
+      "rot_deg": 3.4
+    },
+    {
+      "force": 0.4085852763587163,
+      "seed": 0,
+      "outcome": "drop",
+      "drift_mm": 151.47,
+      "rot_deg": 157.5
+    }
+  ]
+}

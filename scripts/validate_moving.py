@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import numpy as np
 
-from pinchlab.fit import basis
+from pinchlab.fit import mu_eff_model
 from pinchlab.params import BoxSpec, G, Posture, TrialSpec, deg
 from pinchlab.trial import get_kinematics, run_trial
 from pinchlab import plots
@@ -46,8 +46,8 @@ def main():
     coef = np.array(list(fit["coefficients"].values()))
 
     def mu_eff(wave_deg, pip_deg):
-        return float(basis(np.deg2rad(np.array([wave_deg])),
-                           np.deg2rad(np.array([pip_deg])))[0] @ coef)
+        return float(mu_eff_model(coef, np.array([wave_deg]),
+                                  np.array([pip_deg]), args.mass)[0])
 
     def scheduled_sp(wave_deg):
         return (args.mass * G / 2.0) / mu_eff(wave_deg, args.pip) * args.margin

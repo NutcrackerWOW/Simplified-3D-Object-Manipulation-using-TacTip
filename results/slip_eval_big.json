@@ -1,0 +1,36 @@
+{
+  "n_train": 30,
+  "n_test": 60,
+  "n_pos_test": 30,
+  "n_neg_test": 30,
+  "conditions": 15,
+  "seeds": 3,
+  "ideal": {
+    "rate": "ideal",
+    "threshold": 0.002912271425179572,
+    "tp": 0,
+    "fp": 0,
+    "fn": 30,
+    "tn": 30,
+    "n": 60,
+    "latency_mean": NaN,
+    "latency_max": NaN,
+    "threshold_from_train": 0.002912271425179572,
+    "miss_rate_ci95_upper": 1.1,
+    "fp_rate_ci95_upper": 0.1
+  },
+  "tactip": {
+    "rate": "tactip",
+    "threshold": 0.00210068078887715,
+    "tp": 0,
+    "fp": 0,
+    "fn": 30,
+    "tn": 30,
+    "n": 60,
+    "latency_mean": NaN,
+    "latency_max": NaN,
+    "threshold_from_train": 0.00210068078887715,
+    "miss_rate_ci95_upper": 1.1,
+    "fp_rate_ci95_upper": 0.1
+  }
+}

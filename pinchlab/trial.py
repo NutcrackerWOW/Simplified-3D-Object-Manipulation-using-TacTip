@@ -68,7 +68,8 @@ def run_trial(spec: TrialSpec, meshcat=None, keep_series: bool = False,
               cp: ControlParams | None = None, posture_ref_fn=None,
               setpoint_fn=None, reflex: dict | None = None,
               hold_time: float | None = None,
-              mp: ModelParams | None = None) -> TrialResult:
+              mp: ModelParams | None = None,
+              log_poses: bool = False) -> TrialResult:
     cp = cp or ControlParams()
     kin = get_kinematics()
     if hold_time is None:
@@ -147,6 +148,8 @@ def run_trial(spec: TrialSpec, meshcat=None, keep_series: bool = False,
         "fL", "fR", "cL", "cR", "inL", "inR",
         "f1_L", "f1_R", "f2_L", "f2_R", "f3_L", "f3_R", "rho_L", "rho_R",
         "box_p", "drift", "rot_drift", "slide_L", "slide_R", "q"]}
+    if log_poses:
+        log.update({k: [] for k in ["box_R", "tipL_p", "tipR_p"]})
 
     outcome = None
     slip_time = np.nan
@@ -238,6 +241,10 @@ def run_trial(spec: TrialSpec, meshcat=None, keep_series: bool = False,
                 log[f"{key}_L"].append(dd["L"])
                 log[f"{key}_R"].append(dd["R"])
             log["box_p"].append(p_box.copy())
+            if log_poses:
+                log["box_R"].append(X_box.rotation().matrix().copy())
+                log["tipL_p"].append(p_tip["L"].copy())
+                log["tipR_p"].append(p_tip["R"].copy())
             log["drift"].append(drift)
             log["rot_drift"].append(rot_drift)
             log["slide_L"].append(slide["L"])

@@ -21,12 +21,26 @@ import pandas as pd
 
 from .params import G
 
-BASIS_NAMES = ["1", "wave", "pip", "wave^2", "pip^2", "wave*pip"]
+MASS_REF = 0.045   # kg — mass term centered mid-range so c0 keeps meaning
+BASIS_NAMES = ["1", "wave", "pip", "wave^2", "pip^2", "wave*pip",
+               f"(m-{MASS_REF})"]
 
 
 def basis(wave_rad: np.ndarray, pip_rad: np.ndarray) -> np.ndarray:
+    """Posture-only quadratic basis (6 columns)."""
     w, p = np.asarray(wave_rad), np.asarray(pip_rad)
     return np.stack([np.ones_like(w), w, p, w * w, p * p, w * p], axis=-1)
+
+
+def mu_eff_model(coef: np.ndarray, wave_deg, pip_deg, mass) -> np.ndarray:
+    """Evaluate fitted μ_eff(wave, pip, m). Accepts 6-coef (posture-only,
+    legacy) or 7-coef (posture + linear mass) fits."""
+    b = basis(np.deg2rad(np.asarray(wave_deg, dtype=float)),
+              np.deg2rad(np.asarray(pip_deg, dtype=float)))
+    mu = b @ np.asarray(coef)[:6]
+    if len(coef) > 6:
+        mu = mu + coef[6] * (np.asarray(mass, dtype=float) - MASS_REF)
+    return mu
 
 
 def mu_eff_from_boundary(df_conds: pd.DataFrame) -> pd.DataFrame:
@@ -37,19 +51,35 @@ def mu_eff_from_boundary(df_conds: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
-def fit_mu_eff(df: pd.DataFrame):
+def fit_mu_eff(df: pd.DataFrame, sigma_rel_by_mass: dict | None = None):
     """Least-squares fit of μ_eff over the posture basis. Returns (coeffs,
-    diagnostics dict)."""
+    diagnostics dict).
+
+    If sigma_rel_by_mass is given (relative seed-noise σ of f* per mass,
+    measured by the sweep audit), the fit is weighted 1/σ² so the noisier
+    high-mass boundaries don't dominate; R²/RMSE stay unweighted for
+    comparability."""
     ok = df.dropna(subset=["f_star", "mu_eff"])
-    X = basis(np.deg2rad(ok["wave_deg"]), np.deg2rad(ok["pip_deg"]))
+    X = np.column_stack([
+        basis(np.deg2rad(ok["wave_deg"]), np.deg2rad(ok["pip_deg"])),
+        ok["mass"].to_numpy() - MASS_REF])
     y = ok["mu_eff"].to_numpy()
-    coef, res, rank, sv = np.linalg.lstsq(X, y, rcond=None)
+    if sigma_rel_by_mass:
+        fallback = max(sigma_rel_by_mass.values())
+        sig = np.array([sigma_rel_by_mass.get(round(m, 3), fallback)
+                        for m in ok["mass"]]) * y
+        wgt = 1.0 / np.maximum(sig, 1e-9)
+        coef, res, rank, sv = np.linalg.lstsq(
+            X * wgt[:, None], y * wgt, rcond=None)
+    else:
+        coef, res, rank, sv = np.linalg.lstsq(X, y, rcond=None)
     pred = X @ coef
     ss_res = float(np.sum((y - pred) ** 2))
     ss_tot = float(np.sum((y - np.mean(y)) ** 2))
     r2 = 1.0 - ss_res / ss_tot if ss_tot > 0 else np.nan
     rmse = float(np.sqrt(np.mean((y - pred) ** 2)))
     return coef, {"r2": r2, "rmse": rmse, "n": len(ok),
+                  "weighted": bool(sigma_rel_by_mass),
                   "mu_min": float(y.min()), "mu_max": float(y.max()),
                   "mu_mean": float(y.mean())}
 
@@ -100,15 +130,42 @@ def classify_regimes(conds: pd.DataFrame, min_ratio: float = 1.5) -> pd.DataFram
     return out
 
 
-def fit_report(conds_csv: str, trials_csv: str, out_json: str | None = None):
+def seed_sigma_from_audit(audit_json: str) -> dict:
+    """Per-mass relative seed noise of f* (median std/median over the audit's
+    friction-regime conditions, pip ≥ 0)."""
+    with open(audit_json) as fh:
+        audit = json.load(fh)
+    by_mass = {}
+    for key, s in audit["summary"].items():
+        pip = float(key.split("_p")[1].split("_")[0])
+        mass = round(float(key.split("_m")[1]) / 1000.0, 3)
+        if pip >= 0 and s.get("n_valid", 0) >= 3:
+            by_mass.setdefault(mass, []).append(s["std_rel"])
+    return {m: float(np.median(v)) for m, v in by_mass.items()}
+
+
+def fit_report(conds_csv: str, trials_csv: str, out_json: str | None = None,
+               fragile_pips: tuple = (-5.0,), audit_json: str | None = None):
+    """fragile_pips: postures the seed audit showed to be bimodal (boundary
+    existence is seed-dependent — at pip=−5° only 2/5 independent seeds find
+    a stable anchor, and those land at μ_eff above the Coulomb pair). They
+    are excluded from the friction fit and reported separately."""
     conds = pd.read_csv(conds_csv)
     trials = pd.read_csv(trials_csv)
     conds = mu_eff_from_boundary(conds)
     conds = classify_regimes(conds)
+    conds.loc[(conds["regime"] == "friction")
+              & conds["pip_deg"].isin(fragile_pips), "regime"] = "fragile"
+
+    if audit_json is None:
+        default = os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "results", "sweep_audit.json")
+        audit_json = default if os.path.exists(default) else None
+    sigma_rel = seed_sigma_from_audit(audit_json) if audit_json else None
 
     coef_all, diag_all = fit_mu_eff(conds)
     friction = conds[conds["regime"] == "friction"]
-    coef, diag = fit_mu_eff(friction)
+    coef, diag = fit_mu_eff(friction, sigma_rel_by_mass=sigma_rel)
 
     # Logistic f50 vs bisection f* consistency
     f50s = []
@@ -121,10 +178,18 @@ def fit_report(conds_csv: str, trials_csv: str, out_json: str | None = None):
     mass_groups = friction.groupby("mass")["mu_eff"].mean().to_dict()
 
     support = conds[conds["regime"] == "support"]
+    fragile = conds[conds["regime"] == "fragile"]
     report = {
         "coefficients": {n: float(c) for n, c in zip(BASIS_NAMES, coef)},
         "diagnostics": diag,
         "equation": equation_string(coef),
+        "seed_noise_sigma_rel": ({str(k): v for k, v in sigma_rel.items()}
+                                 if sigma_rel else None),
+        "fragile_regime": {
+            "pips_deg": list(fragile_pips),
+            "n_conditions": int(len(fragile)),
+            "reason": "audit: boundary existence seed-dependent (bimodal)",
+        },
         "coefficients_global": {n: float(c)
                                 for n, c in zip(BASIS_NAMES, coef_all)},
         "diagnostics_global": diag_all,
@@ -148,6 +213,6 @@ def fit_report(conds_csv: str, trials_csv: str, out_json: str | None = None):
 
 def predict_f_star(coef: np.ndarray, wave_deg: float, pip_deg: float,
                    mass: float) -> float:
-    mu = float((basis(np.deg2rad(np.array([wave_deg])),
-                      np.deg2rad(np.array([pip_deg]))) @ coef)[0])
+    mu = float(mu_eff_model(coef, np.array([wave_deg]),
+                            np.array([pip_deg]), mass)[0])
     return (mass * G / 2.0) / mu

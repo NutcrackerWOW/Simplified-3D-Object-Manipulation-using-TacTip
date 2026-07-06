@@ -44,48 +44,95 @@ ejects the box from the dome grip.
 
 ## The equation (paper product)
 
-    f1*(wave, pip, m) = (m·g/2) / μ_eff(wave, pip)
-    μ_eff = c0 + c1·wave + c2·pip + c3·wave² + c4·pip² + c5·wave·pip
+    f1*(wave, pip, m) = (m·g/2) / μ_eff(wave, pip, m)
+    μ_eff = c0 + c1·wave + c2·pip + c3·wave² + c4·pip² + c5·wave·pip + c6·(m − 0.045)
 
 Coefficients, fit diagnostics, and validation live in `results/<tag>_fit.json` after
-running the pipeline.
+running the pipeline. The linear mass term models the measured decline of μ_eff with
+mass (gravity torque worsens rolling); the fit is weighted by the audit-measured
+per-mass seed noise (WLS).
 
 ### Measured results (sweepB, 120 conditions)
 
-The posture map splits into **two regimes**, classified automatically by mass scaling
-(`classify_regimes`: Coulomb predicts f*(2m)/f*(m)=2; ratio <1.5 ⇒ support):
+The posture map splits into **three regimes** — friction (fitted), support, and
+fragile (both excluded, reported separately in the JSON):
 
-- **Friction regime** (all postures except pip ≈ −2°): the quadratic μ_eff fit reaches
-  R² = 0.77, RMSE = 0.072 over μ_eff 0.33–0.85. μ_eff rises smoothly with PIP
-  (0.33 at −5° → 0.85 at +10°), is symmetric in wave tilt, and *declines with mass*
-  (0.75/0.67 at 30/60 g) — rolling failure worsens under gravity torque.
-- **Support regime** (pip ≈ −2°): the pads cradle the box; f* is mass-independent
-  (0.15–0.31 N), so weight is carried by geometry, not friction — μ_eff stops measuring
-  friction there and those rows are excluded from the fit (kept in the JSON as
-  `support_regime`).
+- **Friction regime** (pip 0…10°, wave ±15°, 30–60 g; n = 60): the fit reaches
+  R² = 0.60, RMSE = 0.054 over μ_eff 0.56–0.85 (unweighted metrics on WLS
+  coefficients). μ_eff rises with PIP, is symmetric in wave tilt, and *declines with
+  mass* (0.81/0.70 at 30/60 g, c6 ≈ −4.2 kg⁻¹) — rolling failure worsens under
+  gravity torque, now an explicit model term.
+- **Support regime** (pip ≈ −2°, mass-scaling classifier `classify_regimes`): the
+  pads cradle the box; f* is mass-independent (0.15–0.31 N) — weight carried by
+  geometry, not friction.
+- **Fragile regime** (pip = −5°, audit-flagged): boundary existence is
+  seed-dependent (bimodal) — only 2/5 independent seeds find a stable anchor, and
+  those land at μ_eff above the Coulomb pair (cradling). Excluded from the fit as
+  of the seed audit.
 
 Additional envelope limits: **120 g exceeds the pinch capacity** at nearly all postures
 (the hold boundary from below meets the ~2.5 N ejection boundary from above → empty
-window), and mass extrapolation beyond 60 g under-predicts f* (held-out 90 g point
-failed at 1.25×f*). Held-out validation: 2/2 inside the fitted envelope; all misses
-map onto these characterized limits.
+window). Held-out validation (`scripts/validate_equation.py`, 16 off-grid
+in-envelope posture/mass points × 1.25×/0.6× probes × 2 seeds): **16/16 full hits**
+— every point held at 1.25× and dropped at 0.6× on both seeds. Of the 3 deliberate
+out-of-envelope probes, the support-band posture held below prediction and 120 g
+dropped above it (both as characterized), while the 90 g probe now *passes* — the
+explicit mass term fixed the extrapolation failure the old posture-only fit had
+there (`results/sweepB_equation_validation.json`).
 
-Slip detector (M6): on the held-out split, 3 TP / 0 FP / 0 FN / 3 TN at **both** the
-ideal rate and the 100 Hz TacTip camera rate; detection latency ≈ 0.18 s after
-kinematic slip onset (downsampling to camera rate costs only ~4 ms).
+Slip detector (M6 → M6b): the original 6-trial split scored perfectly (3 TP / 3 TN,
+latency ≈ 0.18 s) but cannot bound an error rate. The expanded study
+(`scripts/eval_slip_big.py`: 90 episodes over 15 posture × mass conditions, 30 + 30
+held-out test) exposed that a **single globally calibrated threshold fails** — the
+pre-slip vibration floor varies 9× (ideal rate) to 72× (TacTip rate) across
+conditions, so 3× the max training floor misses every slip (0 TP / 30 FN). The slip
+burst is always separable from the *same condition's* floor (≥ 3.6×, median 12×
+ideal / 45× TacTip), and two **deployable** threshold schemes fix it
+(`scripts/rescore_slip.py` → `results/slip_eval_big_rescored.json`, offline from
+cached episodes):
+
+- **Scheduled threshold (primary):** log₁₀(floor) fitted over (wave, pip, mass)
+  from the training floors — the same recipe as the grip-force map — then
+  threshold = 3× the predicted floor at the current posture/load. Test score
+  **30 TP / 1 FP / 0 FN / 29 TN at both rates** (matches the oracle-best global
+  threshold), mean latency 0.17 s.
+- **Adaptive threshold (supplement, model-free):** k× a causal running floor
+  (trailing 2 s block-percentile with a 0.3 s guard gap), plus an absolute
+  sensor-noise term (3× the quietest training floor) that stops ratio blow-ups
+  on near-silent signals, 50 ms sustained-exceedance debounce, armed after grasp
+  transients settle. Test score **30 TP / 0 FP / 0 FN / 30 TN at both rates**,
+  mean latency 0.16 s — needs no posture model at all.
+
+(Per-condition calibration — thresholds from each condition's own training
+episodes — scores 28/0/2/30 and remains the diagnostic upper bound, but assumes
+training data at every operating condition.)
+
+Sweep seed-noise audit (`scripts/run_audit.py`, 12 conditions × 5 independent
+single-seed bisections): in the friction regime, seed-to-seed f* spread is 2–7 % of
+the median at 30 g (≈ the bisection notch) but grows to 7–32 % at 60 g — at higher
+mass, f* uncertainty is seed-limited, not resolution-limited (consistent with the
+fit RMSE). Near the regime boundary the boundary itself is seed-dependent: at
+pip = −5° only 2/5 seeds find any stable anchor and those land at f* ≈ 0.09–0.14 N
+(μ_eff 1.6–2.2, *above* the Coulomb pair — pure cradling), vs the 2-seed sweep's
+0.34–0.62 N. Both findings feed back into the fit: pip = −5° is excluded as the
+fragile regime, and the fit is seed-noise-weighted (see "Measured results").
 
 ### Phase B: the boundary is a 3-second boundary (rolling creep)
 
 Carrying the 50 g box through wave ±10° @ 0.15 Hz at margin 1.3 over the fitted f*
-drops the box at ~10.8 s — but so does a **motionless** 14.3 s hold at the same force
-(drop at ~11.1 s), and amplitude ±5°/±7.5°/±10° barely shifts the failure time. The
-bisection boundary (3 s hold window) is therefore **duration-dependent**: sub-margin
-squeeze lets the box roll off by slow creep, with utilization ρ ≈ 0.5 giving no
-warning and the vibration reflex firing too late for abrupt roll-off. At **margin 2.0**
-(0.75 N) all three controllers (fixed / scheduled / scheduled+reflex) carry the box
-through the full wave sweep with 0.75 mm drift and 8° rotation
-(`results/phaseB_summary.json`, envelope probes in `results/phaseB_envelope.json`,
-margin-1.3 failures archived as `phaseB_*_margin1p3.*`).
+drops the box — and so does a **motionless** hold at the same force. With 10 seeds
+per condition (`scripts/phaseB_seeds.py` → `results/phaseB_seeds.json`): margin 1.3
+fails **20/20** runs, failure time 5.3–11.1 s (motionless mean 7.8 ± 1.7 s, moving
+mean 7.6 ± 1.6 s — statistically indistinguishable, so the carry motion is not what
+kills the grasp). The bisection boundary (3 s hold window) is therefore
+**duration-dependent**: sub-margin squeeze lets the box roll off by slow creep, with
+utilization ρ ≈ 0.5 giving no warning and the vibration reflex firing too late for
+abrupt roll-off. At **margin 2.0** (0.75 N) all three controllers (fixed / scheduled
+/ scheduled+reflex) hold **30/30** (10 seeds × 3 modes) through the full wave sweep
+with ≤ 0.85 mm drift (`results/phaseB_summary.json`, envelope probes in
+`results/phaseB_envelope.json`, margin-1.3 failures archived as
+`phaseB_*_margin1p3.*`). Since the earliest observed creep failure is 5.3 s, the
+1.3 margin is only trustworthy for holds of ~4 s or less.
 
 ### Shape study (M8): μ_eff tracks rolling freedom, not friction
 
@@ -94,20 +141,24 @@ posture — only geometry differs (`scripts/eval_shapes.py`, `results/shape_*.js
 
 | shape                            | contact                | f* (N) | μ_eff |
 |----------------------------------|------------------------|--------|-------|
-| disc (axis ∥ pinch axis)         | flat round faces       | 0.318  | 0.772 |
-| box 25×25×12                     | flat square faces      | 0.444  | 0.552 |
-| prism 25×50×12 (2× lever arm)    | flat square faces      | 0.444  | 0.552 |
-| cylinder (vertical axis)         | curved rim (line)      | 0.483  | 0.507 |
+| disc (axis ∥ pinch axis)         | flat round faces       | 0.298  | 0.823 |
+| box 25×25×12                     | flat square faces      | 0.435  | 0.564 |
+| prism 25×50×12 (2× lever arm)    | flat square faces      | 0.435  | 0.564 |
+| cylinder (vertical axis)         | curved rim (line)      | 0.464  | 0.529 |
 | disc_edge (key pinch, upright)   | thin rim, gravity-roll | 0.572  | 0.429 |
-| sphere d=25                      | point                  | 0.622  | 0.394 |
+| sphere d=25                      | point                  | 0.596  | 0.411 |
 
-Coulomb friction is identical across rows, yet f* spans ~2× and orders exactly by the
-object's freedom to roll in the grasp — direct evidence that the stability boundary is
-**rolling-governed**, the paper's central claim. The `disc_edge` row is the lateral-
-prehension (key-pinch) configuration: the disc stands like a wheel and gravity torque
-acts directly along the free rolling axis. (Probe bisection resolves ~±1 notch ≈ 15 %;
-box and prism tie within that resolution. The box value here is the 50 g probe —
-the sweep-fitted μ_eff at this posture is 0.65 because μ_eff declines with mass.)
+(Values from the 5-seed / 7-bisection-step rerun — every probe must hold on all 5
+spawn seeds; notch resolution ≈ 5 %.) Coulomb friction is identical across rows, yet
+f* spans 2× and orders exactly by the object's freedom to roll in the grasp — direct
+evidence that the stability boundary is **rolling-governed**, the paper's central
+claim. Box and prism land on *exactly* the same boundary notch even at this
+resolution: doubling the lever arm about the grasp axis does not change f*, i.e. the
+flat-face boundary is set by the contact patch, not the object's inertia about the
+grasp axis. The `disc_edge` row is the lateral-prehension (key-pinch) configuration:
+the disc stands like a wheel and gravity torque acts directly along the free rolling
+axis. (The box value here is the 50 g probe — the sweep-fitted μ_eff at this posture
+is 0.65 because μ_eff declines with mass.)
 
 ### Material study (M8b): friction scaling, window collapse, and a stiffness surprise
 
@@ -118,19 +169,20 @@ box and tip values):
 | level      | box μs/μd | pair μd | tip E (kPa) | f* (N) | μ_eff |
 |------------|-----------|---------|-------------|--------|-------|
 | fric_low   | 0.4/0.3   | 0.45    | 50          | — none | —     |
-| fric_base  | 1.0/0.8   | 0.85    | 50          | 0.444  | 0.552 |
-| fric_high  | 1.5/1.2   | 1.03    | 50          | 0.318  | 0.772 |
-| tip_soft   | 1.0/0.8   | 0.85    | 25          | 0.526  | 0.466 |
-| tip_stiff  | 1.0/0.8   | 0.85    | 100         | 0.376  | 0.653 |
+| fric_base  | 1.0/0.8   | 0.85    | 50          | 0.435  | 0.564 |
+| fric_high  | 1.5/1.2   | 1.03    | 50          | 0.311  | 0.789 |
+| tip_soft   | 1.0/0.8   | 0.85    | 25          | 0.504  | 0.487 |
+| tip_stiff  | 1.0/0.8   | 0.85    | 100         | 0.360  | 0.681 |
 
-Three findings: (1) in the mid-to-high friction range f* scales roughly like Coulomb
-(∝ 1/μ) but with a **constant rolling discount** — μ_eff/μ_pair ≈ 0.65–0.75, i.e.
-rolling binds ~25–35 % below the sliding limit; (2) at low friction the stability
-window **collapses entirely** — the hold boundary rises (roll-off at 0.74 N) while
-the ejection boundary falls (squirt-out at ≥ 1.5 N), leaving no stable force at 50 g;
-(3) **softer fingertips are worse, not better** (μ_eff 0.47 → 0.55 → 0.65 across
-25/50/100 kPa): the naive bigger-patch argument fails — a compliant dome yields as the
-object rotates, offering less restoring moment against rolling.
+(5-seed / 7-bisection-step values.) Three findings: (1) in the mid-to-high friction
+range f* scales roughly like Coulomb (∝ 1/μ) but with a **constant rolling
+discount** — μ_eff/μ_pair ≈ 0.66–0.77, i.e. rolling binds ~25–35 % below the sliding
+limit; (2) at low friction the stability window **collapses entirely** — the hold
+boundary rises (roll-off at 0.74 N) while the ejection boundary falls (squirt-out at
+≥ 1.5 N), leaving no stable force at 50 g; (3) **softer fingertips are worse, not
+better** (μ_eff 0.49 → 0.56 → 0.68 across 25/50/100 kPa): the naive bigger-patch
+argument fails — a compliant dome yields as the object rotates, offering less
+restoring moment against rolling.
 
 ## Running the pipeline
 
@@ -139,10 +191,15 @@ object rotates, offering less restoring moment against rolling.
 .venv/bin/python scripts/run_sweep.py --tag sweepB            # Phase A sweep (parallel, resumable)
 .venv/bin/python scripts/fit_map.py --tag sweepB              # μ_eff map + equation + figures
 .venv/bin/python scripts/eval_slip.py                         # slip detector: ideal + TacTip 100 Hz
-.venv/bin/python scripts/validate_equation.py --tag sweepB    # held-out prediction test
+.venv/bin/python scripts/validate_equation.py --tag sweepB --workers 10  # held-out test (16+3 points)
 .venv/bin/python scripts/validate_moving.py --tag sweepB --margin 2.0  # Phase B carry
-.venv/bin/python scripts/eval_shapes.py --shape all           # M8 shape boundaries
-.venv/bin/python scripts/eval_materials.py --level all        # M8b friction/stiffness
+.venv/bin/python scripts/eval_shapes.py --shape all --seeds 5 --n-bisect 7 --workers 5   # M8 shapes
+.venv/bin/python scripts/eval_materials.py --level all --seeds 5 --n-bisect 7 --workers 5 # M8b materials
+.venv/bin/python scripts/eval_slip_big.py --workers 10        # M6b expanded slip study (90 episodes)
+.venv/bin/python scripts/rescore_slip.py                      # offline re-scoring from cached episodes
+.venv/bin/python scripts/phaseB_seeds.py --workers 10         # Phase B, 10 seeds per condition
+.venv/bin/python scripts/run_audit.py --workers 10            # sweep seed-noise audit
+bash scripts/run_rigor.sh                                     # all four studies, sequenced at 10 workers
 ```
 
 Tip: on a machine that is also running the IDE, launch sweeps with `nice -n 10`
