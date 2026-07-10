@@ -105,8 +105,10 @@ analysis, which predicts the same force for a sphere and a disc.
 Rolling failure of soft contacts is not new \emph{qualitatively} --- the
 soft-finger contact model and its limit surface
 \cite{goyal1991planar,kao1992quasistatic,xydas1999modeling} bound the
-coupled force--torque capacity of a compliant patch, and the grasping
-literature has long known that torsional load eats tangential capacity. Our
+coupled force--torque capacity of a compliant patch, the grasping
+literature has long known that torsional load eats tangential capacity,
+and rotational stability conditions have recently been derived for soft
+pneumatic fingers \cite{jang2024rotational}. Our
 contribution is \emph{quantitative and operational}: we measure where the
 boundary actually lies for a realistic soft-fingertip geometry across
 posture, mass, shape, friction, and stiffness; we identify the regimes
@@ -170,12 +172,17 @@ model augments point friction with torsional resistance over a finite
 patch; the limit-surface formalism
 \cite{goyal1991planar,kao1992quasistatic,xydas1999modeling} bounds the
 coupled tangential-force/torque capacity and predicts that torque demand
-reduces tangential capacity. Our measurements are consistent with that
-picture and go beyond it in two ways: the failing rotation here is about
+reduces tangential capacity. Closest in spirit, Jang et al.\
+\cite{jang2024rotational} derive an analytical rotational-stability
+condition for soft-finger precision grasps from bulk finger stiffness,
+validated on pneumatic fingers. Our measurements are consistent with that
+line and go beyond it in two ways: the failing rotation here is about
 the \emph{grasp axis} (the object rolls over the dome's curvature, a
 geometric escape rather than in-patch spin), and we measure the resulting
-boundary as a deployable scalar field $\mueff(\phi,\theta,m)$ rather than a
-per-contact constitutive model.
+boundary as a deployable scalar field $\mueff(\phi,\theta,m)$ ---
+spanning friction, shape, tip stiffness, and hold duration --- rather
+than a per-contact constitutive model or a per-finger stiffness
+condition.
 
 \textbf{Grip force control and margins.} Human studies
 \cite{johansson1984roles} established grip-force scheduling with a small
@@ -188,7 +195,13 @@ where it lies; we instead measure that for soft domes the operative limit
 is rolling, sits 25--35\,\% below the frictional one, and --- near the
 boundary --- moves with hold duration, and we \emph{prescribe} the
 resulting minimal force. Margins calibrated against Coulomb slip are
-optimistic in exactly the regime where they matter.
+optimistic in exactly the regime where they matter. For TacTip fingertips
+specifically, Psomopoulou et al.\ \cite{psomopoulou2021pinching}
+stabilize a two-finger pinch by actively \emph{rolling} the tips to an
+equilibrium at a commanded squeeze force --- rolling as a control
+resource; our rule supplies the minimal admissible value of that
+commanded force, treating the same rolling freedom as the failure channel
+that sets it.
 
 \textbf{Slip detection with optical tactile sensors.} Vibration- and
 flow-based slip detection is well established for TacTip
@@ -370,16 +383,16 @@ $\fstar$ follows the Coulomb-like $1/\mu$ scaling --- friction sets the
   \end{tabular}}
 \end{table}
 
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
-  \includegraphics[width=0.67\textwidth]{figs/F3_shapes_materials.pdf}
+  \includegraphics[width=\columnwidth]{figs/F3_shapes_materials.pdf}
   \caption{(a)~Shape study: $\mueff$ ordered exactly by the object's
     freedom to roll, spanning $2\times$ in $\fstar$ at identical Coulomb
     friction. (b)~Material study: $\mueff$ tracks but never reaches the
     pair coefficient (rolling discount $0.66$--$0.77$); softer tips are
     worse.}
   \label{fig:shapes}
-\end{figure*}
+\end{figure}
 
 \textbf{Geometry alone spans $2\times$ at fixed friction.} The shape study
 (Fig.~\ref{fig:shapes}a, Table~\ref{tab:shapes}) holds mass (50~g),

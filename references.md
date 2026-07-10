@@ -8,15 +8,15 @@ This file records (1) how the cited set maps to §II, (2) papers deliberately
 
 ---
 
-## 1. Cited set → §II bracket map (16 entries in refs.bib)
+## 1. Cited set → §II bracket map (18 entries in refs.bib)
 
 RA-L counts references against the 6 (+2 over-length) page cap, so the set is
 kept lean. The four §II brackets in the PAPER.md placeholder are filled as:
 
 | §II bracket | Cited works |
 |---|---|
-| **(a) Soft-finger contact / limit surfaces** | `goyal1991planar`, `xydas1999modeling`, `kao1992quasistatic`, `kappassov2015tactile` (survey, framing) |
-| **(b) Grip-force control & safety margins** | `johansson1984roles` (human precision-grip margin — the conceptual root of our ×2.0 rule), `howe1989sensing` (early robotic slip sensing) |
+| **(a) Soft-finger contact / limit surfaces** | `goyal1991planar`, `xydas1999modeling`, `kao1992quasistatic`, `jang2024rotational` (nearest published rotational-stability prior; added 2026-07-10), `kappassov2015tactile` (survey, framing) |
+| **(b) Grip-force control & safety margins** | `johansson1984roles` (human precision-grip margin — the conceptual root of our ×2.0 rule), `howe1989sensing` (early robotic slip sensing), `psomopoulou2021pinching` (BRL TacTip pinch controller — rolling as control resource vs. our failure mode; added 2026-07-10) |
 | **(c) Optical-tactile sensing & slip detection** | `chorley2009development` (TacTip origin — our fingertip lineage), `wardcherrier2018tactip`, `james2018slip` (learned TacTip slip baseline we contrast against a threshold rule), `yuan2017gelsight`, `johnson2009retrographic` (GelSight lineage, contrast to marker-based) |
 | **(d) Compliant / hydroelastic contact simulation** | `elandt2019pressure`, `masterjohn2022velocity`, `castro2023unconstrained` (the exact PFC→velocity-level→SAP stack our Drake 1.54 testbed runs on) |
 | **(e/f) Recent tactile grip / sim-to-real** | `lin2022tactilegym2` (TacTip in sim + sim-to-real; supports §VIII sim-only caveat and situates our work against learned tactile control), `jang2024soft` (nearest recent neighbor — Coulomb-state *estimation* from tactile sensing; §II must draw the estimate-vs-prescribe distinction in one sentence) |
@@ -68,6 +68,25 @@ simulation. The nearest neighbors, and how our narrowed claim survives each:
    these are data-driven and require training; our scheduled-threshold detector
    and closed-form rule are the interpretable, no-training contrast.
 
+4. **Jang, Petrichenko, Bae & Haninger, "Soft finger rotational stability for
+   precision grasps" (IROS 2024, pp. 10919–10925, DOI
+   10.1109/IROS58592.2024.10802720)** — found in the 2026-07-10 audit; SAME
+   group as `jang2024soft`. Explicitly models rotational failure of soft-finger
+   precision grasps via bulk finger stiffness, validated on pneumatic fingers.
+   Nearest published prior work to "rolling-governed" stability.
+   **CITED 2026-07-10** (`jang2024rotational`, §I + §II lane (a)); distinction
+   drawn in text: they give a per-finger analytical stiffness condition on
+   pneumatic fingers, we measure a deployable μ_eff(φ,θ,m) map + validated
+   minimal-force rule for hemispherical tactile domes across
+   friction/shape/stiffness/hold-duration.
+5. **Psomopoulou et al., "A Robust Controller for Stable 3D Pinching using
+   Tactile Sensing" (RA-L 6(4):8150–8157, 2021, DOI 10.1109/LRA.2021.3104057)**
+   — TacTip-based two-finger pinching from the author's own lab (BRL/Lepora);
+   the controller exploits fingertip *rolling* to reach equilibrium.
+   **CITED 2026-07-10** (`psomopoulou2021pinching`, §II lane (b)): rolling as
+   controlled resource vs. our rolling as failure mode; they regulate to a
+   commanded force, we prescribe the minimal admissible one.
+
 **Recommended §II/Conclusion wording** (consistent with grilling decision Q6 —
 drop "first characterization"): claim only a *measured effective-friction map*
 and a *validated minimal grip-force rule* for soft tactile fingertips under
@@ -81,10 +100,12 @@ learned-control lines above.
 - [x] arXiv 2410.19684 contrast citation added (`jang2024soft`) → 16 entries,
       per recommendation; authors verified via arXiv abs page.
 - [ ] Decide whether `johnson2009retrographic` survives page pressure.
-- [ ] Page/DOI fields marked from search summaries (Chorley ICAR 2009 has no
-      DOI; Howe ICRA 1989 page range 145–150 inferred; Masterjohn DOI string
-      10.1109/LRA.2022.3203210 inferred from Xplore doc 9874987) — re-verify
-      against the publisher PDF at LaTeX-compile time.
+- [x] Audit 2026-07-10 (Crossref, all 14 DOI-bearing entries): Howe ICRA 1989
+      pages 145–150 CONFIRMED; Masterjohn DOI was WRONG (10.1109/LRA.2022.3203210
+      does not resolve) → corrected to 10.1109/LRA.2022.3203845; Xydas & Kao 1999
+      issue was WRONG (8) → corrected to 9 (IJRR 18(9):941–950). All other
+      titles/authors/volumes/pages/DOIs match Crossref exactly. Chorley ICAR 2009
+      remains DOI-less by design.
 - [x] Audit 2026-07-06: Tactile Gym 2.0 author list corrected to the 4-author
       list (Lin, Lloyd, Church, Lepora) per Bristol PURE + arXiv 2207.10763;
       Masterjohn/Yuan/Lin volume-issue-pages confirmed.
