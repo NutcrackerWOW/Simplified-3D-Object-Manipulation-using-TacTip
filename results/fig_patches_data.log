@@ -1,0 +1,12 @@
+disc: 2417 verts, |F| = 0.35 N
+cylinder: 2809 verts, |F| = 0.63 N
+sphere: 4685 verts, |F| = 0.79 N
+prism: 3103 verts, |F| = 0.59 N
+box: 3259 verts, |F| = 0.59 N
+disc_edge: 5354 verts, |F| = 0.75 N
+fail t_hold=0.05: 2601 verts, centroid z 0.1556
+fail t_hold=1.5: 3083 verts, centroid z 0.1557
+fail t_hold=3.0: 3762 verts, centroid z 0.1561
+fail t_hold=4.0: 4485 verts, centroid z 0.1569
+fail t_hold=4.3: 4462 verts, centroid z 0.1570
+→ results/fig_patches_data.npz

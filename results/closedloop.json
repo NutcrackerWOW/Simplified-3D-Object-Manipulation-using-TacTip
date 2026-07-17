@@ -1,0 +1,805 @@
+{
+  "summary": {
+    "roll_reg": {
+      "kp": 1000.0,
+      "limit": 0.25,
+      "rate": 0.7,
+      "filter_hz": 5.0
+    },
+    "arrest": {
+      "n": 10,
+      "held": 10,
+      "rot_deg_max": 1.58,
+      "fail_times_s": []
+    },
+    "boundaries": {
+      "open_30g": {
+        "f_star": 0.2088,
+        "mu_eff": 0.7048
+      },
+      "closed_30g": {
+        "f_star": 0.216,
+        "mu_eff": 0.6812
+      },
+      "open_60g": {
+        "f_star": 0.5765,
+        "mu_eff": 0.5105
+      },
+      "closed_60g": {
+        "f_star": 0.539,
+        "mu_eff": 0.546
+      },
+      "closed_50g": {
+        "f_star": 0.4173,
+        "mu_eff": 0.5878
+      }
+    }
+  },
+  "runs": [
+    {
+      "kind": "arrest",
+      "seed": 2,
+      "outcome": "held",
+      "held": true,
+      "fail_time_s": null,
+      "rot_deg": 1.48,
+      "drift_mm": 0.346
+    },
+    {
+      "kind": "arrest",
+      "seed": 5,
+      "outcome": "held",
+      "held": true,
+      "fail_time_s": null,
+      "rot_deg": 1.43,
+      "drift_mm": 0.327
+    },
+    {
+      "kind": "arrest",
+      "seed": 4,
+      "outcome": "held",
+      "held": true,
+      "fail_time_s": null,
+      "rot_deg": 1.37,
+      "drift_mm": 0.323
+    },
+    {
+      "kind": "arrest",
+      "seed": 3,
+      "outcome": "held",
+      "held": true,
+      "fail_time_s": null,
+      "rot_deg": 1.54,
+      "drift_mm": 0.349
+    },
+    {
+      "kind": "arrest",
+      "seed": 0,
+      "outcome": "held",
+      "held": true,
+      "fail_time_s": null,
+      "rot_deg": 1.5,
+      "drift_mm": 0.337
+    },
+    {
+      "kind": "arrest",
+      "seed": 6,
+      "outcome": "held",
+      "held": true,
+      "fail_time_s": null,
+      "rot_deg": 1.51,
+      "drift_mm": 0.334
+    },
+    {
+      "kind": "arrest",
+      "seed": 1,
+      "outcome": "held",
+      "held": true,
+      "fail_time_s": null,
+      "rot_deg": 1.54,
+      "drift_mm": 0.337
+    },
+    {
+      "kind": "arrest",
+      "seed": 7,
+      "outcome": "held",
+      "held": true,
+      "fail_time_s": null,
+      "rot_deg": 1.46,
+      "drift_mm": 0.328
+    },
+    {
+      "kind": "arrest",
+      "seed": 8,
+      "outcome": "held",
+      "held": true,
+      "fail_time_s": null,
+      "rot_deg": 1.58,
+      "drift_mm": 0.341
+    },
+    {
+      "kind": "arrest",
+      "seed": 9,
+      "outcome": "held",
+      "held": true,
+      "fail_time_s": null,
+      "rot_deg": 1.41,
+      "drift_mm": 0.325
+    },
+    {
+      "kind": "boundary",
+      "mass": 0.03,
+      "loop": "open",
+      "n_seeds": 5,
+      "n_bisect": 7,
+      "f_star": 0.2088,
+      "mu_eff": 0.7048,
+      "trials": [
+        {
+          "force": 0.4415,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4415,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4415,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4415,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4415,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.1486,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.2561,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2561,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2561,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2561,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2561,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.1951,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.2235,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2235,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2235,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2235,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2235,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2088,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2088,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2088,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2088,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2088,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2018,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.2053,
+          "seed": 0,
+          "outcome": "drift"
+        }
+      ]
+    },
+    {
+      "kind": "boundary",
+      "mass": 0.03,
+      "loop": "closed",
+      "n_seeds": 5,
+      "n_bisect": 7,
+      "f_star": 0.216,
+      "mu_eff": 0.6812,
+      "trials": [
+        {
+          "force": 0.4415,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4415,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4415,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4415,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4415,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.1486,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.2561,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2561,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2561,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2561,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2561,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.1951,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.2235,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2235,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2235,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2235,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2235,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2088,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.216,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.216,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.216,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.216,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.216,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2124,
+          "seed": 0,
+          "outcome": "drift"
+        }
+      ]
+    },
+    {
+      "kind": "boundary",
+      "mass": 0.06,
+      "loop": "open",
+      "n_seeds": 5,
+      "n_bisect": 7,
+      "f_star": 0.5765,
+      "mu_eff": 0.5105,
+      "trials": [
+        {
+          "force": 0.8829,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.8829,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.8829,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.8829,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.8829,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2101,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.4307,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.6167,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.6167,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.6167,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.6167,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.6167,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5154,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.5637,
+          "seed": 0,
+          "outcome": "drift"
+        },
+        {
+          "force": 0.5896,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5896,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5896,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5896,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5896,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5765,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5765,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5765,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5765,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5765,
+          "seed": 4,
+          "outcome": "held"
+        }
+      ]
+    },
+    {
+      "kind": "boundary",
+      "mass": 0.06,
+      "loop": "closed",
+      "n_seeds": 5,
+      "n_bisect": 7,
+      "f_star": 0.539,
+      "mu_eff": 0.546,
+      "trials": [
+        {
+          "force": 0.8829,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.8829,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.8829,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.8829,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.8829,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.2101,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.4307,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.6167,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.6167,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.6167,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.6167,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.6167,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5154,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.5637,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5637,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5637,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5637,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5637,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.539,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.539,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.539,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.539,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.539,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.527,
+          "seed": 0,
+          "outcome": "drop"
+        }
+      ]
+    },
+    {
+      "kind": "boundary",
+      "mass": 0.05,
+      "loop": "closed",
+      "n_seeds": 5,
+      "n_bisect": 7,
+      "f_star": 0.4173,
+      "mu_eff": 0.5878,
+      "trials": [
+        {
+          "force": 0.7358,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.7358,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.7358,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.7358,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.7358,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.1918,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.3757,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.5257,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5257,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5257,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5257,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.5257,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4444,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4444,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4444,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4444,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4444,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4086,
+          "seed": 0,
+          "outcome": "drop"
+        },
+        {
+          "force": 0.4261,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4261,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4261,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4261,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4261,
+          "seed": 4,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4173,
+          "seed": 0,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4173,
+          "seed": 1,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4173,
+          "seed": 2,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4173,
+          "seed": 3,
+          "outcome": "held"
+        },
+        {
+          "force": 0.4173,
+          "seed": 4,
+          "outcome": "held"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{'margin': 1.15, 'seed': 2, 'outcome': 'held', 'held': True, 'fail_time_s': None, 'rot_deg': 1.35}
+{'margin': 1.15, 'seed': 4, 'outcome': 'held', 'held': True, 'fail_time_s': None, 'rot_deg': 1.27}
+{'margin': 1.15, 'seed': 0, 'outcome': 'held', 'held': True, 'fail_time_s': None, 'rot_deg': 1.32}
+{'margin': 1.15, 'seed': 3, 'outcome': 'held', 'held': True, 'fail_time_s': None, 'rot_deg': 1.4}
+{'margin': 1.15, 'seed': 1, 'outcome': 'held', 'held': True, 'fail_time_s': None, 'rot_deg': 1.36}
+{'margin': 1.05, 'seed': 0, 'outcome': 'drop', 'held': False, 'fail_time_s': 3.06, 'rot_deg': 129.38}
+{'margin': 1.05, 'seed': 1, 'outcome': 'drop', 'held': False, 'fail_time_s': 3.4, 'rot_deg': 132.44}
+{'margin': 1.05, 'seed': 2, 'outcome': 'held', 'held': True, 'fail_time_s': None, 'rot_deg': 1.25}
+{'margin': 1.05, 'seed': 3, 'outcome': 'held', 'held': True, 'fail_time_s': None, 'rot_deg': 1.28}
+{'margin': 1.05, 'seed': 4, 'outcome': 'held', 'held': True, 'fail_time_s': None, 'rot_deg': 1.2}
+margin 1.15: held 5/5
+margin 1.05: held 3/5

@@ -45,6 +45,17 @@ class ModelParams:
     mu_dynamic_tip: float = 0.9
     mesh_resolution_hint: float = 0.003
     rotor_inertia: float = 1e-4    # kg·m² reflected; regularizes placeholder inertias
+    # Solver-sensitivity knobs (creep sensitivity study). Baseline = kSap with
+    # the plant's default stiction tolerance. Under kSap the friction
+    # regularization sigma is hard-coded in Drake (1e-3, dimensionless);
+    # kLagged/kSimilar regularize friction with the plant stiction tolerance,
+    # which is what stiction_tolerance controls here.
+    contact_approximation: str = "sap"       # sap | lagged | similar
+    stiction_tolerance: float | None = None  # m/s; None = plant default
+    # Tip relaxation_time (s): the dissipation knob kSap actually consumes
+    # (linear Kelvin-Voigt; Drake default 0.1 s per geometry when unset).
+    # hunt_crossley_dissipation above is consumed by kLagged/kSimilar/TAMSI.
+    relaxation_time: float | None = None     # s; None = Drake default
     # Joint limits (deg) — plan decision #1
     flex_lower_deg: float = -5.0
     flex_upper_deg: float = 90.0

@@ -1,0 +1,83 @@
+35 runs (7 conditions x 5 seeds), force 0.49 N, hold 14.3 s
+        base_sap seed=0: drop t_fail=5.42
+ dissipation_0.5 seed=0: drop t_fail=5.42
+ dissipation_0.5 seed=1: drop t_fail=6.165
+        base_sap seed=1: drop t_fail=6.165
+ dissipation_0.5 seed=4: drop t_fail=8.665
+        base_sap seed=4: drop t_fail=8.665
+   lagged_vs1e-3 seed=0: drop t_fail=1.255
+        base_sap seed=2: drop t_fail=10.115
+ dissipation_0.5 seed=2: drop t_fail=10.115
+   lagged_vs1e-3 seed=1: drop t_fail=1.275
+        base_sap seed=3: drop t_fail=11.065
+ dissipation_0.5 seed=3: drop t_fail=11.065
+   lagged_vs1e-3 seed=2: drop t_fail=1.58
+   lagged_vs1e-3 seed=3: drop t_fail=1.52
+ dissipation_3.0 seed=0: drop t_fail=5.42
+   lagged_vs1e-3 seed=4: drop t_fail=1.685
+ dissipation_3.0 seed=1: drop t_fail=6.165
+   lagged_vs1e-4 seed=0: drop t_fail=2.7
+   lagged_vs1e-4 seed=1: drop t_fail=3.155
+   lagged_vs1e-4 seed=4: drop t_fail=3.88
+   lagged_vs1e-5 seed=0: drop t_fail=3.8
+   lagged_vs1e-4 seed=2: drop t_fail=4.975
+   lagged_vs1e-4 seed=3: drop t_fail=5.585
+   lagged_vs1e-5 seed=1: drop t_fail=4.255
+ dissipation_3.0 seed=4: drop t_fail=8.665
+ dissipation_3.0 seed=2: drop t_fail=10.115
+  similar_vs1e-4 seed=0: drop t_fail=2.775
+  similar_vs1e-4 seed=1: drop t_fail=3.195
+   lagged_vs1e-5 seed=2: drop t_fail=6.215
+ dissipation_3.0 seed=3: drop t_fail=11.065
+   lagged_vs1e-5 seed=4: drop t_fail=4.655
+   lagged_vs1e-5 seed=3: drop t_fail=7.085
+  similar_vs1e-4 seed=2: drop t_fail=4.965
+  similar_vs1e-4 seed=4: drop t_fail=3.96
+  similar_vs1e-4 seed=3: drop t_fail=5.505
+base_sap: 5/5 failed, times [5.42, 6.165, 8.665, 10.115, 11.065]
+dissipation_0.5: 5/5 failed, times [5.42, 6.165, 8.665, 10.115, 11.065]
+dissipation_3.0: 5/5 failed, times [5.42, 6.165, 8.665, 10.115, 11.065]
+lagged_vs1e-3: 5/5 failed, times [1.255, 1.275, 1.52, 1.58, 1.685]
+lagged_vs1e-4: 5/5 failed, times [2.7, 3.155, 3.88, 4.975, 5.585]
+lagged_vs1e-5: 5/5 failed, times [3.8, 4.255, 4.655, 6.215, 7.085]
+similar_vs1e-4: 5/5 failed, times [2.775, 3.195, 3.96, 4.965, 5.505]
+→ results/creep_sensitivity.json
+25 new runs (35 cached), force 0.49 N, hold 14.3 s
+     sap_tau0.01 seed=0: drop t_fail=4.875
+      sap_tau0.1 seed=0: drop t_fail=5.42
+     sap_tau0.01 seed=1: drop t_fail=5.455
+      sap_tau0.1 seed=1: drop t_fail=6.165
+     sap_tau0.01 seed=4: drop t_fail=7.085
+      sap_tau0.1 seed=4: drop t_fail=8.665
+     sap_tau0.01 seed=2: drop t_fail=8.505
+     sap_tau0.01 seed=3: drop t_fail=9.365
+      sap_tau0.1 seed=2: drop t_fail=10.115
+      sap_tau0.1 seed=3: drop t_fail=11.065
+lagged_d0.5_vs1e-5 seed=0: drop t_fail=3.795
+lagged_d0.5_vs1e-5 seed=1: drop t_fail=4.245
+      sap_tau0.5 seed=0: drop t_fail=8.115
+lagged_d0.5_vs1e-5 seed=2: drop t_fail=6.215
+lagged_d0.5_vs1e-5 seed=4: drop t_fail=4.64
+lagged_d3.0_vs1e-5 seed=0: drop t_fail=3.82
+lagged_d3.0_vs1e-5 seed=1: drop t_fail=4.265
+      sap_tau0.5 seed=1: drop t_fail=9.06
+lagged_d0.5_vs1e-5 seed=3: drop t_fail=7.09
+lagged_d3.0_vs1e-5 seed=4: drop t_fail=4.675
+lagged_d3.0_vs1e-5 seed=2: drop t_fail=6.225
+lagged_d3.0_vs1e-5 seed=3: drop t_fail=7.07
+      sap_tau0.5 seed=2: held t_fail=None
+      sap_tau0.5 seed=4: held t_fail=None
+      sap_tau0.5 seed=3: held t_fail=None
+base_sap: 5/5 failed, times [5.42, 6.165, 8.665, 10.115, 11.065]
+dissipation_0.5: 5/5 failed, times [5.42, 6.165, 8.665, 10.115, 11.065]
+dissipation_3.0: 5/5 failed, times [5.42, 6.165, 8.665, 10.115, 11.065]
+lagged_vs1e-3: 5/5 failed, times [1.255, 1.275, 1.52, 1.58, 1.685]
+lagged_vs1e-4: 5/5 failed, times [2.7, 3.155, 3.88, 4.975, 5.585]
+lagged_vs1e-5: 5/5 failed, times [3.8, 4.255, 4.655, 6.215, 7.085]
+similar_vs1e-4: 5/5 failed, times [2.775, 3.195, 3.96, 4.965, 5.505]
+sap_tau0.01: 5/5 failed, times [4.875, 5.455, 7.085, 8.505, 9.365]
+sap_tau0.1: 5/5 failed, times [5.42, 6.165, 8.665, 10.115, 11.065]
+sap_tau0.5: 2/5 failed, times [8.115, 9.06]
+lagged_d0.5_vs1e-5: 5/5 failed, times [3.795, 4.245, 4.64, 6.215, 7.09]
+lagged_d3.0_vs1e-5: 5/5 failed, times [3.82, 4.265, 4.675, 6.225, 7.07]
+→ results/creep_sensitivity.json

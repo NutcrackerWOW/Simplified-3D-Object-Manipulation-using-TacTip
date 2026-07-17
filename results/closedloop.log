@@ -1,0 +1,52 @@
+arrest seed=2: held rot=1.48deg
+arrest seed=5: held rot=1.43deg
+arrest seed=4: held rot=1.37deg
+arrest seed=3: held rot=1.54deg
+arrest seed=0: held rot=1.5deg
+arrest seed=6: held rot=1.51deg
+arrest seed=1: held rot=1.54deg
+arrest seed=7: held rot=1.46deg
+arrest seed=8: held rot=1.58deg
+arrest seed=9: held rot=1.41deg
+boundary open 30g: f*=0.209 mu_eff=0.705
+boundary closed 30g: f*=0.216 mu_eff=0.681
+boundary open 60g: f*=0.577 mu_eff=0.510
+boundary closed 60g: f*=0.539 mu_eff=0.546
+boundary closed 50g: f*=0.417 mu_eff=0.588
+{
+  "roll_reg": {
+    "kp": 1000.0,
+    "limit": 0.25,
+    "rate": 0.7,
+    "filter_hz": 5.0
+  },
+  "arrest": {
+    "n": 10,
+    "held": 10,
+    "rot_deg_max": 1.58,
+    "fail_times_s": []
+  },
+  "boundaries": {
+    "open_30g": {
+      "f_star": 0.2088,
+      "mu_eff": 0.7048
+    },
+    "closed_30g": {
+      "f_star": 0.216,
+      "mu_eff": 0.6812
+    },
+    "open_60g": {
+      "f_star": 0.5765,
+      "mu_eff": 0.5105
+    },
+    "closed_60g": {
+      "f_star": 0.539,
+      "mu_eff": 0.546
+    },
+    "closed_50g": {
+      "f_star": 0.4173,
+      "mu_eff": 0.5878
+    }
+  }
+}
+→ results/closedloop.json

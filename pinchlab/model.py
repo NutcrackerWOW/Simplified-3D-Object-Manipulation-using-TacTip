@@ -52,12 +52,15 @@ ACTUATED_JOINTS = _WAVE_JOINT_NAMES + _FLEX_JOINT_NAMES
 
 
 def _tip_proximity_block(mp: ModelParams) -> str:
+    relax = ("" if mp.relaxation_time is None else
+             f"        <drake:relaxation_time value=\"{mp.relaxation_time}\"/>\n")
     return (
         "<drake:proximity_properties>\n"
         "        <drake:compliant_hydroelastic/>\n"
         f"        <drake:mesh_resolution_hint value=\"{mp.mesh_resolution_hint}\"/>\n"
         f"        <drake:hydroelastic_modulus value=\"{mp.hydro_modulus:.3g}\"/>\n"
         f"        <drake:hunt_crossley_dissipation value=\"{mp.dissipation}\"/>\n"
+        f"{relax}"
         f"        <drake:mu_static value=\"{mp.mu_static_tip}\"/>\n"
         f"        <drake:mu_dynamic value=\"{mp.mu_dynamic_tip}\"/>\n"
         "      </drake:proximity_properties>"
@@ -184,7 +187,12 @@ def build_scene(mp: ModelParams | None = None,
     _weld_hand(plant, mp)
     box_body = _add_box(plant, box) if box is not None else None
 
-    plant.set_discrete_contact_approximation(DiscreteContactApproximation.kSap)
+    approx = {"sap": DiscreteContactApproximation.kSap,
+              "lagged": DiscreteContactApproximation.kLagged,
+              "similar": DiscreteContactApproximation.kSimilar}
+    plant.set_discrete_contact_approximation(approx[mp.contact_approximation])
+    if mp.stiction_tolerance is not None:
+        plant.set_stiction_tolerance(mp.stiction_tolerance)
     plant.set_contact_model(ContactModel.kHydroelasticWithFallback)
     for i in range(plant.num_actuators()):
         plant.get_joint_actuator(JointActuatorIndex(i)).set_default_rotor_inertia(

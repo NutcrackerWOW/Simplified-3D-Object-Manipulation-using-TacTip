@@ -74,7 +74,8 @@ def fig1():
     r_dome = float(np.linalg.norm(pts["L"][-1] - g.p_WA * 1e3))
 
     fig = plt.figure(figsize=(7.16, 2.6))
-    gs = fig.add_gridspec(1, 3, width_ratios=[0.8, 0.95, 1.1], wspace=0.35)
+    gs = fig.add_gridspec(1, 4, width_ratios=[0.8, 0.42, 0.95, 1.1],
+                          wspace=0.38)
 
     # (a) FK schematic at the reference grasp (x-z plane)
     ax = fig.add_subplot(gs[0, 0])
@@ -108,8 +109,55 @@ def fig1():
     ax.set_aspect("equal"); ax.axis("off")
     ax.set_title("(a) pinch testbed", loc="left")
 
-    # (b) contact decomposition frame
-    ax = fig.add_subplot(gs[0, 1])
+    # (b) what the two posture parameters look like (small FK icons)
+    from pinchlab.model import set_posture as _setp
+
+    def mini_hand(ax, posture, plane, box_rot_deg=0.0):
+        _setp(kin.plant, kin.plant_ctx, posture)
+        cols = {"xz": (0, 2), "yz": (1, 2)}[plane]
+        for s in "LR":
+            p = np.array([kin.plant.EvalBodyPoseInWorld(
+                kin.plant_ctx, kin.plant.GetBodyByName(n.format(s=s))
+            ).translation() for n in chain]) * 1e3
+            xz = p[:, cols]
+            ax.plot(xz[:, 0], xz[:, 1], "-", color=SEC, lw=1.5,
+                    solid_capstyle="round", zorder=2)
+            ax.add_patch(plt.Circle((xz[-1, 0], xz[-1, 1]), r_dome,
+                                    facecolor="#eeede9", edgecolor=MUT,
+                                    lw=0.6, zorder=3))
+        gg = kin.gap(posture)
+        m = (gg.mid * 1e3)[list(cols)]
+        hw, hh = (12, 6) if plane == "xz" else (6, 6)
+        th = np.deg2rad(box_rot_deg)
+        c, s_ = np.cos(th), np.sin(th)
+        Rm = np.array([[c, -s_], [s_, c]])
+        corners = np.array([[-hw, -hh], [hw, -hh], [hw, hh], [-hw, hh]])
+        pts_b = corners @ Rm.T + m
+        ax.fill(pts_b[:, 0], pts_b[:, 1], facecolor=SEQ[1],
+                edgecolor=BLUE, lw=0.7, zorder=4)
+        ax.set_aspect("equal"); ax.axis("off")
+
+    gsb = gs[0, 1].subgridspec(2, 1, hspace=0.42)
+    axp = fig.add_subplot(gsb[0])
+    p_phi, _ = kin.solve_mcp_for_gap(deg(15.0), deg(0.0), 0.024)
+    mini_hand(axp, p_phi, plane="yz", box_rot_deg=15.0)
+    axp.set_xlim(-34, 34); axp.set_ylim(135, 215)
+    axp.set_title("(b) posture params", loc="left")
+    axp.text(0.5, -0.04, "grasp tilt φ = +15° (side)",
+             transform=axp.transAxes, fontsize=6, color=INK,
+             ha="center", va="top")
+    axt = fig.add_subplot(gsb[1])
+    p_th, _ = kin.solve_mcp_for_gap(deg(0.0), deg(8.0), 0.024)
+    mini_hand(axt, p_th, plane="xz")
+    axt.set_xlim(-14, 76); axt.set_ylim(135, 215)
+    axt.text(0.5, -0.04, "PIP flexion θ = +8° (front)",
+             transform=axt.transAxes, fontsize=6, color=INK,
+             ha="center", va="top")
+    # restore the reference posture for any later FK users
+    _setp(kin.plant, kin.plant_ctx, posture)
+
+    # (c) contact decomposition frame
+    ax = fig.add_subplot(gs[0, 2])
     for xc in (-17.5, 17.5):
         ax.add_patch(plt.Circle((xc, 0), 5.5, facecolor="#eeede9",
                                 edgecolor=MUT, lw=0.8, zorder=2))
@@ -136,14 +184,14 @@ def fig1():
     ax.text(ox + 8, oz - 1, "e₁", fontsize=6.5, color=INK)
     ax.text(ox - 1, oz + 8.5, "e₂", fontsize=6.5, color=INK)
     ax.text(ox - 4.5, oz - 4.5, "e₃", fontsize=6.5, color=INK)
-    ax.text(0, -17.5, "ρ = ‖(f₂, f₃)‖ / f₁     hold ⇔ ρ < μ_eff",
-            fontsize=7, color=INK, ha="center")
-    ax.set_xlim(-30, 36); ax.set_ylim(-21, 20)
+    ax.text(0, -14.5, "ρ = ‖(f₂, f₃)‖ / f₁\nhold ⇔ ρ < μ_eff",
+            fontsize=7, color=INK, ha="center", va="top")
+    ax.set_xlim(-30, 36); ax.set_ylim(-24, 20)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.set_title("(b) grasp frame & utilization", loc="left")
+    ax.set_title("(c) grasp frame & utilization", loc="left")
 
-    # (c) thin grasp manifold: pad gap vs MCP flexion
-    ax = fig.add_subplot(gs[0, 2])
+    # (d) thin grasp manifold: pad gap vs MCP flexion
+    ax = fig.add_subplot(gs[0, 3])
     mcps = np.linspace(-2.0, 12.0, 57)
     gaps = np.array([kin.gap(Posture.symmetric(0.0, deg(m), 0.0)).distance
                      for m in mcps]) * 1e3
@@ -167,7 +215,7 @@ def fig1():
     ax.set_xlim(-2, 14.5); ax.set_ylim(-4, 38)
     ax.set_xlabel("MCP flexion (°)"); ax.set_ylabel("pad gap (mm)")
     ax.grid(True, axis="y")
-    ax.set_title("(c) thin grasp manifold (φ = 0, θ = 0)", loc="left")
+    ax.set_title("(d) thin grasp manifold (φ = 0, θ = 0)", loc="left")
     save(fig, "F1_setup")
 
 
@@ -177,7 +225,7 @@ def fig2():
     t, ph = d["t"], d["phase"]
     box_p, box_R = d["box_p"], d["box_R"]
     rot = np.rad2deg(d["rot_drift"]); drift = 1e3 * d["drift"]
-    i0 = int(np.nonzero(rot > 0)[0][0])          # hold start
+    i0 = int(np.nonzero(ph == 3)[0][0])          # hold start
     R0 = box_R[i0]
 
     def pitch(i):                                 # rotation about world y
@@ -229,28 +277,58 @@ def fig2():
              fontsize=7, ha="left", va="center", style="italic")
 
     th = t[i0:] - t[i0]
+    i_fail = i0 + int(np.nonzero(drift[i0:] > 2.0)[0][0])
+    rot_budget = rot[i_fail]                     # rotation at roll-off
+
+    # (bottom left) both failure coordinates, each normalized by its own
+    # criterion: rotation spends its budget while drift idles.
     axr = fig.add_subplot(gs[1, 0:10])
-    axr.plot(th, rot[i0:], color=BLUE, lw=1.2)
-    axr.set_xlabel("time in hold (s)"); axr.set_ylabel("box rotation (°)")
-    axr.set_ylim(0, 200); axr.grid(True, axis="y")
+    axr.axhline(1.0, color=CRIT, lw=0.8, ls="--", zorder=1)
+    axr.plot(th, rot[i0:] / rot_budget, color=BLUE, lw=1.4, zorder=3)
+    axr.plot(th, drift[i0:] / 2.0, color=AQUA, lw=1.4, zorder=3)
+    axr.text(0.12, 0.50, f"rotation / {rot_budget:.0f}°\n(value at roll-off)",
+             color=BLUE, fontsize=6.5)
+    axr.text(2.15, 0.16, "drift / 2 mm (criterion)", color="#0f7a54",
+             fontsize=6.5)
+    axr.text(th[-1] - 0.04, 1.05, "failure criterion", color=CRIT,
+             fontsize=6, ha="right", va="bottom")
+    axr.set_xlabel("time in hold (s)")
+    axr.set_ylabel("fraction of own\nfailure criterion")
+    axr.set_ylim(0, 1.55); axr.grid(True, axis="y")
+    axr.set_title("(f) failure coordinates, normalized", loc="left",
+                  fontsize=7.5)
+
+    # (bottom right) the contact interface itself: relative tangential
+    # speed at each contact — stick through the creep, breaking only at
+    # roll-off, while the patch centroid migrates (rolling).
     axd = fig.add_subplot(gs[1, 12:21])
-    axd.plot(th, drift[i0:], color=BLUE, lw=1.2)
-    axd.axhline(2.0, color=CRIT, lw=0.8, ls="--")
-    axd.text(0.15, 3.0, "2 mm slip threshold", color=CRIT, fontsize=6.5)
-    axd.set_xlabel("time in hold (s)"); axd.set_ylabel("drift (mm)")
-    axd.set_ylim(0, 25); axd.grid(True, axis="y")
+    sl = np.maximum(1e3 * d["slide_L"][i0:], 1e-4)
+    sr = np.maximum(1e3 * d["slide_R"][i0:], 1e-4)
+    axd.semilogy(th, sl, color=BLUE, lw=1.0, zorder=3)
+    axd.semilogy(th, sr, color=AQUA, lw=1.0, zorder=3)
+    axd.axhline(5.0, color=CRIT, lw=0.8, ls="--", zorder=2)
+    axd.text(0.12, 14.0, "5 mm/s sliding criterion", color=CRIT,
+             fontsize=6.5)
+    axd.text(1.15, 2.3e-3, "L contact", color=BLUE, fontsize=6.5)
+    axd.text(2.45, 0.90, "R contact", color="#0f7a54", fontsize=6.5)
+    axd.set_xlabel("time in hold (s)")
+    axd.set_ylabel("interfacial slip (mm/s)")
+    axd.set_ylim(1e-4, 4e2); axd.grid(True, axis="y")
+    axd.set_title("(g) the interface sticks while the box rotates",
+                  loc="left", fontsize=7.5)
     for ax in (axr, axd):
         for i in idxs:
             ax.axvline(t[i] - t[i0], color=GRID, lw=0.6, zorder=0)
         ax.set_xlim(0, th[-1])
-    # snapshot letters above the rotation trace ("c-e" cluster shares one)
-    for i, lab in list(zip(idxs, labels))[:2]:
-        axr.annotate(lab, xy=(t[i] - t[i0], 200), xytext=(0, 2),
-                     textcoords="offset points", color=MUT, fontsize=6.5,
-                     ha="center", va="bottom", annotation_clip=False)
-    axr.annotate("c–e", xy=(t[idxs[3]] - t[i0], 200), xytext=(0, 2),
-                 textcoords="offset points", color=MUT, fontsize=6.5,
-                 ha="center", va="bottom", annotation_clip=False)
+    # snapshot letters above both panels ("c-e" cluster shares one)
+    for ax, ytop in ((axr, 1.55), (axd, 4e2)):
+        for i, lab in list(zip(idxs, labels))[:2]:
+            ax.annotate(lab, xy=(t[i] - t[i0], ytop), xytext=(0, 2),
+                        textcoords="offset points", color=MUT, fontsize=6.5,
+                        ha="center", va="bottom", annotation_clip=False)
+        ax.annotate("c–e", xy=(t[idxs[3]] - t[i0], ytop), xytext=(0, 2),
+                    textcoords="offset points", color=MUT, fontsize=6.5,
+                    ha="center", va="bottom", annotation_clip=False)
     save(fig, "F2_rolling")
 
 
@@ -295,20 +373,27 @@ def fig3():
     cols = [BLUE if k == "fric" else AQUA for _, _, k in mats]
     pair = [0.45, 0.85, 1.03, None, None, None]
     y = np.arange(len(names))[::-1]
-    for yi, v, c in zip(y, vals, cols):
+    for yi, v, c, pm in zip(y, vals, cols, pair):
         if v is None:
-            b.text(0.02, yi, "no stable window", va="center",
-                   fontsize=6.5, color=CRIT)
+            b.axhspan(yi - 0.31, yi + 0.31, color="#f6dcdc", zorder=2)
+            b.text(0.50, yi, "no stable window (roll-out floor above "
+                   "ejection ceiling)", va="center", fontsize=6,
+                   color=CRIT, zorder=3)
         else:
             b.barh(yi, v, height=0.62, color=c, zorder=3)
             b.text(v + 0.015, yi, f"{v:.2f}", va="center", fontsize=6.5,
                    color=SEC)
+            # rolling discount, inside the bar (friction rows only)
+            if pm:
+                b.text(v - 0.02, yi, f"{v/pm:.2f}× pair", va="center",
+                       ha="right", fontsize=5.8, color="white", zorder=4)
     for yi, pm in zip(y, pair):
         if pm:
             b.plot(pm, yi, marker="D", ms=3.5, color=INK, zorder=4)
-    # direct label on the top-most diamond instead of a legend box
-    b.annotate("Coulomb pair μd", xy=(0.45, y[0]), xytext=(0.56, y[0] + 0.05),
-               fontsize=6.5, color=SEC, va="center",
+    # direct label on the μd 0.85 row's diamond (clear space above it)
+    b.annotate("Coulomb pair μd", xy=(0.85, y[1] + 0.10),
+               xytext=(0.88, y[1] + 0.62), fontsize=6.5, color=SEC,
+               va="center",
                arrowprops=dict(arrowstyle="-", color=MUT, lw=0.6))
     b.set_yticks(y, names, fontsize=7)
     b.set_xlim(0, 1.12); b.set_xlabel("μ_eff")
@@ -335,8 +420,9 @@ def fig4():
     vmin, vmax = 0.3, 0.9
 
     fig = plt.figure(figsize=(7.16, 2.3))
-    gs = fig.add_gridspec(1, 5, width_ratios=[1, 1, 0.05, 0.22, 1.2],
-                          wspace=0.4)
+    gs = fig.add_gridspec(1, 7,
+                          width_ratios=[1, 1, 0.05, 0.24, 1.05, 0.24, 1.15],
+                          wspace=0.35)
     for k, m in enumerate((0.03, 0.06)):
         ax = fig.add_subplot(gs[0, k])
         sub = conds[conds["mass"] == m]
@@ -347,6 +433,14 @@ def fig4():
                            np.arange(len(pips) + 1), Z, cmap=cmap,
                            vmin=vmin, vmax=vmax, edgecolors="white",
                            linewidth=1.2)
+        # cells with no stable boundary at 2-seed resolution: fill + mark
+        for i in range(len(pips)):
+            for j in range(len(waves)):
+                if np.isnan(Z[i, j]):
+                    ax.add_patch(plt.Rectangle((j, i), 1, 1,
+                                               facecolor="#efeee9", lw=0))
+                    ax.text(j + 0.5, i + 0.5, "–", ha="center",
+                            va="center", fontsize=7, color=MUT)
         # regime hatches (hatch ink chosen against the cell lightness:
         # support cells are dark -> white, fragile cells light -> gray)
         for _, r in sub.iterrows():
@@ -374,12 +468,39 @@ def fig4():
     cax.tick_params(length=0)
     fig.axes[0].text(0.02, -0.32,
                      "hatched: /// support regime,  xxx fragile "
-                     "(seed-bimodal) — excluded from the fit",
+                     "(seed-bimodal) — excluded from the fit;  "
+                     "“–”: no stable force found (seed-limited)",
                      transform=fig.axes[0].transAxes, fontsize=6.5,
                      color=SEC)
 
-    # (c) force window vs mass at reference posture
+    # (c) flatness: μ_eff vs PIP flexion, one line per mass, bootstrap CI
+    # of the across-tilt mean — the plot behind "flat in posture".
     ax = fig.add_subplot(gs[0, 4])
+    rng = np.random.default_rng(7)
+    for m, col, fill in ((0.03, SEQ[5], SEQ[1]), (0.06, SEQ[3], SEQ[0])):
+        sub = conds[(conds["mass"] == m) & (conds.regime == "friction")
+                    & (conds.pip_deg >= 0.0) & np.isfinite(conds.mu_eff)]
+        th = sorted(sub.pip_deg.unique())
+        mean, lo, hi = [], [], []
+        for p in th:
+            v = sub[sub.pip_deg == p].mu_eff.to_numpy()
+            bs = np.array([rng.choice(v, len(v)).mean()
+                           for _ in range(2000)])
+            mean.append(v.mean())
+            lo.append(np.percentile(bs, 2.5))
+            hi.append(np.percentile(bs, 97.5))
+        ax.fill_between(th, lo, hi, color=fill, alpha=0.75, lw=0, zorder=2)
+        ax.plot(th, mean, "-o", ms=2.6, lw=1.1, color=col, zorder=3)
+        dy = 0.035 if m == 0.03 else -0.045
+        ax.text(th[-1] + 0.25, mean[-1] + dy, f"{int(m*1000)} g",
+                color=col, fontsize=6.5, va="center")
+    ax.set_xlabel("PIP flexion θ (°)"); ax.set_ylabel("μ_eff")
+    ax.set_ylim(0.45, 1.0); ax.set_xlim(-0.5, 11.8)
+    ax.grid(True, axis="y")
+    ax.set_title("(c) flat in posture (95% CI)", loc="left")
+
+    # (d) force window vs mass at reference posture
+    ax = fig.add_subplot(gs[0, 6])
     masses = np.array([30, 60])
     fstar = np.array([0.195, 0.49])
     ax.fill_between([20, 130], 2.5, 3.2, color="#f6dcdc", zorder=1)
@@ -395,22 +516,24 @@ def fig4():
                       for m in mm])
     ax.fill_between(mm, 2.0 * fpred, 2.5, where=2.0 * fpred < 2.5,
                     color="#e4efe9", zorder=1)
-    ax.plot(mm, fpred, color=BLUE, lw=1.2)
-    ax.plot(mm, 2.0 * fpred, color=AQUA, lw=1.2)
-    # direct labels on the curves (no legend box)
-    ax.text(64, 0.28, "boundary f*", color=BLUE, fontsize=6.5,
+    # measured masses as points; the smooth curves are the fitted rule,
+    # dashed to mark them as interpolation between three measured masses
+    ax.plot(mm, fpred, color=BLUE, lw=1.1, ls=(0, (4, 2)))
+    ax.plot(mm, 2.0 * fpred, color=AQUA, lw=1.1, ls=(0, (4, 2)))
+    ax.text(64, 0.28, "boundary f* (fit)", color=BLUE, fontsize=6.5,
             rotation=14)
-    ax.text(38, 0.85, "2.0× f* (creep-safe)", color="#0f7a54",
-            fontsize=6.5, rotation=28)
-    ax.text(60, 1.95, "stable window", color="#0f7a54", fontsize=6.5,
+    ax.text(30, 0.72, "2.0× f* (creep-safe)", color="#0f7a54",
+            fontsize=6.5, rotation=30)
+    ax.text(58, 2.05, "stable window", color="#0f7a54", fontsize=6.5,
             style="italic")
-    ax.plot(masses, fstar, "o", ms=4, color=BLUE, zorder=4)
+    ax.plot(masses, fstar, "o", ms=4.5, color=BLUE, zorder=4)
+    ax.text(23, 0.34, "measured", color=BLUE, fontsize=6)
     ax.plot([120], [1.5], marker="x", ms=5, color=CRIT, mew=1.4, zorder=4)
-    ax.text(118, 1.12, "120 g: window\nclosed", color=CRIT, fontsize=6,
-            ha="right", va="top")
+    ax.text(128, 1.28, "120 g:\nwindow closed\n(measured)", color=CRIT,
+            fontsize=6, ha="right", va="top")
     ax.set_xlim(20, 130); ax.set_ylim(0, 3.2)
     ax.set_xlabel("object mass (g)"); ax.set_ylabel("squeeze force f1 (N)")
-    ax.set_title("(c) force window, reference posture", loc="left")
+    ax.set_title("(d) force window, reference posture", loc="left")
     ax.grid(True, axis="y")
     save(fig, "F4_envelope")
 
@@ -436,7 +559,7 @@ def fig5():
         a.plot([m - s, m + s], [y0 - 0.28] * 2, color=INK, lw=0.9)
         a.plot(m, y0 - 0.28, marker="|", ms=5, color=INK, mew=1.2)
     a.set_yticks([0, 1], ["motionless", "moving ±10°"], fontsize=7)
-    a.set_xlabel("failure time (s), margin 1.3")
+    a.set_xlabel("failure time from trial start (s), margin 1.3")
     a.set_xlim(4, 12); a.set_ylim(-0.75, 1.5)
     a.grid(True, axis="x"); a.tick_params(left=False)
     a.spines["left"].set_visible(False)
@@ -456,10 +579,12 @@ def fig5():
         ys = [dts.index(dt) for dt in dts if dt in vals]
         xs = [vals[dt] for dt in dts if dt in vals]
         b.plot(xs, ys, "-o", ms=3, lw=0.7, color=BLUE, alpha=0.85)
-    b.set_yticks(range(len(dts)), [f"{d:g} ms" for d in dts], fontsize=7)
+    b.yaxis.tick_right()
+    b.set_yticks(range(len(dts)), [f"Δt = {d:g} ms" for d in dts],
+                 fontsize=7)
     b.set_xlabel("failure time (s)")
     b.set_ylim(-0.5, 2.5); b.set_xlim(4, 12)
-    b.grid(True, axis="x"); b.tick_params(left=False)
+    b.grid(True, axis="x"); b.tick_params(left=False, right=False)
     b.spines["left"].set_visible(False)
     b.set_title("(b) time-step control", loc="left")
     save(fig, "F5_creep")
@@ -507,24 +632,29 @@ def fig6():
     ax.set_ylim(1e-9, 1e-1)
     ax.set_title("(a) slip episode, 100 Hz sensor", loc="left")
 
-    # (b) floor spread across conditions
+    # (b) floor spread across conditions, sorted by floor height so the
+    # 72x spread reads as one monotone sweep
     ax = fig.add_subplot(gs[0, 1])
     conds = sorted({(e["wave"], e["pip"], e["mass"]) for e in E})
-    xf, yf, ys = [], [], []
-    for i, c in enumerate(conds):
+    rows = []
+    for c in conds:
         fl = [floor_of(e) for e in train if e["cond"] == c]
         if fl:
-            xf.append(i); yf.append(3 * max(fl))
-            ys.append(scheduled_thr(
-                fcoef, next(e for e in train if e["cond"] == c)))
-    ax.semilogy(xf, yf, "o", ms=3.4, color=MUT)
-    ax.semilogy(xf, ys, "_", ms=7, color=BLUE, mew=1.4)
+            rows.append((3 * max(fl), scheduled_thr(
+                fcoef, next(e for e in train if e["cond"] == c))))
+    rows.sort(key=lambda r: r[0])
+    xf = np.arange(len(rows))
+    yf = [r[0] for r in rows]; ys = [r[1] for r in rows]
+    ax.semilogy(xf, yf, "o", ms=3.4, color=MUT,
+                label="3× measured floor")
+    ax.semilogy(xf, ys, "_", ms=7, color=BLUE, mew=1.4,
+                label="scheduled model")
     ax.axhline(thr_global, color=CRIT, lw=1.0)
-    ax.text(max(xf), thr_global * 0.5, "global 3×max floor", fontsize=6.5,
+    ax.text(xf[-1], thr_global * 0.5, "global 3×max floor", fontsize=6.5,
             color=CRIT, ha="right", va="top")
-    ax.text(0.2, 7.5e-4, "3× measured floor", fontsize=6, color=SEC)
-    ax.text(0.2, 4.2e-4, "scheduled model", fontsize=6, color=BLUE)
-    ax.set_xlabel("condition (posture × mass)")
+    ax.legend(loc="upper left", fontsize=6, handletextpad=0.4,
+              borderaxespad=0.2)
+    ax.set_xlabel("condition, sorted by floor")
     ax.set_ylabel("threshold (N²)")
     ax.set_title("(b) 72× floor spread", loc="left")
 
@@ -545,8 +675,240 @@ def fig6():
     save(fig, "F6_slip")
 
 
+# ----------------------------------------------------- F7 the rule itself
+def fig7():
+    """mu_eff vs mass: measured conditions with seed-noise error bars, the
+    one-line rule with a bootstrap CI band, and the 16 held-out probe
+    brackets the rule must (and does) thread."""
+    from pinchlab.fit import mu_eff_from_boundary, classify_regimes
+    conds = mu_eff_from_boundary(
+        pd.read_csv(os.path.join(RESULTS, "sweepB_conditions.csv")))
+    conds = classify_regimes(conds)
+    conds.loc[(conds.regime == "friction") & (conds.pip_deg == -5.0),
+              "regime"] = "fragile"
+    fr = conds[(conds.regime == "friction") & np.isfinite(conds.mu_eff)
+               & (conds.pip_deg >= 0.0)]
+    sig = {0.03: 0.015, 0.06: 0.0894}
+
+    with open(os.path.join(RESULTS,
+                           "sweepB_equation_validation.json")) as fh:
+        val = json.load(fh)
+
+    fig, ax = plt.subplots(figsize=(3.5, 2.5))
+    rng = np.random.default_rng(3)
+
+    # measured conditions (jittered), seed-noise error bars
+    for m in (0.03, 0.06):
+        v = fr[fr["mass"] == m].mu_eff.to_numpy()
+        x = 1e3 * m + rng.uniform(-1.6, 1.6, len(v))
+        ax.errorbar(x, v, yerr=sig[m] * v, fmt="o", ms=2.6, color=BLUE,
+                    ecolor=SEQ[2], elinewidth=0.6, capsize=0, zorder=3)
+
+    # bootstrap CI band of the mass-only WLS rule over the fitted rows
+    mg = np.linspace(25, 95, 60)
+    masses = fr["mass"].to_numpy()
+    mus = fr.mu_eff.to_numpy()
+    w = 1.0 / np.array([sig[m] for m in masses]) ** 2
+    boots = np.empty((2000, len(mg)))
+    for b in range(2000):
+        idx = rng.integers(0, len(mus), len(mus))
+        A = np.stack([np.ones(len(idx)), masses[idx] - 0.045], axis=1)
+        W = w[idx]
+        coef, *_ = np.linalg.lstsq((A.T * W).T, mus[idx] * W, rcond=None)
+        boots[b] = coef[0] + coef[1] * (mg / 1e3 - 0.045)
+    ax.fill_between(mg, np.percentile(boots, 2.5, axis=0),
+                    np.percentile(boots, 97.5, axis=0), color=SEQ[1],
+                    alpha=0.6, lw=0, zorder=2)
+    line = 0.7069 - 4.1958 * (mg / 1e3 - 0.045)
+    ins = mg <= 62
+    ax.plot(mg[ins], line[ins], color=INK, lw=1.3, zorder=4)
+    ax.plot(mg[~ins], line[~ins], color=INK, lw=1.1, ls=(0, (4, 2)),
+            zorder=4)
+    ax.text(23.5, 0.44, "μ_eff = 0.71 − 4.2 (m − 0.045)", fontsize=7,
+            color=INK)
+    ax.text(29, 0.90, "measured\nconditions", fontsize=6.2, color=BLUE,
+            ha="center")
+    ax.text(70, 0.72, "fit ± 95% CI\n(dashed: beyond\nfitted masses)",
+            fontsize=6.2, color=SEC)
+
+    # held-out probes: held at 1.25x prediction, dropped at 0.6x, so the
+    # true boundary lies inside [mu_pred/1.25, mu_pred/0.6] — the rule
+    # must thread every bracket (16/16 do; 90 g is out-of-envelope).
+    probes = [(p["mass"], (p["mass"] * 9.81 / 2) / p["f_pred"], True)
+              for p in val["in_envelope"]]
+    probes += [(p["mass"], (p["mass"] * 9.81 / 2) / p["f_pred"], False)
+               for p in val["out_of_envelope"]
+               if p.get("ok") and p["mass"] <= 0.1]
+    seen = {}
+    for m, mu_pred, in_env in probes:
+        x = 1e3 * m + seen.get(m, 0.0)
+        seen[m] = seen.get(m, 0.0) + 1.1
+        lo, hi = mu_pred / 1.25, mu_pred / 0.6
+        col = AQUA if in_env else MUT
+        ax.plot([x, x], [lo, hi], color=col, lw=1.0, alpha=0.85, zorder=2)
+        for yy in (lo, hi):
+            ax.plot([x - 0.55, x + 0.55], [yy, yy], color=col, lw=1.0,
+                    alpha=0.85, zorder=2)
+    ax.text(41, 1.32, "held-out brackets:\nheld at 1.25×, dropped at 0.6×",
+            fontsize=6.2, color="#0f7a54")
+    ax.text(84, 0.94, "90 g probe\n(beyond envelope)", fontsize=6,
+            color=MUT, ha="center")
+
+    ax.set_xlim(22, 97); ax.set_ylim(0.3, 1.55)
+    ax.set_xlabel("object mass (g)"); ax.set_ylabel("μ_eff")
+    ax.grid(True, axis="y")
+    ax.set_title("the rule, its uncertainty, and its held-out test",
+                 loc="left")
+    save(fig, "F7_rule")
+
+
+# ------------------------------------------- F8 solver sensitivity controls
+def fig8():
+    """Failure time of the margin-1.3 motionless hold vs every solver knob
+    that could have manufactured the creep. Flat rows are the result."""
+    with open(os.path.join(RESULTS, "creep_sensitivity.json")) as fh:
+        cs = json.load(fh)["summary"]
+    with open(os.path.join(RESULTS, "creep_timestep_control.json")) as fh:
+        cc = json.load(fh)["summary"]
+    T0 = 1.23           # hold start (s from trial start)
+    WIN = 14.3 - T0     # observation window, in-hold
+
+    rows = [
+        ("Δt = 2 ms (baseline)", cs["base_sap"]["fail_times_s"], 0),
+        ("Δt = 1 ms", cc["1ms"]["fail_times_s"], 0),
+        ("Δt = 0.5 ms", cc["0.5ms"]["fail_times_s"], 0),
+        ("τ = 0.01 s", cs["sap_tau0.01"]["fail_times_s"], 0),
+        ("τ = 0.1 s (default)", cs["sap_tau0.1"]["fail_times_s"], 0),
+        ("τ = 0.5 s", cs["sap_tau0.5"]["fail_times_s"],
+         5 - cs["sap_tau0.5"]["n_failed"]),
+        ("HC d = 0.5", cs["lagged_d0.5_vs1e-5"]["fail_times_s"], 0),
+        ("HC d = 1.5", cs["lagged_vs1e-5"]["fail_times_s"], 0),
+        ("HC d = 3.0", cs["lagged_d3.0_vs1e-5"]["fail_times_s"], 0),
+        ("v_s = 10⁻³ m/s", cs["lagged_vs1e-3"]["fail_times_s"], 0),
+        ("v_s = 10⁻⁴ m/s", cs["lagged_vs1e-4"]["fail_times_s"], 0),
+        ("v_s = 10⁻⁵ m/s", cs["lagged_vs1e-5"]["fail_times_s"], 0),
+    ]
+    groups = [("time step (kSap)", 0, 3), ("dissipation (kSap τ)", 3, 6),
+              ("dissipation (kLagged HC, v_s = 10⁻⁵)", 6, 9),
+              ("friction regularization (kLagged)", 9, 12)]
+
+    fig, ax = plt.subplots(figsize=(3.5, 3.1))
+    base = np.array(cs["base_sap"]["fail_times_s"]) - T0
+    ax.axvspan(base.min(), base.max(), color=SEQ[0], alpha=0.55, zorder=1)
+    y = 0
+    ylabels, ypos = [], []
+    for label, times, n_held in rows:
+        tt = np.array(times) - T0
+        ax.plot(tt, np.full(len(tt), y), "o", ms=3.2, color=BLUE,
+                zorder=3)
+        if n_held:
+            ax.plot([WIN + 0.18 * k for k in range(n_held)],
+                    [y] * n_held, marker=">", ms=4,
+                    color=MUT, ls="none", zorder=3)
+        ylabels.append(label); ypos.append(y)
+        y -= 1
+    for gname, i0g, i1g in groups:
+        ax.text(-0.3, -(i0g) + 0.52, gname, fontsize=6.2, color=SEC,
+                style="italic", ha="left")
+        if i1g < len(rows):
+            ax.axhline(-(i1g) + 0.5, color=GRID, lw=0.6, zorder=0)
+    ax.plot([], [], "o", ms=3.2, color=BLUE, label="failure")
+    ax.plot([], [], ">", ms=4, color=MUT, ls="none",
+            label="held past window")
+    ax.legend(loc="lower right", fontsize=6, handletextpad=0.3)
+    ax.set_yticks(ypos, ylabels, fontsize=6.5)
+    ax.set_xlabel("failure time in hold (s), margin 1.3")
+    ax.set_xlim(-0.4, 13.6)
+    ax.set_ylim(-(len(rows) - 1) - 0.7, 1.1)
+    ax.grid(True, axis="x"); ax.tick_params(left=False)
+    ax.spines["left"].set_visible(False)
+    ax.set_title("creep failure vs solver parameters "
+                 "(shaded: baseline range)", loc="left", fontsize=7.5)
+    save(fig, "F8_sensitivity")
+
+
+# ------------------------------------------------- F9 contact patch gallery
+def fig9():
+    """The patches themselves: hydroelastic pressure field on the L-tip
+    contact for each shape (ordered by mu_eff), and the box patch migrating
+    over the dome during a failing margin-1.3 hold."""
+    d = np.load(os.path.join(RESULTS, "fig_patches_data.npz"))
+    shapes = [("disc", "disc (flat face)", 0.823),
+              ("box", "box", 0.564),
+              ("prism", "prism", 0.564),
+              ("cylinder", "cylinder (rim)", 0.529),
+              ("disc_edge", "disc on edge", 0.429),
+              ("sphere", "sphere", 0.411)]
+    cmap = matplotlib.colors.LinearSegmentedColormap.from_list("seq", SEQ)
+
+    pmax = max(float(d[f"{s}_press"].max()) for s, _, _ in shapes)
+    fig = plt.figure(figsize=(7.16, 3.1))
+    gs = fig.add_gridspec(2, 7, width_ratios=[1] * 6 + [0.07],
+                          hspace=0.52, wspace=0.15)
+
+    def panel(ax, verts, press, tip_p, title, sub):
+        yz = 1e3 * (verts[:, 1:3] - tip_p[1:3])     # tip frame, mm
+        ax.scatter(yz[:, 0], yz[:, 1], c=press / 1e3, s=1.2, cmap=cmap,
+                   vmin=0, vmax=pmax / 1e3, rasterized=True, lw=0)
+        ax.set_aspect("equal")
+        ax.set_xlim(-9, 9); ax.set_ylim(-10, 8)
+        ax.set_xticks([]); ax.set_yticks([])
+        for sp in ax.spines.values():
+            sp.set_color(GRID)
+        ax.set_title(title, fontsize=6.6, loc="left", pad=2)
+        ax.text(0.03, 0.03, sub, transform=ax.transAxes, fontsize=6,
+                color=SEC)
+
+    for k, (s, name, mu) in enumerate(shapes):
+        ax = fig.add_subplot(gs[0, k])
+        panel(ax, d[f"{s}_verts"], d[f"{s}_press"], d[f"{s}_tip_p"],
+              f"({'abcdef'[k]}) {name}", f"μ_eff = {mu:.2f}")
+        if k == 0:
+            ax.set_ylabel("stable grasps,\nby μ_eff →", fontsize=6.5,
+                          color=SEC)
+
+    sc = None
+    for k in range(5):
+        if f"fail{k}_verts" not in d:
+            continue
+        ax = fig.add_subplot(gs[1, k])
+        verts, press = d[f"fail{k}_verts"], d[f"fail{k}_press"]
+        tip_p = d[f"fail{k}_tip_p"]
+        yz = 1e3 * (verts[:, 1:3] - tip_p[1:3])
+        sc = ax.scatter(yz[:, 0], yz[:, 1], c=press / 1e3, s=1.2,
+                        cmap=cmap, vmin=0, vmax=pmax / 1e3,
+                        rasterized=True, lw=0)
+        c = 1e3 * (d[f"fail{k}_centroid"][1:3] - tip_p[1:3])
+        if k == 0:
+            c0z = c[1]
+        ax.axhline(c0z, color=MUT, lw=0.5, ls=(0, (3, 2)), zorder=2)
+        ax.plot(c[0], c[1], "+", ms=5, color=CRIT, mew=1.1, zorder=4)
+        ax.set_aspect("equal")
+        ax.set_xlim(-9, 9); ax.set_ylim(-10, 8)
+        ax.set_xticks([]); ax.set_yticks([])
+        for sp in ax.spines.values():
+            sp.set_color(GRID)
+        ax.set_title(f"({'ghijk'[k]}) t = {float(d[f'fail{k}_t']):.1f} s",
+                     fontsize=6.6, loc="left", pad=2)
+        if k == 0:
+            ax.set_ylabel("failing hold:\npatch migrates ↓", fontsize=6.5,
+                          color=SEC)
+    axl = fig.add_subplot(gs[1, 5])
+    axl.axis("off")
+    axl.text(0.05, 0.5, "box, margin 1.3\n(+ = patch centroid;\n"
+             "the resultant &\ncentroid of these\nfields are the\n"
+             "idealized TacTip\nsignal of §III)", fontsize=6, color=SEC,
+             va="center")
+    cax = fig.add_subplot(gs[:, 6])
+    cb = fig.colorbar(sc, cax=cax)
+    cb.set_label("hydroelastic pressure (kPa)", color=SEC)
+    cb.outline.set_visible(False)
+    cax.tick_params(length=0)
+    save(fig, "F9_patches")
+
+
 FIGS = {"F1": fig1, "F2": fig2, "F3": fig3, "F4": fig4, "F5": fig5,
-        "F6": fig6}
+        "F6": fig6, "F7": fig7, "F8": fig8, "F9": fig9}
 
 
 def main():

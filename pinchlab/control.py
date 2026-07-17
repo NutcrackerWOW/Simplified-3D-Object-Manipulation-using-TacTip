@@ -36,8 +36,9 @@ PHASE_NAMES = {0: "close", 1: "grip", 2: "release", 3: "hold", 4: "failed"}
 
 # Discrete-state slots (before the stored actuation vector)
 (_PHASE, _T0, _FL, _FR, _TRIM_L, _TRIM_R, _OK_SINCE, _ALPHA,
- _SP, _BOOST_UNTIL, _PX_L, _PX_R, _HP_L, _HP_R, _EN_L, _EN_R) = range(16)
-_NHEAD = 16
+ _SP, _BOOST_UNTIL, _PX_L, _PX_R, _HP_L, _HP_R, _EN_L, _EN_R,
+ _RR_ON, _RR_BL, _RR_BR, _RR_EF, _RR_DPIP) = range(21)
+_NHEAD = 21
 
 DEBUG_LABELS = ["phase", "f_L_filt", "f_R_filt", "trim_L", "trim_R",
                 "alpha", "mcp_ref", "setpoint", "reflex_energy"]
@@ -47,12 +48,22 @@ class GripController(LeafSystem):
     def __init__(self, plant, box_body, grasp: Posture, open_posture: Posture,
                  force_setpoint: float, cp: ControlParams | None = None,
                  period: float = 2e-3, setpoint_ramp: float = 0.0,
-                 posture_ref_fn=None, setpoint_fn=None, reflex: dict | None = None):
+                 posture_ref_fn=None, setpoint_fn=None, reflex: dict | None = None,
+                 roll_reg: dict | None = None):
         """posture_ref_fn(t_hold)→Posture and setpoint_fn(t_hold)→float apply
         during HOLD (Phase B trajectories / scheduled squeeze). `reflex` is a
         dict(threshold, highpass_hz, boost, boost_time) enabling the online
         vibration reflex: on band-energy > threshold the setpoint is
-        multiplied by `boost` for `boost_time` seconds."""
+        multiplied by `boost` for `boost_time` seconds.
+
+        `roll_reg` enables closed-loop rolling regulation during HOLD — a
+        simplified tactile analogue of rolling-orientation pinch control:
+        the object's pitch about the lateral axis is observed as the
+        antisymmetric vertical migration of the two contact centroids in
+        each tip's frame (idealized-TacTip signals only), and both domes
+        are rolled to follow it via a differential PIP reference trim.
+        dict(kp [rad/m], filter_hz=5.0, limit=0.14 [rad], rate=0.35 [rad/s]);
+        the sign of kp selects the correction direction."""
         super().__init__()
         self.plant = plant
         self.cp = cp or ControlParams()
@@ -63,6 +74,7 @@ class GripController(LeafSystem):
         self.posture_ref_fn = posture_ref_fn
         self.setpoint_fn = setpoint_fn
         self.reflex = reflex
+        self.roll_reg = roll_reg
         self.box_mass = box_body.default_mass()
         self.box_index = box_body.index()
         self.period = period
@@ -83,6 +95,12 @@ class GripController(LeafSystem):
         # Scratch context for gravity feedforward (Wave/MCP/PIP only — DIP
         # stays a pure passive spring).
         self._grav_ctx = plant.CreateDefaultContext() if self.cp.gravity_comp else None
+        # Scratch context + tip bodies for roll-regulation FK.
+        self._rr_ctx = plant.CreateDefaultContext() if roll_reg else None
+        if roll_reg:
+            from .params import TIP_BODY
+            self._rr_tips = {f: plant.GetBodyByName(TIP_BODY[f])
+                             for f in FINGERS}
         self.grasp_map = grasp.joint_map()
         self.open_map = open_posture.joint_map()
         # Close phase: MCP ramps open→grasp(+overdrive so the PD presses in).
@@ -242,6 +260,35 @@ class GripController(LeafSystem):
                     setpoint *= self.reflex.get("boost", 1.5)
         xd[_SP] = setpoint
 
+        # ---------------- rolling regulation (differential PIP) ----------
+        # Pitch of the object about the lateral axis, observed as the
+        # antisymmetric vertical migration of the two contact centroids in
+        # the tip frames; both domes are rolled to follow via a slow,
+        # rate-limited differential PIP reference trim.
+        rr_dpip = 0.0
+        if self.roll_reg is not None:
+            rr = self.roll_reg
+            if (phase == PHASE_HOLD and readings["L"].in_contact
+                    and readings["R"].in_contact):
+                self.plant.SetPositions(self._rr_ctx, q)
+                zoff = {}
+                for f in FINGERS:
+                    p_tip = self.plant.EvalBodyPoseInWorld(
+                        self._rr_ctx, self._rr_tips[f]).translation()
+                    zoff[f] = readings[f].centroid_W[2] - p_tip[2]
+                if xd[_RR_ON] == 0.0:
+                    xd[_RR_ON] = 1.0
+                    xd[_RR_BL], xd[_RR_BR] = zoff["L"], zoff["R"]
+                e = (zoff["L"] - xd[_RR_BL]) - (zoff["R"] - xd[_RR_BR])
+                g = min(1.0, dt * 2 * np.pi * rr.get("filter_hz", 5.0))
+                xd[_RR_EF] += g * (e - xd[_RR_EF])
+                lim = rr.get("limit", 0.14)
+                target = float(np.clip(rr["kp"] * xd[_RR_EF], -lim, lim))
+                step = rr.get("rate", 0.35) * dt
+                xd[_RR_DPIP] += float(np.clip(target - xd[_RR_DPIP],
+                                              -step, step))
+            rr_dpip = xd[_RR_DPIP]
+
         # ---------------- actuation ----------------
         u = np.zeros(self.nu)
         tau_g = None
@@ -255,7 +302,8 @@ class GripController(LeafSystem):
             # Wave & PIP: strong PD to the (possibly trajectory) targets.
             u[jw[2]] = (cp.kp_wave * (ref_map[f + "_Wave"] - q[jw[0]])
                         - cp.kd_wave * v[jw[1]])
-            u[jp[2]] = (cp.kp_flex * (ref_map[f + "_PIP"] - q[jp[0]])
+            pip_ref = ref_map[f + "_PIP"] + (rr_dpip if f == "L" else -rr_dpip)
+            u[jp[2]] = (cp.kp_flex * (pip_ref - q[jp[0]])
                         - cp.kd_flex * v[jp[1]])
             if tau_g is not None:  # cancel finger weight on the active joints
                 u[jw[2]] -= tau_g[jw[1]]

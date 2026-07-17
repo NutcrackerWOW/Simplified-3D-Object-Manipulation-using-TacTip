@@ -38,6 +38,8 @@ def main():
         drift=np.asarray(s["drift"]), rot_drift=np.asarray(s["rot_drift"]),
         f1_L=np.asarray(s["f1_L"]), f2_L=np.asarray(s["f2_L"]),
         f3_L=np.asarray(s["f3_L"]),
+        slide_L=np.asarray(s["slide_L"]), slide_R=np.asarray(s["slide_R"]),
+        rho_L=np.asarray(s["rho_L"]), rho_R=np.asarray(s["rho_R"]),
         outcome=res.outcome, box_size=spec.box.size,
         box_height=spec.box.height)
     print("→ results/fig_rolling_data.npz")

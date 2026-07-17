@@ -136,6 +136,39 @@ pip = −5° only 2/5 seeds find any stable anchor and those land at f* ≈ 0.09
 0.34–0.62 N. Both findings feed back into the fit: pip = −5° is excluded as the
 fragile regime, and the fit is seed-noise-weighted (see "Measured results").
 
+### Creep sensitivity: the slow failure is physics, not solver artifact
+
+`scripts/creep_sensitivity.py` (→ `results/creep_sensitivity.json`) reruns the
+margin-1.3 motionless hold across the contact model's own approximations:
+Hunt–Crossley dissipation 0.5–3.0 s/m (live under kLagged; failure-time means
+5.20/5.20/5.21 s — flat), kSap Kelvin–Voigt relaxation time 0.01–0.5 s (10×
+less dissipation → −15 %; unphysically viscous 0.5 s retards creep past the
+window in 3/5 seeds), and friction-regularization stiction tolerance 1e-3 →
+1e-5 m/s under kLagged/kSimilar (sloppy → fails immediately from
+regularization slip; tightening saturates: 10× change moves the mean 28 %).
+No condition eliminates the failure; the exact seconds carry a ~1.6× spread
+between contact approximations (kLagged 5.2 s vs kSap 8.3 s means).
+Note: under the baseline kSap approximation the declared `hunt_crossley_dissipation`
+is inert (Drake consumes `relaxation_time` there instead) — bit-identical
+control runs confirmed this; the paper's testbed section now says so.
+
+### Closed-loop rolling regulation (M9)
+
+`pinchlab.control` gains an optional `roll_reg` — a simplified tactile
+analogue of rolling-orientation pinch control: the object's pitch is observed
+as the antisymmetric vertical migration of the two contact centroids
+(idealized-TacTip signal only) and both domes roll to follow it via a
+rate-limited differential PIP trim (kp = 1000 rad/m, ±0.25 rad, 0.7 rad/s,
+5 Hz filter; sign/gain study in the paper). `scripts/eval_closedloop.py`
+(→ `results/closedloop.json`): regulation ON arrests the margin-1.3 creep
+failure (10/10 held through 14.3 s, ≤1.6° rotation, vs 20/20 open-loop
+failures) and holds margin 1.15 5/5 (1.05: 3/5 — `closedloop_floor.json`),
+so the sustained-hold requirement drops from ×2.0 to ≈×1.15. The 3-s
+acquisition boundary itself barely moves (f* open→closed: 0.209→0.216 N
+at 30 g, 0.435→0.417 at 50 g, 0.577→0.539 at 60 g; −3..+7 % in μ_eff,
+within seed noise) — control removes the hold-duration penalty, not the
+static rolling discount.
+
 ### Phase B: the boundary is a 3-second boundary (rolling creep)
 
 Carrying the 50 g box through wave ±10° @ 0.15 Hz at margin 1.3 over the fitted f*
@@ -150,8 +183,11 @@ abrupt roll-off. At **margin 2.0** (0.75 N) all three controllers (fixed / sched
 / scheduled+reflex) hold **30/30** (10 seeds × 3 modes) through the full wave sweep
 with ≤ 0.85 mm drift (`results/phaseB_summary.json`, envelope probes in
 `results/phaseB_envelope.json`, margin-1.3 failures archived as
-`phaseB_*_margin1p3.*`). Since the earliest observed creep failure is 5.3 s, the
-1.3 margin is only trustworthy for holds of ~4 s or less.
+`phaseB_*_margin1p3.*`). Failure times are measured from trial start; the hold begins ≈1.2 s in, so
+these are 4–10 s of unsupported hold. With the earliest observed creep
+failure at 4.1 s of hold (2.6 s under the alternative kLagged contact
+approximation — see creep sensitivity below), the 1.3 margin is only
+trustworthy on the timescale of the 3 s acceptance window itself.
 
 ### Shape study (M8): μ_eff tracks rolling freedom, not friction
 

@@ -69,7 +69,8 @@ def run_trial(spec: TrialSpec, meshcat=None, keep_series: bool = False,
               setpoint_fn=None, reflex: dict | None = None,
               hold_time: float | None = None,
               mp: ModelParams | None = None,
-              log_poses: bool = False) -> TrialResult:
+              log_poses: bool = False,
+              roll_reg: dict | None = None) -> TrialResult:
     cp = cp or ControlParams()
     kin = get_kinematics()
     if hold_time is None:
@@ -96,7 +97,7 @@ def run_trial(spec: TrialSpec, meshcat=None, keep_series: bool = False,
         plant, scene.box_body, spec.posture, open_posture,
         spec.force_setpoint, cp, period=spec.time_step,
         setpoint_ramp=spec.setpoint_ramp, posture_ref_fn=posture_ref_fn,
-        setpoint_fn=setpoint_fn, reflex=reflex))
+        setpoint_fn=setpoint_fn, reflex=reflex, roll_reg=roll_reg))
     builder.Connect(plant.get_state_output_port(),
                     ctrl.GetInputPort("plant_state"))
     builder.Connect(plant.get_contact_results_output_port(),
